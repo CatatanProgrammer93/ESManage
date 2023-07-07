@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "mDfSdLxgkYTXBb+5o84/Ra6fI8eDBfiSoAjaf8+5EDs=",
+  "Source": "es-manage.api",
+  "BasePath": "_content/es-manage.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
