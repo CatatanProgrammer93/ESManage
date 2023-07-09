@@ -25,3 +25,5 @@ D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\refint\es-manag
 D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
 D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
 D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Dapper.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
