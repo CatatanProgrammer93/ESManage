@@ -6,11 +6,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 //string connectionString = builder.Configuration.GetConnectionString("Main");
-string? connectionString = builder.Configuration.GetConnectionString("Main");
-if (connectionString == null)
-{
-    throw new InvalidOperationException("Main connection string not found in configuration");
-}
+string? connectionString = builder.Configuration.GetConnectionString("Main") ?? throw new InvalidOperationException("String koneksi DB 'Main' tidak ditemukan / invalid. Cek file appsettings.json.");
+
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
 // Add services to the container.

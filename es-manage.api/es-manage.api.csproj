@@ -12,4 +12,9 @@
     <PackageReference Include="Npgsql" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\1.0.0\*.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
