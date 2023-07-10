@@ -1,10 +1,10 @@
-CREATE TABLE IF NOT EXISTS public."UserMst" (
-    "ID" UUID PRIMARY KEY,
-    "UserName" VARCHAR(25) NOT NULL,
-    "DisplayName" VARCHAR(50),
-    "Password" VARCHAR(250) NOT NULL,
-    "CreatedOn" TIMESTAMP,
-    "CreatedBy" VARCHAR(25),
-    "ModifiedOn" TIMESTAMP,
-    "ModifiedBy" VARCHAR(25)
+CREATE TABLE IF NOT EXISTS public."usermst" (
+    "id" UUID PRIMARY KEY,
+    "username" VARCHAR(25) NOT NULL,
+    "displayName" VARCHAR(50),
+    "password" VARCHAR(250) NOT NULL,
+    "createdOn" TIMESTAMP,
+    "createdBy" VARCHAR(25),
+    "modifiedOn" TIMESTAMP,
+    "modifiedBy" VARCHAR(25)
 );
