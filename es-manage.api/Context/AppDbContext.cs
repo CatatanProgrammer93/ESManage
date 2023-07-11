@@ -1,6 +1,5 @@
 using es_manage.api.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace es_manage.api.Context {
     public class AppDbContext : DbContext {

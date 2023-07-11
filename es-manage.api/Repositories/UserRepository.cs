@@ -3,10 +3,7 @@ using es_manage.api.Models;
 using System.Data;
 using Dapper;
 using Npgsql;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+
 
 namespace es_manage.api.Repositories
 {
@@ -23,13 +20,13 @@ namespace es_manage.api.Repositories
 
         public async Task<IEnumerable<UserMst>> GetAll()
         {
-            var sql = "SELECT * FROM UserMst";
+            var sql = "SELECT * FROM UserMst WHERE DeletedAt IS NULL";
             return await _db.QueryAsync<UserMst>(sql);
         }
 
         public async Task<UserMst> Get(Guid id)
         {
-            var sql = "SELECT * FROM UserMst WHERE ID = @ID";
+            var sql = "SELECT * FROM UserMst WHERE ID = @ID AND DeletedAt IS NULL";
             return await _db.QuerySingleOrDefaultAsync<UserMst>(sql, new { ID = id });
         }
 
@@ -52,14 +49,14 @@ namespace es_manage.api.Repositories
                             Password = @Password,
                             ModifiedOn = @ModifiedOn,
                             ModifiedBy = @ModifiedBy
-                        WHERE ID = @ID
+                        WHERE ID = @ID AND DeletedAt IS NULL
                         RETURNING *";
             return await _db.QuerySingleAsync<UserMst>(sql, user);
         }
 
         public async Task Delete(Guid id)
         {
-            var sql = "DELETE FROM UserMst WHERE ID = @ID";
+            var sql = "UPDATE UserMst SET DeletedAt = NOW() WHERE ID = @ID";
             await _db.ExecuteAsync(sql, new { ID = id });
         }
     }
