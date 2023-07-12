@@ -42,7 +42,15 @@
               "target": "Package",
               "version": "[2.0.143, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
             "Npgsql": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.4, )"
             },
