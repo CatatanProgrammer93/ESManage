@@ -1,4 +1,4 @@
-// Tujuan: Berisi class model UserMst.
+// Tujuan: Berisi class model UserMst untuk database usermst
 
 // Membuat namespace
 namespace es_manage.api.Models {

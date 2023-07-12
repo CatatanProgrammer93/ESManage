@@ -33,7 +33,8 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
-                throw new Exception("Kesalahan saat mendapatkan semua user.", ex);
+                var pesanError = "Kesalahan saat mendapatkan semua user, " + ex.Message;
+                throw new Exception(pesanError, ex);
             }
         }
 
@@ -47,7 +48,8 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
-                throw new Exception("Kesalahan saat mendapatkan user.", ex);
+                var pesanError = "Kesalahan saat mendapatkan user, " + ex.Message;
+                throw new Exception(pesanError, ex);
             }
         }
 
@@ -56,6 +58,12 @@ namespace es_manage.api.Repositories {
         {
             try
             {
+                // Cek apakah username sudah diambil
+                var existingUser = await _db.QueryFirstOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", new { user.UserName });
+                if (existingUser != null) {
+                    throw new InvalidOperationException("Username sudah diambil. Gunakan username lain.");
+                }
+
                 user.ID = Guid.NewGuid();
                 user.CreatedOn = DateTime.UtcNow;
                 var sql = @"INSERT INTO UserMst (ID, UserName, DisplayName, Password, CreatedOn, CreatedBy)
@@ -65,7 +73,8 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
-                throw new Exception("Kesalahan saat menambahkan user.", ex);
+                var pesanError = "Kesalahan saat menambahkan user, " + ex.Message;
+                throw new Exception(pesanError, ex);
             }
         }
 
@@ -87,7 +96,8 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
-                throw new Exception("Kesalahan saat mengupdate user.", ex);
+                var pesanError = "Kesalahan saat mengupdate user, " + ex.Message;
+                throw new Exception(pesanError, ex);
             }
         }
 
@@ -99,10 +109,17 @@ namespace es_manage.api.Repositories {
                 var sql = "UPDATE UserMst SET DeletedAt = NOW() WHERE ID = @ID";
                 await _db.ExecuteAsync(sql, new { ID = id });
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception("Kesalahan saat menghapus user.", ex);
+                var pesanError = "Kesalahan saat menghapus user, " + ex.Message;
+                throw new Exception(pesanError, ex);
             }
+        }
+
+        // Membuat metode ValidateUser untuk validasi user saat login
+        public async Task<UserMst?> ValidateUser(string username, string password) {
+            var user = await _db.QuerySingleOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND Password = @Password AND DeletedAt IS NULL", new { UserName = username, Password = password });
+            return user;
         }
     }
 }
