@@ -3,6 +3,7 @@
 // Import library yang dibutuhkan
 using Microsoft.AspNetCore.Mvc;
 using es_manage.api.Repositories;
+using es_manage.api.Utilities;
 
 // Membuat namespace
 namespace es_manage.api.Controllers;
@@ -29,6 +30,7 @@ public class UsersController : ControllerBase
             return Ok(users);
         }
         catch (Exception ex) {
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -46,6 +48,7 @@ public class UsersController : ControllerBase
         }
         catch (Exception ex)
         {
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -61,6 +64,7 @@ public class UsersController : ControllerBase
         }
         catch (Exception ex)
         {
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -79,6 +83,7 @@ public class UsersController : ControllerBase
         }
         catch (Exception ex)
         {
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
@@ -93,10 +98,11 @@ public class UsersController : ControllerBase
             if (existingUser == null)
                 return NotFound();
             await _repository.Delete(id);
-            return NoContent();
+            return Ok();
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
