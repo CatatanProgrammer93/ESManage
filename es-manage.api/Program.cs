@@ -39,7 +39,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<AuthRepository>();
 builder.Services.AddScoped<TokenService>();
+
+// Option untuk CORS (Cross-Origin Resource Sharing)
+var allOrigins = "allowOrigins";
+builder.Services.AddCors(opt => opt.AddPolicy(allOrigins, policy =>
+{
+	policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -51,6 +59,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(allOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();

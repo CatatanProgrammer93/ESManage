@@ -117,9 +117,9 @@ namespace es_manage.api.Repositories {
         }
 
         // Membuat metode ValidateUser untuk validasi user saat login
-        public async Task<UserMst?> ValidateUser(string username, string password) {
+        /*public async Task<UserMst?> ValidateUser(string username, string password) {
             var user = await _db.QuerySingleOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND Password = @Password AND DeletedAt IS NULL", new { UserName = username, Password = password });
             return user;
-        }
+        }*/
     }
 }

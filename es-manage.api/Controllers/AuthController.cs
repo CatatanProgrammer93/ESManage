@@ -13,24 +13,46 @@ namespace es_manage.api.Controllers;
 [ApiController]
 [Route("auth")]
 public class AuthController : ControllerBase {
-    private readonly UserRepository _repository;
+    private readonly AuthRepository _repository;
     private readonly TokenService _tokenService;
 
     // Membuat constructor AuthController yang menerima parameter UserRepository dan TokenService
-    public AuthController(UserRepository repository, TokenService tokenService) {
+    public AuthController(AuthRepository repository, TokenService tokenService) {
         _repository = repository;
         _tokenService = tokenService;
     }
 
     // Metode POST untuk login
     [HttpPost("Login")]
-    public async Task<IActionResult> Login(LoginModel login) {
-        var user = await _repository.ValidateUser(login.UserName, login.Password);
-        if (user == null) {
-            return Unauthorized();
-        }
+    public async Task<IActionResult> Login(LoginRequestModel login) {
+        try
+        {
+            // Validasi model
+            var user = await _repository.ValidateUser(login.UserName, login.Password);
+            // Jika user tidak ditemukan, maka kembalikan Unauthorized
+            if (user == null) {
+                return Unauthorized();
+            }
 
-        var token = _tokenService.GenerateToken(user);
-        return Ok(token);
+            // Jika user ditemukan, maka buat token
+            var token = _tokenService.GenerateToken(user);
+            // Buat response
+            var response = new LoginResponseModel
+            {
+                Token = new TokenInfo()
+                {
+                    AccessToken = token
+                },
+                UserName = user.UserName
+            };
+
+            // Kembalikan response
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            // Jika terjadi kesalahan, kembalikan BadRequest
+            return BadRequest(ex.Message);
+        }
     }
 }
