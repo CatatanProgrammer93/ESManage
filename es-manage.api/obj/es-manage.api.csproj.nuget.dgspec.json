@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
+    "C:\\Users\\aditya\\OneDrive\\Documents\\ESMANAGE\\es-manage.api\\es-manage.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj": {
+    "C:\\Users\\aditya\\OneDrive\\Documents\\ESMANAGE\\es-manage.api\\es-manage.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectUniqueName": "C:\\Users\\aditya\\OneDrive\\Documents\\ESMANAGE\\es-manage.api\\es-manage.api.csproj",
         "projectName": "es-manage.api",
-        "projectPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESMANAGE\\es-manage.api\\es-manage.api.csproj",
         "packagesPath": "C:\\Users\\aditya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\obj\\",
+        "outputPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESMANAGE\\es-manage.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aditya\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -42,9 +42,17 @@
               "target": "Package",
               "version": "[2.0.143, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.20, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.8, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.31.0, )"
             },
             "Npgsql": {
               "target": "Package",

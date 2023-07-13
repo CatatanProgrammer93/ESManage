@@ -1,4 +1,4 @@
-function Home() {
+function Dashboard() {
   return (
     <>
       <h1 className="text-2xl font-bold">Logged in.</h1>
@@ -6,4 +6,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Dashboard;

@@ -46,6 +46,14 @@ D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.es-manage.api.props
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.pack.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
@@ -55,6 +63,7 @@ C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-ma
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.pdb
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Dapper.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -67,12 +76,19 @@ C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Micro
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
