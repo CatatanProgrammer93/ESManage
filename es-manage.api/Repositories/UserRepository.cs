@@ -3,6 +3,7 @@
 // Import library yang dibutuhkan
 using es_manage.api.Context;
 using es_manage.api.Models;
+using es_manage.api.Utilities;
 using System.Data;
 using Dapper;
 using Npgsql;
@@ -33,6 +34,7 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
                 var pesanError = "Kesalahan saat mendapatkan semua user, " + ex.Message;
                 throw new Exception(pesanError, ex);
             }
@@ -48,6 +50,7 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
                 var pesanError = "Kesalahan saat mendapatkan user, " + ex.Message;
                 throw new Exception(pesanError, ex);
             }
@@ -73,6 +76,7 @@ namespace es_manage.api.Repositories {
             }
             catch (Exception ex)
             {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
                 var pesanError = "Kesalahan saat menambahkan user, " + ex.Message;
                 throw new Exception(pesanError, ex);
             }

@@ -2,6 +2,7 @@
 
 // Import library yang dibutuhkan
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using es_manage.api.Utilities;
 using es_manage.api.Repositories;
 using es_manage.api.Models;
@@ -23,6 +24,7 @@ public class AuthController : ControllerBase {
     }
 
     // Metode POST untuk login
+    [AllowAnonymous]
     [HttpPost("Login")]
     public async Task<IActionResult> Login(LoginRequestModel login) {
         try
@@ -52,6 +54,7 @@ public class AuthController : ControllerBase {
         catch (Exception ex)
         {
             // Jika terjadi kesalahan, kembalikan BadRequest
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
             return BadRequest(ex.Message);
         }
     }
