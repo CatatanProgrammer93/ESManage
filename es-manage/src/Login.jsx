@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import logo from './assets/logo.svg';
 import ellipse from './assets/ellipse.svg';
 import ellipse2 from './assets/ellipse-2.svg';
@@ -7,17 +8,18 @@ import esmanage from './assets/esmanage.svg';
 import border from './assets/border.svg';
 import './App.css';
 
-function Login(props) {
-  const [userName, setUserName] = useState(''); // Changed variable name to match API expectation
+function Login() {
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
-
     try {
       let axiosConfig = {
         method: 'POST',
@@ -27,23 +29,15 @@ function Login(props) {
         },
         url: 'https://localhost:7240/auth/login',
       };
-
       let response = await axios(axiosConfig);
-
       console.log(response.data);
-
-      // Handle the response
       const { token, user } = response.data;
-
-      // Store token and user in local storage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-
-      // Redirect to home or dashboard page
-      props.history.push('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       console.error(error);
-      setError(`An error occurred during login. Please try again. Detailed error: ${error.message}. Full error: ${JSON.stringify(error)}`);
+      setError(`Invalid username or password!`);
     } finally {
       setIsLoading(false);
     }
@@ -52,17 +46,19 @@ function Login(props) {
   return (
     <div className="bg-primary h-screen">
       <div className="container">
-        <img src={logo} alt="logo" className="w-20 ml-12 pt-10" />
-        <img src={ellipse} alt="ellipse" className="absolute w-52 top-[80px] left-[765px]" />
-        <img src={ellipse2} alt="ellipse2" className="absolute w-36 top-[550px] right-[180px]" />
-        <img src={border} alt="border" className="absolute backdrop-blur-md w-96 top-[80px] left-[900px]" />
-        <div>
+        <img src={logo} alt="logo" className="w-20 ml-12 pt-10 max-md:w-16" />
+        <div className="max-md:hidden">
           <h1 className="text-6xl font-semibold text-white mt-40 ml-24 mb-12">
             Welcome to <br /> our platform!
           </h1>
           <img src={esmanage} alt="esmanage" className="w-40 ml-24" />
         </div>
-        <div className="absolute top-[80px] left-[900px] px-12 pt-6">
+        <div className="flex justify-center text-center max-md:mt-6">
+          <img src={ellipse} alt="ellipse" className="absolute text-center w-52 md:top-[80px] md:left-[765px] max-md:hidden" />
+          <img src={ellipse2} alt="ellipse2" className="absolute text-center w-36 md:top-[550px] md:right-[180px] max-md:hidden" />
+          <img src={border} alt="border" className="absolute text-center backdrop-blur-md w-96 md:top-[80px] md:left-[900px]" />
+        </div>
+        <div className="absolute z-10 md:top-[80px] md:left-[900px] px-12 pt-6 max-md:mt-">
           <h2 className="text-3xl font-semibold text-white mt-24">Login</h2>
           <form onSubmit={handleSubmit}>
             <input type="text" className="text-xl text-white bg-transparent border rounded-xl py-3 px-8 mt-16" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)} />
@@ -73,7 +69,7 @@ function Login(props) {
               {isLoading ? 'Logging in...' : 'Login'}
             </button>
           </form>
-          {error && <p className="text-red-500 mt-4">{error}</p>}
+          {error && <p className="text-red-500 mt-6">{error}</p>}
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using es_manage.api.Models;
+//using System.Security.Cryptography;
 
 // Membuat namespace
 namespace es_manage.api.Services {
@@ -57,5 +58,13 @@ namespace es_manage.api.Services {
             // Mengembalikan token JWT
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        // TODO - Kalau jadi, coba buat Refresh Token
+        /*public string GenerateRefreshToken() {
+            var randomNumber = new byte[32];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
+        }*/
     }
 }

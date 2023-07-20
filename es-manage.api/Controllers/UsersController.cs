@@ -2,8 +2,11 @@
 
 // Import library yang dibutuhkan
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using es_manage.api.Repositories;
 using es_manage.api.Utilities;
+using es_manage.api.Services;
+using es_manage.api.Models;
 
 // Membuat namespace
 namespace es_manage.api.Controllers;
@@ -89,9 +92,12 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode Delete (soft-delete) untuk menghapus data user berdasarkan ID berupa UUID
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
+        string userName = User.Claims.FirstOrDefault(c => c.Type == "UserName").Value;
+        Logger.WriteToConsole(Logger.LogType.Info, $"User {userName} menghapus user dengan ID {id}");
         try
         {
             var existingUser = await _repository.Get(id);
