@@ -9,3 +9,6 @@ CREATE TABLE IF NOT EXISTS public."usermst" (
     "modifiedby" VARCHAR(25),
     "deletedat" TIMESTAMP
 );
+
+ALTER TABLE IF EXISTS public."usermst"
+    OWNER to es;

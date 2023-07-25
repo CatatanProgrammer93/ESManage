@@ -27,17 +27,17 @@ function Login() {
           userName: userName,
           password: password,
         },
-        url: 'https://localhost:7240/auth/login',
+        url: 'https://localhost:7240/api/auth/login',
       };
       let response = await axios(axiosConfig);
       console.log(response.data);
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      navigate('/dashboard');
+      navigate('/dashboard', { state: { user } });
     } catch (error) {
       console.error(error);
-      setError(`Invalid username or password!`);
+      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
     } finally {
       setIsLoading(false);
     }
