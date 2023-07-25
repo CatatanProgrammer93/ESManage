@@ -12,7 +12,7 @@ using es_manage.api.Models;
 namespace es_manage.api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/users")]
 // Membuat class UsersController yang mewarisi ControllerBase
 public class UsersController : ControllerBase
 {
