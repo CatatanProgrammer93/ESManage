@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arif Ghani\\OneDrive\\Documents\\PKL\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
+    "/Users/adamhaykalfirdaus/ESManage/es-manage.api/es-manage.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arif Ghani\\OneDrive\\Documents\\PKL\\ESManage\\es-manage.api\\es-manage.api.csproj": {
+    "/Users/adamhaykalfirdaus/ESManage/es-manage.api/es-manage.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arif Ghani\\OneDrive\\Documents\\PKL\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectUniqueName": "/Users/adamhaykalfirdaus/ESManage/es-manage.api/es-manage.api.csproj",
         "projectName": "es-manage.api",
-        "projectPath": "C:\\Users\\Arif Ghani\\OneDrive\\Documents\\PKL\\ESManage\\es-manage.api\\es-manage.api.csproj",
-        "packagesPath": "C:\\Users\\Arif Ghani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arif Ghani\\OneDrive\\Documents\\PKL\\ESManage\\es-manage.api\\obj\\",
+        "projectPath": "/Users/adamhaykalfirdaus/ESManage/es-manage.api/es-manage.api.csproj",
+        "packagesPath": "/Users/adamhaykalfirdaus/.nuget/packages/",
+        "outputPath": "/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Arif Ghani\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/adamhaykalfirdaus/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -73,7 +73,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -85,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.314\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.411/RuntimeIdentifierGraph.json"
         }
       }
     }

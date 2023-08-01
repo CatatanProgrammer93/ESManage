@@ -1,65 +1,131 @@
-using es_manage.api.Models;
-using es_manage.api.Repositories;
+// Tujuan: Controller untuk mengelola data Brand
+
+// Import library yang dibutuhkan
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using es_manage.api.Utilities;
+using es_manage.api.Repositories;
+using es_manage.api.Models;
+using es_manage.api.Services;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace es_manage.api.Controllers
-{
+namespace es_manage.api.Controllers {
     [ApiController]
-    [Route("api/[controller]")]
-    public class BrandController : ControllerBase
-    {
-        private readonly BrandRepository _brandRepository;
+    [Route("api/brand")]
+    public class BrandController : ControllerBase {
+        private readonly BrandRepository _repository;
 
-        public BrandController(BrandRepository brandRepository)
+        public BrandController(BrandRepository repository)
         {
-            _brandRepository = brandRepository;
+            _repository = repository;
         }
 
+        // Metode GET untuk mendapatkan semua data brand
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Brand>>> GetAllBrands()
-        {
-            var brands = await _brandRepository.GetAll();
-            return Ok(brands);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Brand>> GetBrandById(Guid id)
-        {
-            var brand = await _brandRepository.Get(id);
-            if (brand == null)
-            {
-                return NotFound();
+        public async Task<IActionResult> GetAll() {
+            try {
+                var brands = await _repository.GetAll();
+                return Ok(brands);
             }
-            return Ok(brand);
+            catch (Exception ex) {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
+        // Metode GET untuk mendapatkan data brand berdasarkan ID
+        // Format pemanggilan: GET /api/brand/id/{id}
+        // Contoh pemanggilan: GET /api/brand/id/1
+        [HttpGet("id/{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            try
+            {
+                var brand = await _repository.GetById(id);
+                if (brand == null) {
+                    return NotFound($"Tidak ada Brand dengan id: {id}");
+                }
+
+                return Ok(brand);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
+
+        // Metode GET untuk mendapatkan data brand berdasarkan Name
+        // Format pemanggilan: GET /api/brand/name/{name}
+        // Contoh pemanggilan: GET /api/brand/name/Brand 1
+        [HttpGet("name/{name}")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            try
+            {
+                var brand = await _repository.GetByName(name);
+                if (brand == null) {
+                    return NotFound($"Tidak ada Brand dengan name: {name}");
+                }
+
+                return Ok(brand);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
+
+        // Metode POST untuk menambahkan data brand
         [HttpPost]
-        public async Task<ActionResult<Brand>> CreateBrand(Brand brand)
+        public async Task<IActionResult> Create(BrandModel brand)
         {
-            var createdBrand = await _brandRepository.Create(brand);
-            return CreatedAtAction(nameof(GetBrandById), new { id = createdBrand.Id }, createdBrand);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult<Brand>> UpdateBrand(Guid id, Brand brand)
-        {
-            var existingBrand = await _brandRepository.Get(id);
-            if (existingBrand == null)
+            try
             {
-                return NotFound();
+                var newBrand = await _repository.Create(brand);
+                return Ok(newBrand);
             }
-            var updatedBrand = await _brandRepository.Update(brand);
-            return Ok(updatedBrand);
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBrand(Guid id)
+        // Metode PUT untuk mengubah data brand
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, [FromBody] BrandModel brand)
         {
-            await _brandRepository.Delete(id);
-            return NoContent();
+            try
+            {
+                var updatedBrand = await _repository.Update(id, brand);
+                return Ok(updatedBrand);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
+
+        // Metode DELETE untuk menghapus data brand
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                var brand = await _repository.GetById(id);
+                if (brand == null) {
+                    return NotFound($"Tidak ada brand ditemukan dengan id: {id}");
+                }
+
+                var deletedBrand = await _repository.Delete(id);
+                return Ok(new { success = true, message = $"Brand: {brand.Name} dengan id: {id} berhasil dihapus"});
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
         }
     }
 }

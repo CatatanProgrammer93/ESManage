@@ -1,66 +1,113 @@
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\appsettings.json
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\es-manage.api.pdb
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\Microsoft.OpenApi.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfo.cs
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CoreCompileInputs.cache
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cs
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cache
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\staticwebassets.build.json
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\staticwebassets.development.json
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\scopedcss\bundle\es-manage.api.styles.css
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CopyComplete
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
-D:\Coding\PKL Kano\Tugas\EsManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Dapper.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.es-manage.api.Microsoft.AspNetCore.StaticWebAssets.props
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.build.es-manage.api.props
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.es-manage.api.props
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.es-manage.api.props
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.pack.json
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfo.cs
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CoreCompileInputs.cache
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.dll
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
-C:\Users\Arif Ghani\OneDrive\Documents\PKL\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/appsettings.Development.json
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/appsettings.json
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/es-manage.api.exe
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/es-manage.api.deps.json
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/es-manage.api.runtimeconfig.json
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/es-manage.api.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/es-manage.api.pdb
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/Microsoft.OpenApi.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.csproj.AssemblyReference.cache
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.AssemblyInfoInputs.cache
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.AssemblyInfo.cs
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.csproj.CoreCompileInputs.cache
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.MvcApplicationPartsAssemblyInfo.cs
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.MvcApplicationPartsAssemblyInfo.cache
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/staticwebassets.build.json
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/staticwebassets.development.json
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/scopedcss/bundle/es-manage.api.styles.css
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.csproj.CopyComplete
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/refint/es-manage.api.dll
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.pdb
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/es-manage.api.genruntimeconfig.cache
+D:/Coding/PKL Kano/Tugas/EsManage/es-manage.api/obj/Debug/net6.0/ref/es-manage.api.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Dapper.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Npgsql.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.es-manage.api.Microsoft.AspNetCore.StaticWebAssets.props
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.build.es-manage.api.props
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.es-manage.api.props
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.es-manage.api.props
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets.pack.json
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/001_CREATE_UserMst.sql
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/002_CREATE_ItemDepartment.sql
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/003_CREATE_Brand.sql
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/004_CREATE_Item.sql
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/appsettings.Development.json
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/appsettings.json
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/001_CREATE_UserMst.sql
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/002_CREATE_ItemDepartment.sql
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/003_CREATE_Brand.sql
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/004_CREATE_Item.sql
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api.deps.json
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api.runtimeconfig.json
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api.pdb
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Dapper.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Npgsql.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.csproj.AssemblyReference.cache
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.AssemblyInfoInputs.cache
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.AssemblyInfo.cs
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.csproj.CoreCompileInputs.cache
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.MvcApplicationPartsAssemblyInfo.cs
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.MvcApplicationPartsAssemblyInfo.cache
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets.build.json
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets.development.json
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/scopedcss/bundle/es-manage.api.styles.css
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.csproj.CopyComplete
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/refint/es-manage.api.dll
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.pdb
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.genruntimeconfig.cache
+/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/ref/es-manage.api.dll
