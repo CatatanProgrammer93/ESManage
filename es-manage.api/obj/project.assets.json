@@ -1629,19 +1629,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aditya\\.nuget\\packages\\": {}
+    "/Users/adamhaykalfirdaus/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "projectUniqueName": "/Users/adamhaykalfirdaus/ESManage/es-manage.api/es-manage.api.csproj",
       "projectName": "es-manage.api",
-      "projectPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
-      "packagesPath": "C:\\Users\\aditya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\obj\\",
+      "projectPath": "/Users/adamhaykalfirdaus/ESManage/es-manage.api/es-manage.api.csproj",
+      "packagesPath": "/Users/adamhaykalfirdaus/.nuget/packages/",
+      "outputPath": "/Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aditya\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/adamhaykalfirdaus/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -1713,7 +1713,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.411/RuntimeIdentifierGraph.json"
       }
     }
   }

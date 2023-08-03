@@ -9,7 +9,13 @@ namespace es_manage.api.Context {
         // Membuat constructor
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        // Membuat DbSet untuk UserMst
+        // Membuat DbSet untuk Table UserMst
         public DbSet<UserMst> UserMst { get; set; }
+
+        // Membuat DbSet untuk Table ItemDepartment
+        public DbSet<ItemDepartmentModel> ItemDepartment { get; set; }
+
+        // Membuat DbSet untuk Table Brand
+        public DbSet<BrandModel> Brand { get; set; }
     }
 }

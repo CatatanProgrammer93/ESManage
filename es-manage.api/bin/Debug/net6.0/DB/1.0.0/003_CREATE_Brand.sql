@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public."brand" (
     "id" character varying(100),
     "name" character varying(255),
-    "deleted" bit DEFAULT B'0',
+    "deleted" boolean DEFAULT false,
     "createdon" timestamp,
     "createdby" character varying(25),
     "modifiedon" timestamp,

@@ -92,12 +92,12 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode Delete (soft-delete) untuk menghapus data user berdasarkan ID berupa UUID
-    [Authorize]
+    //[Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        string userName = User.Claims.FirstOrDefault(c => c.Type == "UserName").Value;
-        Logger.WriteToConsole(Logger.LogType.Info, $"User {userName} menghapus user dengan ID {id}");
+        //string userName = User.Claims.FirstOrDefault(c => c.Type == "UserName").Value;
+        //Logger.WriteToConsole(Logger.LogType.Info, $"User {userName} menghapus user dengan ID {id}");
         try
         {
             var existingUser = await _repository.Get(id);
