@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from './assets/logo.svg';
 import search from './assets/search.svg';
 import dashboard from './assets/dashboard.svg';
@@ -27,8 +28,8 @@ function Dashboard() {
   const displayName = user ? user.displayName : 'Guest';
 
   return (
-    <div className="bg-quaternary h-screen">
-      <div className="bg-quinary w-64 h-screen">
+    <div className="bg-quaternary h-[200vh]">
+      <div className="bg-quinary w-64 h-[200vh]">
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
           <ul className="">
@@ -69,7 +70,124 @@ function Dashboard() {
             <img src={userIcon} alt="user" className="w-[52px]" />
           </div>
           <div className="mt-20 ml-96">
-            <h1 className="text-white font-semibold text-4xl">Hi, {displayName}!</h1>
+            <h1 className="text-white font-bold text-4xl">Hi, {displayName}!</h1>
+          </div>
+
+          {/* Item Departement table*/}
+          <div className="overflow-x-auto mt-20">
+            <h1 className="text-white mb-4 font-bold text-2xl">Item Departement</h1>
+            <Link to="/item-department/create">
+              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
+            </Link>
+            <table className="table">
+              {/* head */}
+              <thead className="text-white text-lg">
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody className="text-white text-lg">
+                {/* row 1 */}
+                <tr>
+                  <th>1</th>
+                  <td>Cy Ganderton</td>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <td>
+                    <Link to="/item-department/edit">
+                      <button className="btn text-quaternary font-semibold mr-2">Edit</button>
+                    </Link>
+                    <Link to="/item-department/delete">
+                      <button className="btn bg-red-700 text-white font-semibold border-none">Delete</button>
+                    </Link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/*Brand Table*/}
+          <div className="overflow-x-auto mt-20">
+            <h1 className="text-white mb-4 font-bold text-2xl">Brand</h1>
+            <Link to="/brand/create">
+              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
+            </Link>
+            <table className="table">
+              {/* head */}
+              <thead className="text-white text-lg">
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody className="text-white text-lg">
+                {/* row 1 */}
+                <tr>
+                  <th>1</th>
+                  <td>Cy Ganderton</td>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <td>
+                    <a href="">
+                      <button className="btn text-quaternary font-semibold mr-2">Edit</button>
+                    </a>
+                    <a href="">
+                      <button className="btn bg-red-700 text-white font-semibold border-none">Delete</button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/*Name Table*/}
+          <div className="overflow-x-auto mt-20">
+            <h1 className="text-white mb-4 font-bold text-2xl">Item</h1>
+            <Link to="/item/create">
+              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
+            </Link>
+            <table className="table">
+              {/* head */}
+              <thead className="text-white text-lg">
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody className="text-white text-lg">
+                {/* row 1 */}
+                <tr>
+                  <th>1</th>
+                  <td>Cy Ganderton</td>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <td>
+                    <a href="">
+                      <button className="btn text-quaternary font-semibold mr-2">Edit</button>
+                    </a>
+                    <a href="">
+                      <button className="btn bg-red-700 text-white font-semibold border-none">Delete</button>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
