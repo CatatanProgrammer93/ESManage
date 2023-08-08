@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\es-manage.api.props" />
+</Project>

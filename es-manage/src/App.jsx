@@ -1,33 +1,43 @@
-import { useState } from "react";
-import logo from "./assets/logo.svg";
-import ellipse from "./assets/ellipse.svg";
-import ellipse2 from "./assets/ellipse-2.svg";
-import google from "./assets/google.svg";
-import "./App.css";
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import Login from './Login';
+import Dashboard from './Dashboard';
+import CreateItemDepartment from './ItemDepartment/Create';
+import EditItemDepartment from './ItemDepartment/Edit';
+import CreateBrand from './Brand/Create'; // Import missing Brand components
+import EditBrand from './Brand/Edit';
+import CreateItem from './Item/Create'; // Import missing Item components
+import EditItem from './Item/Edit';
 
+// The RedirectToLogin component
+function RedirectToLogin() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('/login');
+  }, [navigate]);
+
+  return null;
+}
+
+// The main App component
 function App() {
   return (
-    <>
-      <div className="bg-primary max-h-full">
-        <div className="container mx-auto">
-          <div className="flex justify-center items-center">
-            <div className="w-1/2">
-              <img src={logo} alt="logo" className="w-1/2 mx-auto" />
-              <h1 className="text-4xl text-center text-white font-bold">
-                Welcome to <br /> <span className="text-secondary">React</span>{" "}
-                Starter Kit
-              </h1>
-              <p className="text-center text-white text-lg">
-                A simple react starter kit with tailwindcss and webpack
-              </p>
-              <div className="flex justify-center items-center">
-                <img src={ellipse} alt="ellipse" className="w-1/2" />
-              </div>
-            </div>
-          </div>
-        </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/item-department/create" element={<CreateItemDepartment />} />
+          <Route path="/item-department/edit/:id/:categoryName" element={<EditItemDepartment />} />
+          <Route path="/brand/create" element={<CreateBrand />} />
+          <Route path="/brand/edit/:id" element={<EditBrand />} />
+          <Route path="/item/create" element={<CreateItem />} />
+          <Route path="/item/edit/:id" element={<EditItem />} />
+          <Route path="*" element={<RedirectToLogin />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   );
 }
 
