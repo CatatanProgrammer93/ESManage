@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj": {}
+    "C:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj": {}
   },
   "projects": {
-    "c:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj": {
+    "C:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj",
+        "projectUniqueName": "C:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj",
         "projectName": "es-manage.api",
-        "projectPath": "c:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj",
+        "projectPath": "C:\\Users\\fauqi\\esmanage\\es-manage.api\\es-manage.api.csproj",
         "packagesPath": "C:\\Users\\fauqi\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\fauqi\\esmanage\\es-manage.api\\obj\\",
+        "outputPath": "C:\\Users\\fauqi\\esmanage\\es-manage.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fauqi\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -42,9 +42,17 @@
               "target": "Package",
               "version": "[2.0.143, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.20, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.8, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.31.0, )"
             },
             "Npgsql": {
               "target": "Package",
