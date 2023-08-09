@@ -30,8 +30,8 @@ function Dashboard() {
   const user = userFromState || userFromStorage;
   const displayName = user ? user.displayName : "Guest";
 
-  const deleteDepartment = (id) => {
-    fetch(`https://localhost:7240/api/itemdepartment/${id}`, {
+  const deleteDepartment = (id, categoryName) => {
+    fetch(`https://localhost:7240/api/itemdepartment/${id}/${categoryName}`, {
       method: "DELETE",
     }).then(() => {
       setDepartments(departments.filter((department) => department.id !== id));
@@ -166,7 +166,12 @@ function Dashboard() {
                       </Link>
                       <button
                         className="btn bg-red-700 text-white font-semibold border-none"
-                        onClick={() => deleteDepartment(department.id)}
+                        onClick={() =>
+                          deleteDepartment(
+                            department.id,
+                            department.categoryName
+                          )
+                        }
                       >
                         Delete
                       </button>
