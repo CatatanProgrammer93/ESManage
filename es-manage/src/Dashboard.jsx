@@ -142,7 +142,7 @@ function Dashboard() {
                 <tr>
                   <th></th>
                   <th>Name</th>
-                  <th></th>
+                  <th>Parent ID</th>
                   <th></th>
                   <th></th>
                   <th>Action</th>
@@ -152,12 +152,14 @@ function Dashboard() {
                 {departments.map((department, index) => (
                   <tr key={index}>
                     <th>{index + 1}</th>
-                    <td>{department.name}</td>
-                    <th></th>
+                    <td>{department.categoryName}</td>
+                    <th>{department.itemDepartmentParentId}</th>
                     <th></th>
                     <th></th>
                     <td>
-                      <Link to={`/item-department/edit/${department.id}`}>
+                      <Link
+                        to={`/item-department/edit/${department.id}/${department.categoryName}`}
+                      >
                         <button className="btn text-quaternary font-semibold mr-2">
                           Edit
                         </button>
@@ -244,7 +246,7 @@ function Dashboard() {
                 {items.map((item, index) => (
                   <tr key={index}>
                     <th>{index + 1}</th>
-                    <td>{item.name}</td>
+                    <td>{item.itemName}</td>
                     <th></th>
                     <th></th>
                     <th></th>

@@ -4,7 +4,7 @@ namespace es_manage.api.Models
 {
     public class ItemModel
     {
-        public string ID { get; set; }
+        public string ID { get; set; } = string.Empty;
         public string ItemName { get; set; }
         public string CategoryId { get; set; }
         public string CategoryName { get; set; }
@@ -19,7 +19,7 @@ namespace es_manage.api.Models
         public decimal? CostPrice { get; set; }
         public bool Deleted { get; set; }
         public DateTime CreatedOn { get; set; }
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = string.Empty;
         public DateTime? ModifiedOn { get; set; }
         public string? ModifiedBy { get; set; }
     }

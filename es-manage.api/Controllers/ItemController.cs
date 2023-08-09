@@ -51,40 +51,45 @@ namespace es_manage.api.Controllers {
             }
         }
 
-        // POST: api/item
-        [HttpPost]
-        public async Task<ActionResult<ItemModel>> CreateItem(ItemModel item)
-        {
-            try
-            {
-                var createdItem = await _repository.Create(item);
-                return CreatedAtAction(nameof(GetById), new { id = createdItem.ID }, createdItem);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, message = ex.Message });
-            }
-        }
+[HttpPost]
+public async Task<ActionResult<ItemModel>> CreateItem(ItemModel item)
+{
+    try
+    {
+        var createdItem = await _repository.Create(item);
+        return CreatedAtAction(nameof(GetById), new { id = createdItem.ID }, createdItem);
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, new { success = false, message = ex.Message });
+    }
+}
 
         // PUT: api/item/{id}
-        [HttpPut("{id}")]
+    [HttpPut("{id}")]
         public async Task<ActionResult> UpdateItem(string id, ItemModel item)
-        {
-            if (id != item.ID)
-            {
-                return BadRequest("The ID in the URL does not match the ID in the provided data.");
-            }
+{
+    // Dapatkan item yang ada dari database untuk memeriksa keberadaan
+    var existingItem = await _repository.GetById(id);
+    if (existingItem == null)
+    {
+        return NotFound($"Tidak ada Item dengan ID: {id}");
+    }
 
-            try
-            {
-                await _repository.Update(id, item);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, message = ex.Message });
-            }
-        }
+    // Hapus pengisian ID dan CreatedBy dari item yang dikirimkan oleh klien
+    item.ID = existingItem.ID;
+    item.CreatedBy = existingItem.CreatedBy;
+
+    try
+    {
+        await _repository.Update(id, item);
+        return NoContent();
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, new { success = false, message = ex.Message });
+    }
+}
 
         // DELETE: api/item/{id}
         [HttpDelete("{id}")]
