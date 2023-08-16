@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import dashboard from '../assets/dashboard.svg';
 import recent from '../assets/recent.svg';
@@ -69,13 +70,13 @@ function EditItemSupplierTransaction() {
       <div className="bg-quinary w-64 h-[200vh]">
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
-        <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
-        <nav className="flex flex-col gap-10 p-12">
           <ul className="">
-            <li className="inline-flex items-center py-6">
+            <Link to="/dashboard">
+              <li className="inline-flex items-center py-6">
               <img src={dashboard} alt="dashboard" className="w-8" />
               <span className="text-white font-medium ml-2">Dashboard</span>
-            </li>
+              </li>
+            </Link>
             <br />
             <li className="inline-flex items-center py-6">
               <img src={alert} alt="alert" className="w-8" />
@@ -97,7 +98,6 @@ function EditItemSupplierTransaction() {
               <span className="text-white font-medium ml-2 ">Settings</span>
             </li>
           </ul>
-        </nav>
         </nav>
       </div>
       <div className="container">

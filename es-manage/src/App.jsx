@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import ShowItemDepartment from './ItemDepartment/Show';
 import CreateItemDepartment from './ItemDepartment/Create';
 import EditItemDepartment from './ItemDepartment/Edit';
 import CreateBrand from './Brand/Create'; // Import missing Brand components
@@ -34,6 +35,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/item-department" element={<ShowItemDepartment />} />
           <Route path="/item-department/create" element={<CreateItemDepartment />} />
           <Route path="/item-department/edit/:id/:categoryName" element={<EditItemDepartment />} />
           <Route path="/brand/create" element={<CreateBrand />} />

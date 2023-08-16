@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import search from '../assets/search.svg';
 import dashboard from '../assets/dashboard.svg';
@@ -38,7 +39,7 @@ function CreateItemDepartment() {
       setId('');
       setCategoryName('');
       setItemDepartmentParentId('');
-      navigate('/dashboard');
+      navigate('/item-department');
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -53,10 +54,12 @@ function CreateItemDepartment() {
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
           <ul className="">
-            <li className="inline-flex items-center py-6">
+            <Link to="/dashboard">
+              <li className="inline-flex items-center py-6">
               <img src={dashboard} alt="dashboard" className="w-8" />
               <span className="text-white font-medium ml-2">Dashboard</span>
-            </li>
+              </li>
+            </Link>
             <br />
             <li className="inline-flex items-center py-6">
               <img src={alert} alt="alert" className="w-8" />
