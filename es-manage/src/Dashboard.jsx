@@ -65,7 +65,7 @@ function Dashboard() {
   };
 
   const deleteItemSupplier = (id) => {
-    fetch(`https://localhost:7240/api/item-supplier/${id}`, {
+    fetch(`https://localhost:7240/api/itemsupplier/${id}`, {
       method: 'DELETE',
     }).then(() => {
       setItemSuppliers(itemsuppliers.filter((itemsupplier) => itemsupplier.id !== id));
