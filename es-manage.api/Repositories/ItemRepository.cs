@@ -1,4 +1,4 @@
-// Tujuan: Berisi logika untuk operation database pada tabel Brand
+// Tujuan: Berisi logika untuk operation database pada tabel ItemRepository
 
 // Import library yang dibutuhkan
 using System;
@@ -59,6 +59,7 @@ namespace es_manage.api.Repositories {
                 var maxIDSql = @"SELECT COALESCE(MAX(CAST(id AS INTEGER)), 0) FROM Item";
                 var maxID = await _db.QuerySingleAsync<int>(maxIDSql);
                 item.ID = (maxID + 1).ToString();
+                item.CreatedOn = DateTime.Now;
 
                 var sql = @"
                     INSERT INTO Item (Id, ItemName, CategoryId, CategoryName, BrandId, Uom, TaxType, TaxRate, MinimumRetailPrice, BalanceQty, AvgCostPrice, RetailPrice, CostPrice, Deleted, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy)
@@ -83,6 +84,7 @@ namespace es_manage.api.Repositories {
                 if (!itemExists || !brandExists || !categoryExists)
                     return null;
 
+                item.ModifiedOn = DateTime.Now;
                 var sql = @"
                     UPDATE Item 
                     SET ItemName = @ItemName,
