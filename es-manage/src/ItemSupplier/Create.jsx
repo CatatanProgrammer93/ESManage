@@ -3,16 +3,17 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import dashboard from '../assets/dashboard.svg';
-import recent from '../assets/recent.svg';
 import alert from '../assets/alert.svg';
 import asset from '../assets/asset.svg';
-import userIcon from '../assets/user.svg';
+import recent from '../assets/recent.svg';
 import setting from '../assets/setting.svg';
 import '../App.css';
 
-function CreateBrand() {
+function CreateItemSupplier() {
   const [id, setId] = useState('');
-  const [name, setName] = useState('');
+  const [itemId, setItemId] = useState('');
+  const [supplierId, setSupplierId] = useState('');
+  const [createdBy, setCreatedBy] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,17 +23,20 @@ function CreateBrand() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      let axiosConfig = {
+      let response = await axios({
         method: 'POST',
+        url: 'https://localhost:7240/api/itemsupplier',
         data: {
-          name: name,
+          id: id,
+          itemId: itemId,
+          supplierId: supplierId,
+          createdBy: createdBy,
         },
-        url: 'https://localhost:7240/api/brand',
-      };
-      let response = await axios(axiosConfig);
+      });
       console.log(response.data);
       setId('');
-      setName('');
+      setItemId('');
+      setSupplierId('');
       navigate('/dashboard');
     } catch (error) {
       console.error(error);
@@ -77,11 +81,16 @@ function CreateBrand() {
       </div>
       <div className="container">
         <div className="absolute top-2 left-96 text-white">
-          <h1 className="text-3xl font-bold mt-20 mb-10">Create Brand</h1>
+          <h1 className="text-3xl font-bold mt-20 mb-10">Create Item Supplier</h1>
           <form onSubmit={handleSubmit}>
-            <label className="text-md font-semibold">Brand Name</label>
+            <label className="text-md font-semibold">Item ID</label>
             <br />
-            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Type the brand name" />
+            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={itemId} onChange={(e) => setItemId(e.target.value)} placeholder="Type the item ID" />
+            <br />
+            <label className="text-md font-semibold">Supplier ID</label>
+            <br />
+            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={supplierId} onChange={(e) => setSupplierId(e.target.value)} placeholder="Type the supplier ID" />
+            <br />
             <br />
             <button className="btn text-quaternary font-semibold" type="submit" disabled={isLoading}>
               {isLoading ? 'Creating...' : 'Create'}
@@ -94,4 +103,4 @@ function CreateBrand() {
   );
 }
 
-export default CreateBrand;
+export default CreateItemSupplier;

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.svg';
+import search from '../assets/search.svg';
 import dashboard from '../assets/dashboard.svg';
 import recent from '../assets/recent.svg';
 import alert from '../assets/alert.svg';
@@ -10,29 +11,45 @@ import userIcon from '../assets/user.svg';
 import setting from '../assets/setting.svg';
 import '../App.css';
 
-function CreateBrand() {
-  const [id, setId] = useState('');
-  const [name, setName] = useState('');
+function EditItemSupplier() {
+  const { id: urlId } = useParams();
+  const [id, setId] = useState(urlId);
+  const [itemId, setItemId] = useState('');
+  const [supplierId, setSupplierId] = useState('');
+  const [createdBy, setCreatedBy] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
   const navigate = useNavigate();
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(`https://localhost:7240/api/itemsupplier/${id}`);
+      setId(response.data.id);
+      setItemId(response.data.itemId);
+      setSupplierId(response.data.supplierId);
+    } catch (error) {
+      console.error(error);
+      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      let axiosConfig = {
-        method: 'POST',
-        data: {
-          name: name,
-        },
-        url: 'https://localhost:7240/api/brand',
-      };
-      let response = await axios(axiosConfig);
-      console.log(response.data);
-      setId('');
-      setName('');
+      await axios.put(`https://localhost:7240/api/itemsupplier/${id}`, {
+        id: id,
+        itemId: itemId,
+        supplierId: supplierId,
+        createdBy: createdBy,
+      });
       navigate('/dashboard');
     } catch (error) {
       console.error(error);
@@ -77,14 +94,23 @@ function CreateBrand() {
       </div>
       <div className="container">
         <div className="absolute top-2 left-96 text-white">
-          <h1 className="text-3xl font-bold mt-20 mb-10">Create Brand</h1>
+          <h1 className="text-3xl font-bold mt-20 mb-10">Edit Item Supplier</h1>
           <form onSubmit={handleSubmit}>
-            <label className="text-md font-semibold">Brand Name</label>
+            <label className="text-md font-semibold">ID</label>
             <br />
-            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Type the brand name" />
+            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={id} readOnly placeholder="ID is Read Only" />
+            <br />
+            <label className="text-md font-semibold">Item ID</label>
+            <br />
+            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={itemId} onChange={(e) => setItemId(e.target.value)} placeholder="Type the item ID" />
+            <br />
+            <label className="text-md font-semibold">Supplier ID</label>
+            <br />
+            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={supplierId} onChange={(e) => setSupplierId(e.target.value)} placeholder="Type the supplier ID" />
+            <br />
             <br />
             <button className="btn text-quaternary font-semibold" type="submit" disabled={isLoading}>
-              {isLoading ? 'Creating...' : 'Create'}
+              {isLoading ? 'Updating...' : 'Update'}
             </button>
           </form>
           {error && <p className="error">{error}</p>}
@@ -94,4 +120,4 @@ function CreateBrand() {
   );
 }
 
-export default CreateBrand;
+export default EditItemSupplier;

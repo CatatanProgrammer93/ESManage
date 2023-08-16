@@ -48,8 +48,8 @@ function CreateItemDepartment() {
   };
 
   return (
-    <div className="bg-quaternary h-screen">
-      <div className="bg-quinary w-64 h-screen">
+    <div className="bg-quaternary h-[200vh]">
+      <div className="bg-quinary w-64 h-[200vh]">
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
           <ul className="">

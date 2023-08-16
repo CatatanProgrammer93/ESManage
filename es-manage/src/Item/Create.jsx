@@ -12,6 +12,7 @@ import setting from '../assets/setting.svg';
 import '../App.css';
 
 function CreateItem() {
+  const [id, setId] = useState('');
   const [itemName, setItemName] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [categoryName, setCategoryName] = useState('');
@@ -24,6 +25,7 @@ function CreateItem() {
   const [avgCostPrice, setAvgCostPrice] = useState(0);
   const [retailPrice, setRetailPrice] = useState(0);
   const [costPrice, setCostPrice] = useState(0);
+  const [createdBy, setCreatedBy] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,6 +39,7 @@ function CreateItem() {
         method: 'POST',
         url: 'https://localhost:7240/api/item',
         data: {
+          id,
           itemName,
           categoryId,
           categoryName,
@@ -49,6 +52,7 @@ function CreateItem() {
           avgCostPrice,
           retailPrice,
           costPrice,
+          createdBy,
         },
       };
       let response = await axios(axiosConfig);
@@ -75,8 +79,8 @@ function CreateItem() {
   };
 
   return (
-    <div className="bg-quaternary h-[230vh]">
-      <div className="bg-quinary w-64 h-[230vh]">
+    <div className="bg-quaternary h-[250vh]">
+      <div className="bg-quinary w-64 h-[250vh]">
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
           <ul className="">
