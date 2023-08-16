@@ -57,7 +57,6 @@ function CreateItem() {
       };
       let response = await axios(axiosConfig);
       // Resetting all the fields
-      setId('');
       setItemName('');
       setCategoryId('');
       setCategoryName('');
@@ -70,7 +69,6 @@ function CreateItem() {
       setAvgCostPrice(0);
       setRetailPrice(0);
       setCostPrice(0);
-      setCreatedBy('');
       navigate('/dashboard');
     } catch (error) {
       console.error(error);
