@@ -161,241 +161,62 @@ function Dashboard() {
             <h1 className="text-white font-bold text-4xl">Hi, {displayName}!</h1>
           </div>
 
-          {/* Item Department table */}
-          <div className="overflow-x-auto mt-20">
-            <h1 className="text-white mb-4 font-bold text-2xl">Item Department</h1>
-            <Link to="/item-department/create">
-              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
-            </Link>
-            <table className="table">
-              <thead className="text-white text-lg">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Parent ID</th>
-                  <th></th>
-                  <th></th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-white text-lg">
-                {departments.map((department, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>{department.categoryName}</td>
-                    <th>{department.itemDepartmentParentId}</th>
-                    <th></th>
-                    <th></th>
-                    <td>
-                      <Link to={`/item-department/edit/${department.id}/${department.categoryName}`}>
-                        <button className="btn text-quaternary font-semibold mr-2">Edit</button>
-                      </Link>
-                      <button className="btn bg-red-700 text-white font-semibold border-none" onClick={() => deleteDepartment(department.id, department.categoryName)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="container">
+        <div className="flex mt-20">
+          <div className="flex-1"> {/* Left Column */}
+            {/* Item Department Table */}
+            <div className="overflow-x-auto">
+              <h1 className="text-white mb-4 font-bold text-2xl">Item Department</h1>
+              <Link to="/item-department/">
+                <button className="btn text-quaternary font-semibold mb-5">Click Here</button>
+              </Link>
+            </div>
+
+            {/* Brand Table */}
+            <div className="overflow-x-auto mt-20">
+              <h1 className="text-white mb-4 font-bold text-2xl">Brand</h1>
+              <Link to="/brand/">
+                <button className="btn text-quaternary font-semibold mb-5">Click Here</button>
+              </Link>
+            </div>
+
+            {/* Item Table */}
+            <div className="overflow-x-auto mt-20">
+              <h1 className="text-white mb-4 font-bold text-2xl">Item</h1>
+              <Link to="/item/">
+                <button className="btn text-quaternary font-semibold mb-5">Click Here</button>
+              </Link>
+            </div>
           </div>
 
-          {/* Brand Table */}
-          <div className="overflow-x-auto mt-20">
-            <h1 className="text-white mb-4 font-bold text-2xl">Brand</h1>
-            <Link to="/brand/create">
-              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
-            </Link>
-            <table className="table">
-              <thead className="text-white text-lg">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-white text-lg">
-                {brands.map((brand, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>{brand.name}</td>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <td>
-                      <Link to={`/brand/edit/${brand.id}`}>
-                        <button className="btn text-quaternary font-semibold mr-2">Edit</button>
-                      </Link>
-                      <button className="btn bg-red-700 text-white font-semibold border-none" onClick={() => deleteBrand(brand.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <div className="flex-1"> {/* Right Column */}
+            {/* Supplier */}
+            <div className="overflow-x-auto ">
+              <h1 className="text-white mb-4 font-bold text-2xl">Supplier</h1>
+              <Link to="/supplier/">
+                <button className="btn text-quaternary font-semibold mb-5">Click Here</button>
+              </Link>
+            </div>
 
-          {/* Item Table */}
-          <div className="overflow-x-auto mt-20">
-            <h1 className="text-white mb-4 font-bold text-2xl">Item</h1>
-            <Link to="/item/create">
-              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
-            </Link>
-            <table className="table">
-              <thead className="text-white text-lg">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-white text-lg">
-                {items.map((item, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>{item.itemName}</td>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <td>
-                      <Link to={`/item/edit/${item.id}`}>
-                        <button className="btn text-quaternary font-semibold mr-2">Edit</button>
-                      </Link>
-                      <button className="btn bg-red-700 text-white font-semibold border-none" onClick={() => deleteItem(item.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            {/* Item Supplier */}
+            <div className="overflow-x-auto mt-20">
+              <h1 className="text-white mb-4 font-bold text-2xl">Item Supplier</h1>
+              <Link to="/item-supplier/">
+                <button className="btn text-quaternary font-semibold mb-5">Click Here</button>
+              </Link>
+            </div>
 
-          {/* Supplier */}
-          <div className="overflow-x-auto mt-20">
-            <h1 className="text-white mb-4 font-bold text-2xl">Supplier</h1>
-            <Link to="/supplier/create">
-              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
-            </Link>
-            <table className="table">
-              <thead className="text-white text-lg">
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-white text-lg">
-                {suppliers.map((supplier, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>{supplier.supplierName}</td>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <td>
-                      <Link to={`/supplier/edit/${supplier.id}`}>
-                        <button className="btn text-quaternary font-semibold mr-2">Edit</button>
-                      </Link>
-                      <button className="btn bg-red-700 text-white font-semibold border-none" onClick={() => deleteSupplier(supplier.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {/* Item Supplier Transaction */}
+            <div className="overflow-x-auto mt-20">
+              <h1 className="text-white mb-4 font-bold text-2xl">Item Supplier Transaction</h1>
+              <Link to="/item-supplier-transaction/">
+                <button className="btn text-quaternary font-semibold mb-5">Click Here</button>
+              </Link>
+            </div>
           </div>
+        </div>
+      </div>
 
-          {/* Item Supplier */}
-          <div className="overflow-x-auto mt-20">
-            <h1 className="text-white mb-4 font-bold text-2xl">Item Supplier</h1>
-            <Link to="/item-supplier/create">
-              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
-            </Link>
-            <table className="table">
-              <thead className="text-white text-lg">
-                <tr>
-                  <th></th>
-                  <th>Item ID</th>
-                  <th>Supplier ID</th>
-                  <th></th>
-                  <th></th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-white text-lg">
-                {itemsuppliers.map((itemsupplier, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>{itemsupplier.itemId}</td>
-                    <th>{itemsupplier.supplierId}</th>
-                    <th></th>
-                    <th></th>
-                    <td>
-                      <Link to={`/item-supplier/edit/${itemsupplier.id}`}>
-                        <button className="btn text-quaternary font-semibold mr-2">Edit</button>
-                      </Link>
-                      <button className="btn bg-red-700 text-white font-semibold border-none" onClick={() => deleteItemSupplier(itemsupplier.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Item Supplier Transaction */}
-          <div className="overflow-x-auto mt-20">
-            <h1 className="text-white mb-4 font-bold text-2xl">Item Supplier Transaction</h1>
-            <Link to="/item-supplier-transaction/create">
-              <button className="btn text-quaternary font-semibold mb-5">Create new</button>
-            </Link>
-            <table className="table">
-              <thead className="text-white text-lg">
-                <tr>
-                  <th></th>
-                  <th>Item Supplier ID</th>
-                  <th>Type</th>
-                  <th>Date</th>
-                  <th>Quantity</th>
-                  <th>Notes</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody className="text-white text-lg">
-                {itemsuppliertransactions.map((itemsuppliertransaction, index) => (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>{itemsuppliertransaction.itemSupplierId}</td>
-                    <td>{itemsuppliertransaction.transactionType}</td>
-                    <td>{itemsuppliertransaction.transactionDate}</td>
-                    <td>{itemsuppliertransaction.quantity}</td>
-                    <td>{itemsuppliertransaction.notes}</td>
-                    <td>
-                      <Link to={`/item-supplier-transaction/edit/${itemsuppliertransaction.id}`}>
-                        <button className="btn text-quaternary font-semibold mr-2">Edit</button>
-                      </Link>
-                      <button className="btn bg-red-700 text-white font-semibold border-none" onClick={() => deleteItemSupplierTransaction(itemsuppliertransaction.id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
