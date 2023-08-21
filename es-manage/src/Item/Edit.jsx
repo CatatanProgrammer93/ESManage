@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import dashboard from "../assets/dashboard.svg";
 import recent from "../assets/recent.svg";
@@ -59,7 +60,7 @@ function EditItem() {
       console.log(response.data);
 
       // Redirect to the desired page after successfully updating
-      navigate("/dashboard"); // Update this with the correct path
+      navigate("/item"); // Update this with the correct path
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -69,15 +70,17 @@ function EditItem() {
   };
 
   return (
-    <div className="bg-quaternary h-[230vh]">
-      <div className="bg-quinary w-64 h-[230vh]">
+    <div className="bg-quaternary h-[250vh]">
+      <div className="bg-quinary w-64 h-[250vh]">
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
           <ul className="">
-            <li className="inline-flex items-center py-6">
-              <img src={dashboard} alt="dashboard" className="w-8" />
-              <span className="text-white font-medium ml-2">Dashboard</span>
-            </li>
+            <Link to="/dashboard">
+              <li className="inline-flex items-center py-6">
+                <img src={dashboard} alt="dashboard" className="w-8" />
+                <span className="text-white font-medium ml-2">Dashboard</span>
+              </li>
+            </Link>
             <br />
             <li className="inline-flex items-center py-6">
               <img src={alert} alt="alert" className="w-8" />

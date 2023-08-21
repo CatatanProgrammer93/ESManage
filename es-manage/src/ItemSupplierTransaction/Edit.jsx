@@ -10,23 +10,30 @@ import asset from "../assets/asset.svg";
 import setting from "../assets/setting.svg";
 import "../App.css";
 
-function EditBrand() {
-  const { id } = useParams(); // Extracting the 'id' parameter
-  const navigate = useNavigate(); // Create an instance of useNavigate
-  const [brand, setBrand] = useState({
-    id: "",
-    name: "",
-  });
+function EditItemSupplierTransaction() {
+  const { id: urlId } = useParams();
+  const [id, setId] = useState(urlId);
+  const [itemSupplierId, setItemSupplierId] = useState("");
+  const [transactionType, setTransactionType] = useState("");
+  const [transactionDate, setTransactionDate] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/brand/${id}`
+        `https://localhost:7240/api/itemsupplier_transaction/${id}`
       );
-      setBrand(response.data); // Update the state with the received data
+      setId(response.data.id);
+      setItemSupplierId(response.data.itemSupplierId);
+      setTransactionType(response.data.transactionType);
+      setTransactionDate(response.data.transactionDate);
+      setQuantity(response.data.quantity);
+      setNotes(response.data.notes);
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -43,14 +50,18 @@ function EditBrand() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.put(
-        `https://localhost:7240/api/brand/${id}`,
-        brand
+      await axios.put(
+        `https://localhost:7240/api/itemsupplier_transaction/${id}`,
+        {
+          id: id,
+          itemSupplierId: itemSupplierId,
+          transactionType: transactionType,
+          transactionDate: transactionDate,
+          quantity: quantity,
+          notes: notes,
+        }
       );
-      console.log(response.data);
-
-      // Redirect to the desired page after successfully updating
-      navigate("/brand"); // Update this with the correct path
+      navigate("/item-supplier-transaction");
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -98,28 +109,58 @@ function EditBrand() {
       </div>
       <div className="container">
         <div className="absolute top-2 left-96 text-white">
-          <h1 className="text-3xl font-bold mt-20 mb-10">Edit Brand</h1>
+          <h1 className="text-3xl font-bold mt-20 mb-10">
+            Edit Item Supplier Transaction
+          </h1>
           <form onSubmit={handleSubmit}>
-            <label className="text-md font-semibold">ID</label>
+            <label className="text-md font-semibold">Item Supplier ID</label>
             <br />
             <input
               className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black"
               type="text"
-              value={brand.id}
-              onChange={(e) => setBrand({ ...brand, id: e.target.value })}
-              placeholder="Type the ID"
+              value={itemSupplierId}
+              onChange={(e) => setItemSupplierId(e.target.value)}
+              placeholder="Item Supplier ID"
             />
             <br />
-            <label className="text-md font-semibold">Brand Name</label>
+            <label className="text-md font-semibold">Transaction Type</label>
             <br />
             <input
               className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black"
               type="text"
-              value={brand.name}
-              onChange={(e) => setBrand({ ...brand, name: e.target.value })}
-              placeholder="Type the brand name"
+              value={transactionType}
+              onChange={(e) => setTransactionType(e.target.value)}
+              placeholder="Transaction Type"
             />
             <br />
+            <label className="text-md font-semibold">Transaction Date</label>
+            <br />
+            <input
+              className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black"
+              type="datetime-local"
+              value={transactionDate}
+              onChange={(e) => setTransactionDate(e.target.value)}
+              placeholder="Transaction Date"
+            />
+            <br />
+            <label className="text-md font-semibold">Quantity</label>
+            <br />
+            <input
+              className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black"
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              placeholder="Quantity"
+            />
+            <br />
+            <label className="text-md font-semibold">Notes</label>
+            <br />
+            <textarea
+              className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Notes"
+            ></textarea>
             <br />
             <button
               className="btn text-quaternary font-semibold"
@@ -136,4 +177,4 @@ function EditBrand() {
   );
 }
 
-export default EditBrand;
+export default EditItemSupplierTransaction;
