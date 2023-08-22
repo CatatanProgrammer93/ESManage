@@ -11,3 +11,4 @@ CREATE TABLE IF NOT EXISTS public."brand" (
 
 ALTER TABLE IF EXISTS public."brand"
     OWNER to es;
+    

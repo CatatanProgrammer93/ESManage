@@ -7,7 +7,9 @@ CREATE TABLE IF NOT EXISTS public."usermst" (
     "createdby" VARCHAR(25),
     "modifiedon" TIMESTAMP,
     "modifiedby" VARCHAR(25),
-    "deletedat" TIMESTAMP
+    "deletedat" TIMESTAMP,
+    "roleid" VARCHAR(100),  -- Foreign key column
+    CONSTRAINT fk_user_role FOREIGN KEY ("role_id") REFERENCES "role"("id") ON DELETE SET NULL
 );
 
 ALTER TABLE IF EXISTS public."usermst"
