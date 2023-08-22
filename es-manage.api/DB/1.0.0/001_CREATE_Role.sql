@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public."role" (
     "createdby" VARCHAR(25),
     "modifiedon" TIMESTAMP,
     "modifiedby" VARCHAR(25),
-    "deletedat" TIMESTAMP
+    "deleted" boolean DEFAULT false
 );
 ALTER TABLE IF EXISTS public."role"
     OWNER to es;

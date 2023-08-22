@@ -12,6 +12,3 @@ CREATE TABLE IF NOT EXISTS public."itemdepartment" (
 
 ALTER TABLE IF EXISTS public."itemdepartment"
     OWNER to es;
-
-ALTER TABLE IF EXISTS public."itemdepartment"
-    ALTER COLUMN "id" type serial

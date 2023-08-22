@@ -26,7 +26,7 @@ namespace es_manage.api.Repositories
         {
             try
             {
-                var sql = "SELECT * FROM \"role\" WHERE \"deletedat\" IS NULL";
+                var sql = @"SELECT * FROM role WHERE deleted = false";
                 return await _db.QueryAsync<RoleModel>(sql);
             }
             catch (Exception ex)
@@ -68,7 +68,11 @@ namespace es_manage.api.Repositories
         {
             try
             {
+                var maxIDSql = @"SELECT COALESCE(MAX(CAST(id AS INTEGER)), 0) FROM Role";
+                var maxID = await _db.QuerySingleAsync<int>(maxIDSql);
+                role.Id = (maxID + 1).ToString();
                 role.CreatedOn = DateTime.Now;
+                role.Deleted = false;
 
                 var sql = @"INSERT INTO ""role"" (""id"", ""rolename"", ""createdon"", ""createdby"")
                             VALUES (@Id, @RoleName, @CreatedOn, @CreatedBy)";
@@ -91,7 +95,7 @@ namespace es_manage.api.Repositories
                 {
                     throw new Exception("ID in URL does not match ID in request body.");
                 }
-                
+
                 var existingRole = await _db.QuerySingleOrDefaultAsync<RoleModel>(
                     "SELECT * FROM \"role\" WHERE \"id\" = @Id", new { Id = id });
 
@@ -103,8 +107,8 @@ namespace es_manage.api.Repositories
                 role.ModifiedOn = DateTime.Now;
 
                 var updateSql = @"UPDATE ""role"" 
-                                 SET ""rolename"" = @RoleName, ""modifiedon"" = @ModifiedOn, ""modifiedby"" = @ModifiedBy
-                                 WHERE ""id"" = @Id";
+                                SET ""rolename"" = @RoleName, ""modifiedon"" = @ModifiedOn, ""modifiedby"" = @ModifiedBy
+                                WHERE ""id"" = @Id";
 
                 int updatedRows = await _db.ExecuteAsync(updateSql, role);
 
@@ -134,11 +138,22 @@ namespace es_manage.api.Repositories
                     throw new Exception("Role not found.");
                 }
 
-                var deletedRole = await _db.QuerySingleOrDefaultAsync<RoleModel>(
-                    "UPDATE \"role\" SET \"deletedat\" = @DeletedAt WHERE \"id\" = @Id RETURNING *",
-                    new { Id = id, DeletedAt = DateTime.Now });
+                var sql = @"SELECT * FROM Role WHERE Id = @Id AND Deleted = FALSE";
+                var role = await _db.QuerySingleOrDefaultAsync<RoleModel>(sql, new { Id = id });
+                role.ModifiedOn = DateTime.Now;
+                role.Deleted = true;
+                if (role == null)
+                {
+                    throw new Exception($"Tidak ada role ditemukan dengan id: {id}");
+                }
+                sql = @"UPDATE Brand SET Deleted = true WHERE Id = @Id";
+                var affectedRows = await _db.ExecuteAsync(sql, new { Id = id });
+                if (affectedRows == 0)
+                {
+                    throw new Exception($"Tidak ada role ditemukan dengan id: {id}");
+                }
 
-                return deletedRole;
+                return role;
             }
             catch (Exception ex)
             {
