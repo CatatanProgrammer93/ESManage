@@ -46,7 +46,6 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AuthRepository>();
 builder.Services.AddScoped<ItemDepartmentRepository>();
 builder.Services.AddScoped<ItemRepository>();
-builder.Services.AddScoped< RoleRepository>();
 builder.Services.AddScoped<ItemSupplierRepository>();
 builder.Services.AddScoped<ItemSupplier_TransactionRepository>();
 builder.Services.AddScoped<SupplierRepository>();

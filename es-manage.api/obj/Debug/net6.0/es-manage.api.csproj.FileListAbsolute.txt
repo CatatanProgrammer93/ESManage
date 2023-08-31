@@ -45,6 +45,7 @@ D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.es-manage.api.props
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.es-manage.api.props
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets.pack.json
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/001_CREATE_UserMst.sql
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
@@ -53,6 +54,9 @@ D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Ident
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/002_CREATE_ItemDepartment.sql
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/003_CREATE_Brand.sql
+D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/004_CREATE_Item.sql
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/appsettings.Development.json
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/appsettings.json
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api
@@ -107,21 +111,16 @@ D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Ident
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.pdb
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/es-manage.api.genruntimeconfig.cache
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/obj/Debug/net6.0/ref/es-manage.api.dll
-/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/005_CREATE_Supplier.sql
-/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/006_CREATE_ItemSupplier.sql
-/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/007_CREATE_ItemSupplier_Transaction.sql
-/Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/008_CREATE_Role.sql
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_Role.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_UserMst.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_ItemDepartment.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Brand.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Item.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_Supplier.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\008_CREATE_ItemSupplier_Transaction.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_ItemDepartment.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_Brand.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Item.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Supplier.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_ItemSupplier.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier_Transaction.sql
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
@@ -174,3 +173,244 @@ D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-manag
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_ItemDepartment.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_Brand.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Item.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Supplier.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_ItemSupplier.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier_Transaction.sql
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.pdb
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Dapper.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfo.cs
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CoreCompileInputs.cache
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\scopedcss\bundle\es-manage.api.styles.css
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CopyComplete
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
+C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_ItemDepartment.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_Brand.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Item.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Supplier.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_ItemSupplier.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier_Transaction.sql
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.pdb
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Dapper.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfo.cs
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\scopedcss\bundle\es-manage.api.styles.css
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CopyComplete
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
+C:\Users\LENOVO\OneDrive\Dokumen\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\appsettings.json
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_ItemDepartment.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_Brand.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Item.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Supplier.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_ItemSupplier.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier_Transaction.sql
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\es-manage.api.pdb
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Dapper.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\fauqi\esmanage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfo.cs
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CoreCompileInputs.cache
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\scopedcss\bundle\es-manage.api.styles.css
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CopyComplete
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.dll
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
+C:\Users\fauqi\esmanage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_Role.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_ItemDepartment.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_UserMst.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_Brand.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_ItemDepartment.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Brand.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Item.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Item.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Supplier.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_ItemSupplier.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_Supplier.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier_Transaction.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\008_CREATE_ItemSupplier_Transaction.sql
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.pdb
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Dapper.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.AssemblyReference.cache
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfoInputs.cache
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.AssemblyInfo.cs
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CoreCompileInputs.cache
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cs
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.MvcApplicationPartsAssemblyInfo.cache
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.es-manage.api.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.build.es-manage.api.props
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.es-manage.api.props
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.es-manage.api.props
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.build.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\staticwebassets.development.json
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\scopedcss\bundle\es-manage.api.styles.css
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.csproj.CopyComplete
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
+C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
