@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.svg';
-import dashboard from '../assets/dashboard.svg';
-import recent from '../assets/recent.svg';
-import alert from '../assets/alert.svg';
-import asset from '../assets/asset.svg';
-import userIcon from '../assets/user.svg';
-import setting from '../assets/setting.svg';
-import '../App.css';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.svg";
+import dashboard from "../assets/dashboard.svg";
+import recent from "../assets/recent.svg";
+import alert from "../assets/alert.svg";
+import asset from "../assets/asset.svg";
+import userIcon from "../assets/user.svg";
+import setting from "../assets/setting.svg";
+import "../App.css";
 
 function CreateBrand() {
-  const [id, setId] = useState('');
-  const [name, setName] = useState('');
-  const [error, setError] = useState('');
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -23,17 +24,17 @@ function CreateBrand() {
     setIsLoading(true);
     try {
       let axiosConfig = {
-        method: 'POST',
+        method: "POST",
         data: {
           name: name,
         },
-        url: 'https://localhost:7240/api/brand',
+        url: "https://localhost:7240/api/brand",
       };
       let response = await axios(axiosConfig);
       console.log(response.data);
-      setId('');
-      setName('');
-      navigate('/dashboard');
+      setId("");
+      setName("");
+      navigate("/brand");
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -43,15 +44,17 @@ function CreateBrand() {
   };
 
   return (
-    <div className="bg-quaternary h-screen">
-      <div className="bg-quinary w-64 h-screen">
+    <div className="bg-quaternary h-[200vh]">
+      <div className="bg-quinary w-64 h-[200vh]">
         <img src={logo} alt="logo" className="w-20 ml-20 pt-10 max-md:w-16" />
         <nav className="flex flex-col gap-10 p-12">
           <ul className="">
-            <li className="inline-flex items-center py-6">
-              <img src={dashboard} alt="dashboard" className="w-8" />
-              <span className="text-white font-medium ml-2">Dashboard</span>
-            </li>
+            <Link to="/dashboard">
+              <li className="inline-flex items-center py-6">
+                <img src={dashboard} alt="dashboard" className="w-8" />
+                <span className="text-white font-medium ml-2">Dashboard</span>
+              </li>
+            </Link>
             <br />
             <li className="inline-flex items-center py-6">
               <img src={alert} alt="alert" className="w-8" />
@@ -65,7 +68,9 @@ function CreateBrand() {
             <br />
             <li className="inline-flex items-center py-6">
               <img src={recent} alt="recent" className="w-8" />
-              <span className="text-white font-medium ml-2 ">Recent Activities</span>
+              <span className="text-white font-medium ml-2 ">
+                Recent Activities
+              </span>
             </li>
             <br />
             <li className="inline-flex items-center py-6">
@@ -81,10 +86,20 @@ function CreateBrand() {
           <form onSubmit={handleSubmit}>
             <label className="text-md font-semibold">Brand Name</label>
             <br />
-            <input className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Type the brand name" />
+            <input
+              className="input input-bordered w-full max-w-xs mb-6 mt-2 text-black"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Type the brand name"
+            />
             <br />
-            <button className="btn text-quaternary font-semibold" type="submit" disabled={isLoading}>
-              {isLoading ? 'Creating...' : 'Create'}
+            <button
+              className="btn text-quaternary font-semibold"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? "Creating..." : "Create"}
             </button>
           </form>
           {error && <p className="error">{error}</p>}
