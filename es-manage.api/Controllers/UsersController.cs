@@ -12,11 +12,7 @@ using es_manage.api.Models;
 namespace es_manage.api.Controllers;
 
 [ApiController]
-<<<<<<< HEAD
-[Route("[controller]")]
-=======
 [Route("api/users")]
->>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
 // Membuat class UsersController yang mewarisi ControllerBase
 public class UsersController : ControllerBase
 {
@@ -96,21 +92,12 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode Delete (soft-delete) untuk menghapus data user berdasarkan ID berupa UUID
-<<<<<<< HEAD
-    [Authorize]
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(Guid id)
-    {
-        string userName = User.Claims.FirstOrDefault(c => c.Type == "UserName").Value;
-        Logger.WriteToConsole(Logger.LogType.Info, $"User {userName} menghapus user dengan ID {id}");
-=======
     //[Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
         //string userName = User.Claims.FirstOrDefault(c => c.Type == "UserName").Value;
         //Logger.WriteToConsole(Logger.LogType.Info, $"User {userName} menghapus user dengan ID {id}");
->>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
         try
         {
             var existingUser = await _repository.Get(id);

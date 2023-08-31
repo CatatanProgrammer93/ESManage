@@ -12,11 +12,7 @@ using es_manage.api.Services;
 namespace es_manage.api.Controllers;
 
 [ApiController]
-<<<<<<< HEAD
-[Route("auth")]
-=======
 [Route("api/auth")]
->>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
 public class AuthController : ControllerBase {
     private readonly AuthRepository _repository;
     private readonly TokenService _tokenService;

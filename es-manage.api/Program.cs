@@ -44,15 +44,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AuthRepository>();
-<<<<<<< HEAD
-=======
 builder.Services.AddScoped<ItemDepartmentRepository>();
 builder.Services.AddScoped<ItemRepository>();
-builder.Services.AddScoped<ItemSupplierRepository>();
-builder.Services.AddScoped<ItemSupplier_TransactionRepository>();
-builder.Services.AddScoped<SupplierRepository>();
 builder.Services.AddScoped<BrandRepository>();
->>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
 builder.Services.AddScoped<TokenService>();
 
 // Option untuk CORS (Cross-Origin Resource Sharing)
