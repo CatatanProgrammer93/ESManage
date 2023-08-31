@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Tujuan: Berisi logika untuk class UserRepository
+=======
+// Tujuan: Berisi logika untuk operation database pada tabel UserMst
+>>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
 
 // Import library yang dibutuhkan
 using es_manage.api.Context;

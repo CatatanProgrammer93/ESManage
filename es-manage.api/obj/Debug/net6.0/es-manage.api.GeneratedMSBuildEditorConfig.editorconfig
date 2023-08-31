@@ -5,6 +5,7 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+<<<<<<< HEAD
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = es_manage.api
@@ -14,4 +15,14 @@ build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api
+=======
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = es_manage.api
+build_property.RootNamespace = es_manage.api
+build_property.ProjectDir = C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\aditya\OneDrive\Documents\ESManage\es-manage.api
+>>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
 build_property._RazorSourceGeneratorDebug = 

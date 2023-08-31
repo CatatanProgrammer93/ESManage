@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import Login from './Login';
+import Dashboard from './Dashboard';
+import CreateItemDepartment from './ItemDepartment/Create';
+import EditItemDepartment from './ItemDepartment/Edit';
+import CreateBrand from './Brand/Create'; // Import missing Brand components
+import EditBrand from './Brand/Edit';
+import CreateItem from './Item/Create'; // Import missing Item components
+import EditItem from './Item/Edit';
+import CreateSupplier from './Supplier/Create'; // Import Supplier components
+import EditSupplier from './Supplier/Edit'; // Import Supplier components
+import CreateItemSupplier from './ItemSupplier/Create'; // Import ItemSupplier components
+import EditItemSupplier from './ItemSupplier/Edit'; // Import ItemSupplier components
 
-function App() {
-  const [count, setCount] = useState(0)
+// The RedirectToLogin component
+function RedirectToLogin() {
+  const navigate = useNavigate();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  useEffect(() => {
+    navigate('/login');
+  }, [navigate]);
+
+  return null;
 }
 
-export default App
+// The main App component
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/item-department/create" element={<CreateItemDepartment />} />
+          <Route path="/item-department/edit/:id/:categoryName" element={<EditItemDepartment />} />
+          <Route path="/brand/create" element={<CreateBrand />} />
+          <Route path="/brand/edit/:id" element={<EditBrand />} />
+          <Route path="/item/create" element={<CreateItem />} />
+          <Route path="/item/edit/:id" element={<EditItem />} />
+          <Route path="/supplier/create" element={<CreateSupplier />} />
+          <Route path="/supplier/edit/:id" element={<EditSupplier />} />
+          <Route path="/item-supplier/create" element={<CreateItemSupplier />} />
+          <Route path="/item-supplier/edit/:id" element={<EditItemSupplier />} />
+          <Route path="*" element={<RedirectToLogin />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

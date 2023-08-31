@@ -1629,11 +1629,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\jasir\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\aditya\\.nuget\\packages\\": {}
+>>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
       "projectName": "es-manage.api",
       "projectPath": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
@@ -1643,13 +1648,26 @@
       "configFilePaths": [
         "C:\\Users\\jasir\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+      "projectUniqueName": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "projectName": "es-manage.api",
+      "projectPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "packagesPath": "C:\\Users\\aditya\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aditya\\OneDrive\\Documents\\ESManage\\es-manage.api\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\aditya\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+<<<<<<< HEAD
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+=======
+>>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1716,7 +1734,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+>>>>>>> fc3df4f3f81e5b9ec98121bddd5717c8a3307fc5
       }
     }
   }
