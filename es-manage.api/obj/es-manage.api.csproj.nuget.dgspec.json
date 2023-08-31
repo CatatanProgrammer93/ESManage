@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
+    "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
   },
   "projects": {
-    "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {
+    "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectUniqueName": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
         "projectName": "es-manage.api",
-        "projectPath": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectPath": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
         "packagesPath": "C:\\Users\\jasir\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\obj\\",
+        "outputPath": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jasir\\AppData\\Roaming\\NuGet\\NuGet.Config",
