@@ -1629,19 +1629,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Yoga\\.nuget\\packages\\": {}
+    "C:\\Users\\jasir\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Works\\SunnySite\\Projects\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "projectUniqueName": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
       "projectName": "es-manage.api",
-      "projectPath": "C:\\Works\\SunnySite\\Projects\\ESManage\\es-manage.api\\es-manage.api.csproj",
-      "packagesPath": "C:\\Users\\Yoga\\.nuget\\packages\\",
-      "outputPath": "C:\\Works\\SunnySite\\Projects\\ESManage\\es-manage.api\\obj\\",
+      "projectPath": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "packagesPath": "C:\\Users\\jasir\\.nuget\\packages\\",
+      "outputPath": "d:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Yoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jasir\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1649,6 +1649,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1715,7 +1716,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

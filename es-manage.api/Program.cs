@@ -42,6 +42,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<RoleRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AuthRepository>();
 builder.Services.AddScoped<ItemDepartmentRepository>();
