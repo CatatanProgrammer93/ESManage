@@ -13,6 +13,7 @@ import "../App.css";
 function EditBrand() {
   const { id } = useParams(); // Extracting the 'id' parameter
   const navigate = useNavigate(); // Create an instance of useNavigate
+
   const [brand, setBrand] = useState({
     id: "",
     name: "",
@@ -29,7 +30,6 @@ function EditBrand() {
       setBrand(response.data); // Update the state with the received data
     } catch (error) {
       console.error(error);
-      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
     } finally {
       setIsLoading(false);
     }

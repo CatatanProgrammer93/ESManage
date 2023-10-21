@@ -32,7 +32,6 @@ function EditItemDepartment() {
       setItemDepartmentParentId(response.data.itemDepartmentParentId);
     } catch (error) {
       console.error(error);
-      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
     } finally {
       setIsLoading(false);
     }
