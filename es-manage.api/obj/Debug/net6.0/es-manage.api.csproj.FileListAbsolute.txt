@@ -45,7 +45,6 @@ D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.es-manage.api.props
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.es-manage.api.props
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/obj/Debug/net6.0/staticwebassets.pack.json
-D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/001_CREATE_UserMst.sql
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
@@ -54,9 +53,6 @@ D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.Ident
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
 D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
-D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/002_CREATE_ItemDepartment.sql
-D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/003_CREATE_Brand.sql
-D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/004_CREATE_Item.sql
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/appsettings.Development.json
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/appsettings.json
 /Users/adamhaykalfirdaus/ESManage/es-manage.api/bin/Debug/net6.0/es-manage.api
@@ -114,13 +110,6 @@ D:/Coding/PKL Kano/Tugas/ESManage/es-manage.api/bin/Debug/net6.0/DB/1.0.0/004_CR
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_UserMst.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_ItemDepartment.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_Brand.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Item.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Supplier.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_ItemSupplier.sql
-D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier_Transaction.sql
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.deps.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.runtimeconfig.json
 D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.dll
@@ -414,6 +403,16 @@ C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-ma
 C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
 C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
 C:\Works\SunnySite\Projects\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+<<<<<<< HEAD
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\001_CREATE_Role.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\002_CREATE_UserMst.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\003_CREATE_ItemDepartment.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\004_CREATE_Brand.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\005_CREATE_Item.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\006_CREATE_Supplier.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\007_CREATE_ItemSupplier.sql
+D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\008_CREATE_ItemSupplier_Transaction.sql
+=======
 C:\Users\fauqi\Projects\esmanage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\fauqi\Projects\esmanage\es-manage.api\bin\Debug\net6.0\appsettings.json
 C:\Users\fauqi\Projects\esmanage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
@@ -484,3 +483,4 @@ C:\Users\fauqi\Projects\esmanage\es-manage.api\obj\Debug\net6.0\refint\es-manage
 C:\Users\fauqi\Projects\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
 C:\Users\fauqi\Projects\esmanage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
 C:\Users\fauqi\Projects\esmanage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
+>>>>>>> 01fe2db23e8daffb4e6d45ddaa39330fac723e73

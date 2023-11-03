@@ -69,8 +69,8 @@ namespace es_manage.api.Repositories {
 
                 user.ID = Guid.NewGuid();
                 user.CreatedOn = DateTime.UtcNow;
-                var sql = @"INSERT INTO UserMst (ID, UserName, DisplayName, Password, CreatedOn, CreatedBy)
-                            VALUES (@ID, @UserName, @DisplayName, @Password, @CreatedOn, @CreatedBy)
+                var sql = @"INSERT INTO UserMst (ID, UserName, DisplayName, Password, RoleID, CreatedOn, CreatedBy)
+                            VALUES (@ID, @UserName, @DisplayName, @Password, @RoleID, @CreatedOn, @CreatedBy)
                             RETURNING *";
                 return await _db.QuerySingleAsync<UserMst>(sql, user);
             }
@@ -92,6 +92,7 @@ namespace es_manage.api.Repositories {
                             SET UserName = @UserName,
                                 DisplayName = @DisplayName,
                                 Password = @Password,
+                                RoleID = @RoleID,
                                 ModifiedOn = @ModifiedOn,
                                 ModifiedBy = @ModifiedBy
                             WHERE ID = @ID AND DeletedAt IS NULL

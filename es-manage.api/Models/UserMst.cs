@@ -14,7 +14,10 @@ namespace es_manage.api.Models {
         public string? DisplayName { get; set; } = string.Empty;
 
         // Password dengan tipe data string, not null, dengan default value string kosong
-        public string Password { get; set; } = string.Empty;
+        public string Password { get; set; }
+
+        // RoleID dengan tipe data string, not null, dan foreign key ke tabel Role
+        public string RoleID { get; set; }
 
         // CreatedOn dengan tipe data DateTime, not null, dengan default value saat data dibuat
         public DateTime CreatedOn { get; set; }
