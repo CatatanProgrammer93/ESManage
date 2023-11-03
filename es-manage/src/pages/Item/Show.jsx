@@ -22,10 +22,7 @@ function ShowItem() {
 
   return (
     <AppLayout>
-      <Link to="/dashboard" className="mb-3">
-        Go to Dashboard
-      </Link>
-      <h2 className="page-title mt-3">Items</h2>
+      <h2 className="page-title mt-3">Item</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
@@ -41,6 +38,9 @@ function ShowItem() {
                     <tr>
                       <th>ID</th>
                       <th>Item Name</th>
+                      <th>Category ID</th>
+                      <th>Category Name</th>
+                      <th>Brand ID</th>
                       <th>Action</th>
                       <th className="w-1"></th>
                     </tr>
@@ -50,15 +50,18 @@ function ShowItem() {
                       <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.itemName}</td>
+                        <td>{item.categoryId}</td>
+                        <td>{item.categoryName}</td>
+                        <td>{item.brandId}</td>
                         <td>
                           <Link
                             to={`/item/edit/${item.id}`}
-                            className="btn btn-primary mr-2"
+                            className="btn btn-primary"
                           >
                             Edit
                           </Link>
                           <button
-                            className="btn btn-danger"
+                            className="btn btn-danger mx-2"
                             onClick={() => deleteItem(item.id)}
                           >
                             Delete

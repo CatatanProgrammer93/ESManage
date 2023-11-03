@@ -22,10 +22,7 @@ function Dashboard() {
 
   return (
     <AppLayout>
-      <Link to="/dashboard" className="mb-3">
-        Go to Dashboard
-      </Link>
-      <h2 className="page-title mt-3">Item Departments</h2>
+      <h2 className="page-title mt-3">Item Department</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
@@ -55,12 +52,12 @@ function Dashboard() {
                         <td>
                           <Link
                             to={`/item-department/edit/${department.id}/${department.categoryName}`}
-                            className="btn btn-primary mr-2"
+                            className="btn btn-primary"
                           >
                             Edit
                           </Link>
                           <button
-                            className="btn btn-danger"
+                            className="btn btn-danger mx-2"
                             onClick={() =>
                               deleteDepartment(
                                 department.id,

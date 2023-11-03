@@ -45,55 +45,6 @@ function AppLayout({ children }) {
             </Link>
           </h1>
           <div className="navbar-nav flex-row order-md-last">
-            <Link
-              to="?theme=dark"
-              className="nav-link px-0 hide-theme-dark"
-              title="Enable dark mode"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-            >
-              {/* Download SVG icon from http://tabler-icons.io/i/moon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-              </svg>
-            </Link>
-            <Link
-              to="?theme=light"
-              className="nav-link px-0 hide-theme-light"
-              title="Enable light mode"
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-            >
-              {/* Download SVG icon from http://tabler-icons.io/i/sun */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <circle cx="12" cy="12" r="4" />
-                <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-              </svg>
-            </Link>
             <div className="nav-item dropdown d-none d-md-flex me-3">
               <Link
                 to="#"
@@ -123,12 +74,7 @@ function AppLayout({ children }) {
               </Link>
               <div className="dropdown-menu dropdown-menu-end dropdown-menu-card">
                 <div className="card">
-                  <div className="card-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Accusamus ad amet consectetur exercitationem fugiat in ipsa
-                    ipsum, natus odio quidem quod repudiandae sapiente. Amet
-                    debitis et magni maxime necessitatibus ullam.
-                  </div>
+                  <div className="card-body">There is no new notification.</div>
                 </div>
               </div>
             </div>
@@ -160,14 +106,17 @@ function AppLayout({ children }) {
         </div>
       </header>
       <div className="navbar-expand-md">
-        <div className="navbar-collapse collapse show" id="navbar-menu">
+        <div
+          className="navbar navbar-light navbar-collapse collapse"
+          id="navbar-menu"
+        >
           <div className="navbar">
             <div className="container-xl">
               <div className="row flex-fill align-items-center">
                 <div className="col">
                   <ul className="navbar-nav">
-                    <li className="nav-item active">
-                      <a className="nav-link" href="./">
+                    <li className="nav-item">
+                      <Link to="/dashboard" className="nav-link">
                         <span className="nav-link-icon d-md-none d-lg-inline-block">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -191,12 +140,12 @@ function AppLayout({ children }) {
                             <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
                           </svg>
                         </span>
-                        <span className="nav-link-title">Home</span>
-                      </a>
+                        <span className="nav-link-title">Dashboard</span>
+                      </Link>
                     </li>
 
                     <li className="nav-item">
-                      <a className="nav-link" href="./form-elements.html">
+                      <Link to="/item-department" className="nav-link">
                         <span className="nav-link-icon d-md-none d-lg-inline-block">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -219,8 +168,153 @@ function AppLayout({ children }) {
                             <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
                           </svg>
                         </span>
-                        <span className="nav-link-title">Form elements</span>
-                      </a>
+                        <span className="nav-link-title">Item Department</span>
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link to="/brand" className="nav-link">
+                        <span className="nav-link-icon d-md-none d-lg-inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="icon"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"
+                            ></path>
+                            <path d="M9 11l3 3l8 -8"></path>
+                            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                          </svg>
+                        </span>
+                        <span className="nav-link-title">Brand</span>
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link to="/item" className="nav-link">
+                        <span className="nav-link-icon d-md-none d-lg-inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="icon"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"
+                            ></path>
+                            <path d="M9 11l3 3l8 -8"></path>
+                            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                          </svg>
+                        </span>
+                        <span className="nav-link-title">Item</span>
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link to="/supplier" className="nav-link">
+                        <span className="nav-link-icon d-md-none d-lg-inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="icon"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"
+                            ></path>
+                            <path d="M9 11l3 3l8 -8"></path>
+                            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                          </svg>
+                        </span>
+                        <span className="nav-link-title">Supplier</span>
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link to="/item-supplier" className="nav-link">
+                        <span className="nav-link-icon d-md-none d-lg-inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="icon"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"
+                            ></path>
+                            <path d="M9 11l3 3l8 -8"></path>
+                            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                          </svg>
+                        </span>
+                        <span className="nav-link-title">Item Supplier</span>
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link
+                        to="/item-supplier-transaction"
+                        className="nav-link"
+                      >
+                        <span className="nav-link-icon d-md-none d-lg-inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="icon"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path
+                              stroke="none"
+                              d="M0 0h24v24H0z"
+                              fill="none"
+                            ></path>
+                            <path d="M9 11l3 3l8 -8"></path>
+                            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                          </svg>
+                        </span>
+                        <span className="nav-link-title">
+                          Item Supplier Transaction
+                        </span>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -266,7 +360,7 @@ function AppLayout({ children }) {
               <ul className="list-inline list-inline-dots mb-0">
                 <li className="list-inline-item">
                   Copyright &copy; {new Date().getFullYear()}{" "}
-                  <Link to="/" className="link-secondary">
+                  <Link to="/dashboard" className="link-secondary">
                     ESManage
                   </Link>
                   . All rights reserved.

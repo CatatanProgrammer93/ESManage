@@ -25,9 +25,10 @@ function Login() {
       };
       let response = await axios(axiosConfig);
       console.log(response.data);
-      const { token, user } = response.data;
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      const { accessToken } = response.data.token; // updated line
+      const user = { userName: response.data.userName }; // updated line
+      localStorage.setItem("token", accessToken); // updated line
+      localStorage.setItem("user", JSON.stringify(user)); // updated line
       navigate("/dashboard", { state: { user } });
     } catch (error) {
       console.error(error);

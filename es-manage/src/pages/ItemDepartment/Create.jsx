@@ -41,7 +41,7 @@ function CreateItemDepartment() {
 
   return (
     <AppLayout>
-      <h2 className="page-title">Create a new item department</h2>
+      <h2 className="page-title">Create a new Item Department</h2>
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>

@@ -21,10 +21,7 @@ function ShowBrand() {
 
   return (
     <AppLayout>
-      <Link to="/dashboard" className="mb-3">
-        Go to Dashboard
-      </Link>
-      <h2 className="page-title mt-3">Brands</h2>
+      <h2 className="page-title mt-3">Brand</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
@@ -52,12 +49,12 @@ function ShowBrand() {
                         <td>
                           <Link
                             to={`/brand/edit/${brand.id}`}
-                            className="btn btn-primary mr-2"
+                            className="btn btn-primary"
                           >
                             Edit
                           </Link>
                           <button
-                            className="btn btn-danger"
+                            className="btn btn-danger mx-2"
                             onClick={() => deleteBrand(brand.id)}
                           >
                             Delete

@@ -35,7 +35,7 @@ function CreateBrand() {
 
   return (
     <AppLayout>
-      <h2 className="page-title">Create a new brand</h2>
+      <h2 className="page-title">Create a new Brand</h2>
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>

@@ -72,7 +72,7 @@ function CreateItem() {
 
   return (
     <AppLayout>
-      <h2 className="page-title">Create a new item</h2>
+      <h2 className="page-title">Create a new Item</h2>
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
