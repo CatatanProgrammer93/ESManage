@@ -5,26 +5,26 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import Login from "./Login";
-import Dashboard from "./Dashboard";
-import ShowItemDepartment from "./ItemDepartment/Show";
-import CreateItemDepartment from "./ItemDepartment/Create";
-import EditItemDepartment from "./ItemDepartment/Edit";
-import ShowBrand from "./Brand/Show";
-import CreateBrand from "./Brand/Create";
-import EditBrand from "./Brand/Edit";
-import ShowItem from "./Item/Show";
-import CreateItem from "./Item/Create";
-import EditItem from "./Item/Edit";
-import ShowSupplier from "./Supplier/Show";
-import CreateSupplier from "./Supplier/Create";
-import EditSupplier from "./Supplier/Edit";
-import ShowItemSupplier from "./ItemSupplier/Show";
-import CreateItemSupplier from "./ItemSupplier/Create";
-import EditItemSupplier from "./ItemSupplier/Edit";
-import ShowItemSupplierTransaction from "./ItemSupplierTransaction/Show";
-import CreateItemSupplierTransaction from "./ItemSupplierTransaction/Create";
-import EditItemSupplierTransaction from "./ItemSupplierTransaction/Edit";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ShowItemDepartment from "./pages/ItemDepartment/Show";
+import CreateItemDepartment from "./pages/ItemDepartment/Create";
+import EditItemDepartment from "./pages/ItemDepartment/Edit";
+import ShowBrand from "./pages/Brand/Show";
+import CreateBrand from "./pages/Brand/Create";
+import EditBrand from "./pages/Brand/Edit";
+import ShowItem from "./pages/Item/Show";
+import CreateItem from "./pages/Item/Create";
+import EditItem from "./pages/Item/Edit";
+import ShowSupplier from "./pages/Supplier/Show";
+import CreateSupplier from "./pages/Supplier/Create";
+import EditSupplier from "./pages/Supplier/Edit";
+import ShowItemSupplier from "./pages/ItemSupplier/Show";
+import CreateItemSupplier from "./pages/ItemSupplier/Create";
+import EditItemSupplier from "./pages/ItemSupplier/Edit";
+import ShowItemSupplierTransaction from "./pages/ItemSupplierTransaction/Show";
+import CreateItemSupplierTransaction from "./pages/ItemSupplierTransaction/Create";
+import EditItemSupplierTransaction from "./pages/ItemSupplierTransaction/Edit";
 
 // The RedirectToLogin component
 function RedirectToLogin() {
