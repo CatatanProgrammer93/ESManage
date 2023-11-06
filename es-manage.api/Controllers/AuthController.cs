@@ -39,13 +39,14 @@ public class AuthController : ControllerBase {
             // Jika user ditemukan, maka buat token
             var token = _tokenService.GenerateToken(user);
             // Buat response
-            var response = new LoginResponseModel
-            {
-                Token = new TokenInfo()
-                {
-                    AccessToken = token
+            var response = new LoginResponseModel {
+                User = new UserDetail {
+                    UserName = user.UserName,
+                    DisplayName = user.DisplayName
                 },
-                UserName = user.UserName
+                Token = new TokenInfo {
+                    AccessToken = token
+                }
             };
 
             // Kembalikan response

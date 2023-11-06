@@ -14,9 +14,13 @@ namespace es_manage.api.Models {
 
     // Membuat class LoginResponseModel untuk menampung response dari login
     public class LoginResponseModel {
-
-        public string UserName { get; set; }
+        public UserDetail User { get; set; }
         public TokenInfo Token { get; set; }
+    }
+
+    public class UserDetail {
+        public string UserName { get; set; }
+        public string DisplayName { get; set; }
     }
 
     // Membuat class TokenInfo untuk menampung token

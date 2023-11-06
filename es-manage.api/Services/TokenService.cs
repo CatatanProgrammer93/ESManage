@@ -28,7 +28,8 @@ namespace es_manage.api.Services {
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.NameIdentifier, user.ID.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+                new Claim(ClaimTypes.Role, user.RoleID)
             };
 
             // Membuat private key JWT
