@@ -27,7 +27,6 @@ public class UsersController : ControllerBase
 
     // Membuat metode GetAll untuk mengambil semua data user
     [HttpGet]
-    [Authorize]
     public async Task<IActionResult> GetAll() {
         try {
             var users = await _repository.GetAll();
