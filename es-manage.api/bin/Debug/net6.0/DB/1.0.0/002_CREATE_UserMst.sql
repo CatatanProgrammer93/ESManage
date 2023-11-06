@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS public."usermst" (
     "username" VARCHAR(25) NOT NULL,
     "displayname" VARCHAR(50),
     "password" VARCHAR(250) NOT NULL,
+    "passwordsalt" VARCHAR(250),
     "createdon" TIMESTAMP,
     "createdby" VARCHAR(25),
     "modifiedon" TIMESTAMP,

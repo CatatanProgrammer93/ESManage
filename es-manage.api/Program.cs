@@ -54,6 +54,7 @@ builder.Services.AddScoped<ItemSupplier_TransactionRepository>();
 builder.Services.AddScoped<SupplierRepository>();
 builder.Services.AddScoped<BrandRepository>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<HashingService>();
 
 // Option untuk CORS (Cross-Origin Resource Sharing)
 var allOrigins = "allowOrigins";

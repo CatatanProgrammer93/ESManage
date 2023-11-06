@@ -29,11 +29,20 @@ public class AuthController : ControllerBase {
     public async Task<IActionResult> Login(LoginRequestModel login) {
         try
         {
+            /*
             // Validasi model
             var user = await _repository.ValidateUser(login.UserName, login.Password);
             // Jika user tidak ditemukan, maka kembalikan Unauthorized
             if (user == null) {
                 return Unauthorized();
+            }
+            */
+
+            // Cari user berdasarkan username tanpa memvalidasi password
+            var user = await _repository.SearchUsername(login.UserName);
+            // Jika user tidak ditemukan atau password tidak valid, maka kembalikan Unauthorized
+            if (user == null || !_repository.ValidatePassword(user, login.Password)) {
+                return Unauthorized("Username atau Password salah");
             }
 
             // Jika user ditemukan, maka buat token

@@ -4,6 +4,7 @@
 using es_manage.api.Context;
 using es_manage.api.Models;
 using es_manage.api.Utilities;
+using es_manage.api.Services;
 using System.Data;
 using Dapper;
 using Npgsql;
@@ -56,6 +57,7 @@ namespace es_manage.api.Repositories {
             }
         }
 
+        /*
         // Membuat metode Create untuk menambahkan data user
         public async Task<UserMst> Create(UserMst user)
         {
@@ -81,6 +83,44 @@ namespace es_manage.api.Repositories {
                 throw new Exception(pesanError, ex);
             }
         }
+        */
+        public async Task<UserMst> Create(UserMst user)
+        {
+            try
+            {
+                // Check if the username is already taken
+                var existingUser = await _db.QueryFirstOrDefaultAsync<UserMst>(
+                    "SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", 
+                    new { user.UserName });
+
+                if (existingUser != null)
+                {
+                    throw new InvalidOperationException("Username sudah diambil. Gunakan username lain.");
+                }
+
+                user.ID = Guid.NewGuid();
+                user.CreatedOn = DateTime.UtcNow;
+
+                // Use HashingService to hash the password
+                HashingService hashingService = new HashingService();
+                string salt;
+                user.Password = hashingService.HashPassword(user.Password, out salt);
+                user.PasswordSalt = salt;
+
+                // The INSERT statement and the rest of your code...
+                // Note that you should add a new field in the INSERT statement for PasswordSalt
+                var sql = @"INSERT INTO UserMst (ID, UserName, DisplayName, Password, PasswordSalt, RoleID, CreatedOn, CreatedBy)
+                            VALUES (@ID, @UserName, @DisplayName, @Password, @PasswordSalt, @RoleID, @CreatedOn, @CreatedBy)
+                            RETURNING *";
+                return await _db.QuerySingleAsync<UserMst>(sql, user);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+                var pesanError = "Kesalahan saat menambahkan user, " + ex.Message;
+                throw new Exception(pesanError, ex);
+            }
+        }
 
         // Membuat metode Update untuk mengubah data user berdasarkan ID berupa UUID
         public async Task<UserMst> Update(Guid id, UserMst user)
@@ -91,7 +131,6 @@ namespace es_manage.api.Repositories {
                 var sql = @"UPDATE UserMst
                             SET UserName = @UserName,
                                 DisplayName = @DisplayName,
-                                Password = @Password,
                                 RoleID = @RoleID,
                                 ModifiedOn = @ModifiedOn,
                                 ModifiedBy = @ModifiedBy
