@@ -1,11 +1,13 @@
 using es_manage.api.Context;
 using es_manage.api.Models;
+using es_manage.api.Services;
 using System.Data;
 using Dapper;
 using Npgsql;
 
 namespace es_manage.api.Repositories {
     public class AuthRepository {
+        /*
         // Membuat private readonly AppDbContext dan IDbConnection
         private readonly AppDbContext _context;
         private readonly IDbConnection _db;
@@ -21,6 +23,44 @@ namespace es_manage.api.Repositories {
         public async Task<UserMst?> ValidateUser(string username, string password) {
             var user = await _db.QuerySingleOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND Password = @Password AND DeletedAt IS NULL", new { UserName = username, Password = password });
             return user;
+        }
+        */
+
+        private readonly AppDbContext _context;
+        private readonly IDbConnection _db;
+        private readonly HashingService _hashingService; // Add HashingService
+
+        public AuthRepository(AppDbContext context, IConfiguration configuration, HashingService hashingService) // Inject HashingService
+        {
+            _context = context;
+            _db = new NpgsqlConnection(configuration.GetConnectionString("Main"));
+            _hashingService = hashingService; // Assign to local variable
+        }
+
+        // Find user by username
+        public async Task<UserMst?> SearchUsername(string username) {
+        // Retrieve the user by username without validating the password
+        var user = await _db.QuerySingleOrDefaultAsync<UserMst>(
+            "SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", 
+            new { UserName = username });
+        return user;
+        }
+
+        public bool ValidatePassword(UserMst user, string password) {
+            // Use _hashingService to validate the provided password
+            return _hashingService.VerifyPassword(password, user.Password, user.PasswordSalt);
+        }
+
+        public async Task<UserMst?> ValidateUser(string username, string password) {
+            // Find the user without verifying the password
+            var user = await _db.QuerySingleOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", new { UserName = username });
+
+            // Verify password only if user is found
+            if (user != null && _hashingService.VerifyPassword(password, user.Password, user.PasswordSalt)) {
+                return user; // User is valid
+            }
+
+            return null; // User is invalid
         }
     }
 }
