@@ -38,10 +38,11 @@ public class AuthController : ControllerBase {
             }
             */
 
-            // Assume ValidateUser now returns a user if found, without validating the password
+            // Cari user berdasarkan username tanpa memvalidasi password
             var user = await _repository.SearchUsername(login.UserName);
+            // Jika user tidak ditemukan atau password tidak valid, maka kembalikan Unauthorized
             if (user == null || !_repository.ValidatePassword(user, login.Password)) {
-                return Unauthorized("Invalid username or password.");
+                return Unauthorized("Username atau Password salah");
             }
 
             // Jika user ditemukan, maka buat token

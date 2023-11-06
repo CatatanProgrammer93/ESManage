@@ -37,9 +37,9 @@ namespace es_manage.api.Repositories {
             _hashingService = hashingService; // Assign to local variable
         }
 
-        // Find user by username
+        // Carikan user berdasarkan username
         public async Task<UserMst?> SearchUsername(string username) {
-        // Retrieve the user by username without validating the password
+        // Ambil data user berdasarkan username tanpa memvalidasi password. (Yang penting username-nya ada dan tidak dihapus)
         var user = await _db.QuerySingleOrDefaultAsync<UserMst>(
             "SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", 
             new { UserName = username });
@@ -47,20 +47,20 @@ namespace es_manage.api.Repositories {
         }
 
         public bool ValidatePassword(UserMst user, string password) {
-            // Use _hashingService to validate the provided password
+            // Pakai HashingService untuk memvalidasi password
             return _hashingService.VerifyPassword(password, user.Password, user.PasswordSalt);
         }
 
         public async Task<UserMst?> ValidateUser(string username, string password) {
-            // Find the user without verifying the password
+            // Carikan user berdasarkan username tanpa memvalidasi password
             var user = await _db.QuerySingleOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", new { UserName = username });
 
-            // Verify password only if user is found
+            // Verifikasi password hanya jika user ditemukan
             if (user != null && _hashingService.VerifyPassword(password, user.Password, user.PasswordSalt)) {
-                return user; // User is valid
+                return user; // User valid
             }
 
-            return null; // User is invalid
+            return null; // User invalid
         }
     }
 }
