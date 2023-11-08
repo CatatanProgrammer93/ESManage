@@ -69,68 +69,70 @@ function EditItemSupplierTransaction() {
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the ID"
-                value={id}
-                onChange={(e) => setId(e.target.value)}
-                disabled
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Item Supplier ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the Item Supplier ID"
-                value={itemSupplierId}
-                onChange={(e) => setItemSupplierId(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Transaction Type</label>
-              <select
-                className="form-control"
-                value={transactionType}
-                onChange={(e) => setTransactionType(e.target.value)}
-              >
-                <option value="">-- Select Transaction Type --</option>
-                <option value="pembelian">Pembelian</option>
-                <option value="penerimaan">Penerimaan</option>
-                <option value="pengembalian">Pengembalian</option>
-                <option value="pengiriman">Pengiriman</option>
-              </select>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Transaction Date</label>
-              <input
-                type="date"
-                className="form-control"
-                value={transactionDate}
-                onChange={(e) => setTransactionDate(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Quantity</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the quantity"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Notes</label>
-              <textarea
-                className="form-control"
-                placeholder="Enter notes"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-              ></textarea>
+            <div className="row">
+              <div className="mb-3 col-6">
+                <label className="form-label">ID</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter the ID"
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  disabled
+                />
+              </div>
+              <div className="mb-3 col-6">
+                <label className="form-label">Item Supplier ID</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter the Item Supplier ID"
+                  value={itemSupplierId}
+                  onChange={(e) => setItemSupplierId(e.target.value)}
+                />
+              </div>
+              <div className="mb-3 col-6">
+                <label className="form-label">Transaction Type</label>
+                <select
+                  className="form-control"
+                  value={transactionType}
+                  onChange={(e) => setTransactionType(e.target.value)}
+                >
+                  <option value="">-- Select Transaction Type --</option>
+                  <option value="pembelian">Pembelian</option>
+                  <option value="penerimaan">Penerimaan</option>
+                  <option value="pengembalian">Pengembalian</option>
+                  <option value="pengiriman">Pengiriman</option>
+                </select>
+              </div>
+              <div className="mb-3 col-6">
+                <label className="form-label">Transaction Date</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  value={transactionDate}
+                  onChange={(e) => setTransactionDate(e.target.value)}
+                />
+              </div>
+              <div className="mb-3 col-6">
+                <label className="form-label">Quantity</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the quantity"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+              </div>
+              <div className="mb-3 col-6">
+                <label className="form-label">Notes</label>
+                <textarea
+                  className="form-control"
+                  placeholder="Enter notes"
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                ></textarea>
+              </div>
             </div>
             <div className="mb-3">
               <input type="submit" value="Save" className="btn btn-primary" />

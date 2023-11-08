@@ -73,15 +73,17 @@ function EditItem() {
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            <label className="form-label">Item Name</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter the item name"
-              value={item.itemName} // Modified line
-              onChange={handleInputChange}
-              name="itemName" // Added line
-            />
+            <div className="mb-3">
+              <label className="form-label">Item Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter the item name"
+                value={item.itemName} // Modified line
+                onChange={handleInputChange}
+                name="itemName" // Added line
+              />
+            </div>
             <div className="mb-3">
               <label className="form-label">Category ID</label>
               <input
