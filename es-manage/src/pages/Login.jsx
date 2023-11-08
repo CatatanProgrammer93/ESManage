@@ -7,32 +7,53 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
+
+    const axiosConfig = {
+      method: "post",
+      url: "https://localhost:7240/api/auth/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        userName: userName,
+        password: password,
+      },
+    };
+
     try {
-      let axiosConfig = {
-        method: "POST",
-        data: {
-          userName: userName,
-          password: password,
-        },
-        url: "https://localhost:7240/api/auth/login",
-      };
-      let response = await axios(axiosConfig);
+      const response = await axios(axiosConfig);
       console.log(response.data);
-      const { accessToken } = response.data.token; // updated line
-      const user = { userName: response.data.userName }; // updated line
-      localStorage.setItem("token", accessToken); // updated line
-      localStorage.setItem("user", JSON.stringify(user)); // updated line
-      navigate("/dashboard", { state: { user } });
+
+      // Destructure the necessary data from the response
+      const { accessToken } = response.data.token;
+      const { userName: responseUserName, displayName } = response.data.user;
+
+      // Store the retrieved information in localStorage
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ userName: responseUserName, displayName })
+      );
+
+      // Navigate to the dashboard with state
+      navigate("/dashboard", {
+        state: { userName: responseUserName, displayName },
+      });
     } catch (error) {
       console.error(error);
-      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+      if (error.response) {
+        setError(error.response.data);
+      } else if (error.request) {
+        setError("No response received");
+      } else {
+        setError("Error: " + error.message);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -92,6 +113,11 @@ function Login() {
               </div>
             </div>
           </form>
+          {error && (
+            <div className="alert alert-danger" role="alert">
+              Error: {error}
+            </div>
+          )}
           <div className="text-center text-muted mt-3">
             Don't have account yet?{" "}
             <a href="#" tabIndex="-1">
