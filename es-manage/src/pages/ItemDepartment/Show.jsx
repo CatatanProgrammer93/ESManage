@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import AppLayout from "../../layouts/AppLayout";
 
-function Dashboard() {
+function ShowItemDepartment() {
   const [departments, setDepartments] = useState([]);
 
   const deleteDepartment = (id, categoryName) => {
@@ -81,4 +81,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default ShowItemDepartment;
