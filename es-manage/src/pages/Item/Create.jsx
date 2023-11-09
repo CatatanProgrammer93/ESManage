@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
@@ -20,8 +20,37 @@ function CreateItem() {
   const [createdBy, setCreatedBy] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   const navigate = useNavigate();
+
+  const handleCategoryChange = (e) => {
+    const id = e.target.value;
+    setCategoryId(id);
+    // Find the category name using the selected id
+    const selectedCategory = categories.find((c) => c.id === id);
+    // Update categoryName in the state
+    setCategoryName(selectedCategory ? selectedCategory.categoryName : "");
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [categoriesRes, brandsRes] = await Promise.all([
+          axios.get("https://localhost:7240/api/itemdepartment"),
+          axios.get("https://localhost:7240/api/brand"),
+        ]);
+        setCategories(categoriesRes.data);
+        setBrands(brandsRes.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Failed to fetch data");
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,142 +105,146 @@ function CreateItem() {
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Item Name</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the item name"
-                value={itemName}
-                onChange={(e) => setItemName(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Category ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the category ID"
-                value={categoryId}
-                onChange={(e) => setCategoryId(e.target.value)}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Category Name</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the category name"
-                value={categoryName}
-                onChange={(e) => setCategoryName(e.target.value)}
-              />
-            </div>
+            <div className="row">
+              <div className="mb-3 col-6">
+                <label className="form-label">Item Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter the item name"
+                  value={itemName}
+                  onChange={(e) => setItemName(e.target.value)}
+                />
+              </div>
 
-            {/* Brand ID Field */}
-            <div className="mb-3">
-              <label className="form-label">Brand ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the brand ID"
-                value={brandId}
-                onChange={(e) => setBrandId(e.target.value)}
-              />
-            </div>
+              {/* Category Dropdown */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Category</label>
+                <select
+                  className="form-select"
+                  value={categoryId}
+                  onChange={handleCategoryChange} // Use the new handler here
+                >
+                  <option value="">Select a category</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.categoryName}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            {/* UOM Field */}
-            <div className="mb-3">
-              <label className="form-label">Unit Of Measure</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the unit of measure"
-                value={uom}
-                onChange={(e) => setUom(e.target.value)}
-              />
-            </div>
+              {/* Brand Dropdown */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Brand</label>
+                <select
+                  className="form-select"
+                  value={brandId}
+                  onChange={(e) => setBrandId(e.target.value)}
+                >
+                  <option value="">Select a brand</option>
+                  {brands.map((brand) => (
+                    <option key={brand.id} value={brand.id}>
+                      {brand.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            {/* Tax Type Field */}
-            <div className="mb-3">
-              <label className="form-label">Tax Type</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the tax type"
-                value={taxType}
-                onChange={(e) => setTaxType(e.target.value)}
-              />
-            </div>
+              {/* UOM Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Unit Of Measure</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter the unit of measure"
+                  value={uom}
+                  onChange={(e) => setUom(e.target.value)}
+                />
+              </div>
 
-            {/* Tax Rate Field */}
-            <div className="mb-3">
-              <label className="form-label">Tax Rate</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the tax rate"
-                value={taxRate}
-                onChange={(e) => setTaxRate(e.target.value)}
-              />
-            </div>
-            {/* Minimum Retail Price Field */}
-            <div className="mb-3">
-              <label className="form-label">Minimum Retail Price</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the minimum retail price"
-                value={minimumRetailPrice}
-                onChange={(e) => setMinimumRetailPrice(e.target.value)}
-              />
-            </div>
+              {/* Tax Type Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Tax Type</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the tax type"
+                  value={taxType}
+                  onChange={(e) => setTaxType(e.target.value)}
+                />
+              </div>
 
-            {/* Balance Quantity Field */}
-            <div className="mb-3">
-              <label className="form-label">Balance Quantity</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the balance quantity"
-                value={balanceQty}
-                onChange={(e) => setBalanceQty(e.target.value)}
-              />
-            </div>
+              {/* Tax Rate Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Tax Rate</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the tax rate"
+                  value={taxRate}
+                  onChange={(e) => setTaxRate(e.target.value)}
+                />
+              </div>
+              {/* Minimum Retail Price Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Minimum Retail Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the minimum retail price"
+                  value={minimumRetailPrice}
+                  onChange={(e) => setMinimumRetailPrice(e.target.value)}
+                />
+              </div>
 
-            {/* Average Cost Price Field */}
-            <div className="mb-3">
-              <label className="form-label">Average Cost Price</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the average cost price"
-                value={avgCostPrice}
-                onChange={(e) => setAvgCostPrice(e.target.value)}
-              />
-            </div>
+              {/* Balance Quantity Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Balance Quantity</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the balance quantity"
+                  value={balanceQty}
+                  onChange={(e) => setBalanceQty(e.target.value)}
+                />
+              </div>
 
-            {/* Retail Price Field */}
-            <div className="mb-3">
-              <label className="form-label">Retail Price</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the retail price"
-                value={retailPrice}
-                onChange={(e) => setRetailPrice(e.target.value)}
-              />
-            </div>
+              {/* Average Cost Price Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Average Cost Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the average cost price"
+                  value={avgCostPrice}
+                  onChange={(e) => setAvgCostPrice(e.target.value)}
+                />
+              </div>
 
-            {/* Cost Price Field */}
-            <div className="mb-3">
-              <label className="form-label">Cost Price</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter the cost price"
-                value={costPrice}
-                onChange={(e) => setCostPrice(e.target.value)}
-              />
+              {/* Retail Price Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Retail Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the retail price"
+                  value={retailPrice}
+                  onChange={(e) => setRetailPrice(e.target.value)}
+                />
+              </div>
+
+              {/* Cost Price Field */}
+              <div className="mb-3 col-6">
+                <label className="form-label">Cost Price</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  placeholder="Enter the cost price"
+                  value={costPrice}
+                  onChange={(e) => setCostPrice(e.target.value)}
+                />
+              </div>
             </div>
             <div className="mb-3">
               <input type="submit" value="Save" className="btn btn-primary" />

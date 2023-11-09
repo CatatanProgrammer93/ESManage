@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import AppLayout from "../../layouts/AppLayout";
 
-function Dashboard() {
+function ShowItemDepartment() {
   const [departments, setDepartments] = useState([]);
 
   const deleteDepartment = (id, categoryName) => {
@@ -22,7 +22,7 @@ function Dashboard() {
 
   return (
     <AppLayout>
-      <h2 className="page-title mt-3">Item Department</h2>
+      <h2 className="page-title">Item Department</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
@@ -81,4 +81,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default ShowItemDepartment;

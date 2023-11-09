@@ -2,7 +2,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 
 function AppLayout({ children }) {
   const location = useLocation();
-  const userFromState = location.state ? location.state.user : null;
+  const userFromState = location.state || null;
   const userFromStorageItem = localStorage.getItem("user");
   let userFromStorage = null;
   try {
@@ -11,17 +11,22 @@ function AppLayout({ children }) {
     }
   } catch (e) {
     console.error(e);
-    // handle parsing error if necessary
+    // Handle parsing error if necessary
   }
 
+  // Here, the user object is preferred from state; if not available, then from storage
   const user = userFromState || userFromStorage;
-  const displayName = user ? user.displayName : "Guest";
+
+  // Extract the displayName and accessToken, defaulting to "Guest" and null respectively if not available
+  const displayName = user?.displayName || "Guest";
+  const accessToken = user ? localStorage.getItem("token") : null;
 
   const navigate = useNavigate(); // Obtain navigate function
 
   const handleLogout = () => {
-    // ... your logout logic here, e.g., clearing local storage
+    // Clearing user information from local storage
     localStorage.removeItem("user");
+    localStorage.removeItem("token"); // Ensure the token is also removed
 
     // Redirect to /login
     navigate("/login");

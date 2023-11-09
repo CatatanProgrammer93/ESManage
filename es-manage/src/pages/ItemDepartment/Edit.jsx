@@ -10,6 +10,8 @@ function EditItemDepartment() {
   const [itemDepartmentParentId, setItemDepartmentParentId] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [parent, setParent] = useState(true);
+
   const navigate = useNavigate(); // Create an instance of useNavigate
 
   const fetchData = async () => {
@@ -35,13 +37,16 @@ function EditItemDepartment() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    const effectiveItemDepartmentParentId = parent
+      ? "0"
+      : itemDepartmentParentId;
     try {
       const response = await axios.put(
         `https://localhost:7240/api/itemdepartment/${id}/${categoryName}`,
         {
           id: id,
           categoryName: categoryName,
-          itemDepartmentParentId: itemDepartmentParentId,
+          itemDepartmentParentId: effectiveItemDepartmentParentId,
         }
       );
       console.log(response.data);
@@ -85,6 +90,17 @@ function EditItemDepartment() {
               />
             </div>
             <div className="mb-3">
+              <label className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  checked={parent}
+                  onChange={() => setParent(!parent)}
+                />
+                <span className="form-check-label">Use as a parent?</span>
+              </label>
+            </div>
+            <div className="mb-3">
               <label className="form-label">Item Department Parent ID</label>
               <input
                 type="text"
@@ -92,6 +108,7 @@ function EditItemDepartment() {
                 placeholder="Enter the item department parent ID"
                 value={itemDepartmentParentId}
                 onChange={(e) => setItemDepartmentParentId(e.target.value)}
+                disabled={parent}
               />
             </div>
             <div className="mb-3">

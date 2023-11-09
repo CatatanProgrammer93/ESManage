@@ -5,44 +5,54 @@ import AppLayout from "../../layouts/AppLayout";
 
 function EditItemSupplier() {
   const { id: urlId } = useParams();
+  const navigate = useNavigate();
+
   const [id, setId] = useState(urlId);
   const [itemId, setItemId] = useState("");
   const [supplierId, setSupplierId] = useState("");
   const [createdBy, setCreatedBy] = useState("");
+  const [items, setItems] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(
-        `https://localhost:7240/api/itemsupplier/${id}`
-      );
-      setId(response.data.id);
-      setItemId(response.data.itemId);
-      setSupplierId(response.data.supplierId);
-    } catch (error) {
-      console.error(error);
-      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [itemSupplierResponse, itemsResponse, suppliersResponse] =
+          await Promise.all([
+            axios.get(`https://localhost:7240/api/itemsupplier/${urlId}`),
+            axios.get("https://localhost:7240/api/item"),
+            axios.get("https://localhost:7240/api/supplier"),
+          ]);
+
+        const itemSupplierData = itemSupplierResponse.data;
+        setId(itemSupplierData.id);
+        setItemId(itemSupplierData.itemId);
+        setSupplierId(itemSupplierData.supplierId);
+        setItems(itemsResponse.data);
+        setSuppliers(suppliersResponse.data);
+      } catch (error) {
+        console.error(error);
+        setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchData();
-  }, [id]);
+  }, [urlId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       await axios.put(`https://localhost:7240/api/itemsupplier/${id}`, {
-        id: id,
-        itemId: itemId,
-        supplierId: supplierId,
-        createdBy: createdBy,
+        id,
+        itemId,
+        supplierId,
+        createdBy,
       });
       navigate("/item-supplier");
     } catch (error) {
@@ -70,25 +80,40 @@ function EditItemSupplier() {
                 disabled
               />
             </div>
+            {/* Dropdown for Item */}
             <div className="mb-3">
-              <label className="form-label">Item ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the Item ID"
+              <label className="form-label">Item</label>
+              <select
+                className="form-select"
                 value={itemId}
                 onChange={(e) => setItemId(e.target.value)}
-              />
+                disabled
+              >
+                <option value="">Select an item</option>
+                {items.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.itemName}
+                  </option>
+                ))}
+              </select>
             </div>
+
+            {/* Dropdown for Supplier */}
             <div className="mb-3">
-              <label className="form-label">Supplier ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the Supplier ID"
+              <label className="form-label">Supplier</label>
+              <select
+                className="form-select"
                 value={supplierId}
                 onChange={(e) => setSupplierId(e.target.value)}
-              />
+                disabled
+              >
+                <option value="">Select a supplier</option>
+                {suppliers.map((supplier) => (
+                  <option key={supplier.id} value={supplier.id}>
+                    {supplier.supplierName}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-3">
               <input type="submit" value="Save" className="btn btn-primary" />
