@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
@@ -8,27 +8,43 @@ function CreateItemSupplier() {
   const [itemId, setItemId] = useState("");
   const [supplierId, setSupplierId] = useState("");
   const [createdBy, setCreatedBy] = useState("");
+  const [items, setItems] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchItemsAndSuppliers = async () => {
+      try {
+        const [itemsResponse, suppliersResponse] = await Promise.all([
+          axios.get("https://localhost:7240/api/item"),
+          axios.get("https://localhost:7240/api/supplier"),
+        ]);
+        setItems(itemsResponse.data);
+        setSuppliers(suppliersResponse.data);
+      } catch (error) {
+        setError("Failed to fetch items and suppliers");
+      }
+    };
+
+    fetchItemsAndSuppliers();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      let response = await axios({
-        method: "POST",
-        url: "https://localhost:7240/api/itemsupplier",
-        data: {
-          id: id,
-          itemId: itemId,
-          supplierId: supplierId,
-          createdBy: createdBy,
-        },
-      });
+      const response = await axios.post(
+        "https://localhost:7240/api/itemsupplier",
+        {
+          id,
+          itemId,
+          supplierId,
+          createdBy,
+        }
+      );
       console.log(response.data);
-      setId("");
       setItemId("");
       setSupplierId("");
       navigate("/item-supplier");
@@ -46,25 +62,38 @@ function CreateItemSupplier() {
       <div className="card mt-3">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
+            {/* Item Dropdown */}
             <div className="mb-3">
-              <label className="form-label">Item ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the Item ID"
+              <label className="form-label">Item</label>
+              <select
+                className="form-select"
                 value={itemId}
                 onChange={(e) => setItemId(e.target.value)}
-              />
+              >
+                <option value="">Select an item</option>
+                {items.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.itemName}
+                  </option>
+                ))}
+              </select>
             </div>
+
+            {/* Supplier Dropdown */}
             <div className="mb-3">
-              <label className="form-label">Supplier ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the Supplier ID"
+              <label className="form-label">Supplier</label>
+              <select
+                className="form-select"
                 value={supplierId}
                 onChange={(e) => setSupplierId(e.target.value)}
-              />
+              >
+                <option value="">Select a supplier</option>
+                {suppliers.map((supplier) => (
+                  <option key={supplier.id} value={supplier.id}>
+                    {supplier.supplierName}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-3">
               <input type="submit" value="Save" className="btn btn-primary" />
