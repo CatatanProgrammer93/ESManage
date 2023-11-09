@@ -9,9 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = es_manage.api
 build_property.RootNamespace = es_manage.api
+<<<<<<< HEAD
+build_property.ProjectDir = D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Coding\PKL Kano\Tugas\ESManage\es-manage.api
+=======
 build_property.ProjectDir = C:\Users\fauqi\Projects\ESManage\es-manage.api\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\fauqi\Projects\ESManage\es-manage.api
+>>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
 build_property._RazorSourceGeneratorDebug = 
