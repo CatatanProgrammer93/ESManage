@@ -95,6 +95,7 @@ function EditItemSupplierTransaction() {
                   className="form-select"
                   value={itemSupplierId}
                   onChange={(e) => setItemSupplierId(e.target.value)}
+                  disabled
                 >
                   <option value="">Select an Item Supplier</option>
                   {itemSuppliers.map((supplier) => (

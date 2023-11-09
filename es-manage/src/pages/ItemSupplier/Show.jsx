@@ -7,6 +7,23 @@ function ShowItemSupplier() {
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
 
+  function deleteItemSupplier(id) {
+    // Call to the backend API to delete the item supplier
+    fetch(`https://localhost:7240/api/itemsupplier/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => {
+        // If successful, filter out the deleted item supplier from the state
+        const updatedItemSuppliers = itemsuppliers.filter((is) => is.id !== id);
+        setItemSuppliers(updatedItemSuppliers);
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error("Error deleting item supplier:", error);
+      });
+  }
+
   // Fetch items and suppliers separately
   useEffect(() => {
     const fetchItems = async () => {
