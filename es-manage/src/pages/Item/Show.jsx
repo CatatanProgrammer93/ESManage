@@ -4,6 +4,7 @@ import AppLayout from "../../layouts/AppLayout";
 
 function ShowItem() {
   const [items, setItems] = useState([]);
+  const [brands, setBrands] = useState({});
 
   const deleteItem = (id) => {
     fetch(`https://localhost:7240/api/item/${id}`, {
@@ -14,15 +15,36 @@ function ShowItem() {
   };
 
   useEffect(() => {
-    // Fetch Items
-    fetch("https://localhost:7240/api/item")
+    fetch("https://localhost:7240/api/brand")
       .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
+      .then((brandData) => {
+        const brandDict = {};
+        brandData.forEach((brand) => {
+          brandDict[brand.id] = brand.name;
+        });
+        setBrands(brandDict);
+      });
+  }, []); // This effect runs once on component mount
+
+  // Fetch Items
+  useEffect(() => {
+    if (Object.keys(brands).length > 0) {
+      // Ensure brands are loaded before fetching items
+      fetch("https://localhost:7240/api/item")
+        .then((res) => res.json())
+        .then((itemData) => {
+          const itemsWithBrand = itemData.map((item) => ({
+            ...item,
+            brandName: brands[item.brandId] || "Unknown", // Fallback in case the brand isn't found
+          }));
+          setItems(itemsWithBrand);
+        });
+    }
+  }, [brands]); // This effect depends on the `brands` state
 
   return (
     <AppLayout>
-      <h2 className="page-title mt-3">Item</h2>
+      <h2 className="page-title">Item</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
@@ -38,9 +60,8 @@ function ShowItem() {
                     <tr>
                       <th>ID</th>
                       <th>Item Name</th>
-                      <th>Category ID</th>
                       <th>Category Name</th>
-                      <th>Brand ID</th>
+                      <th>Brand Name</th>
                       <th>Action</th>
                       <th className="w-1"></th>
                     </tr>
@@ -50,9 +71,8 @@ function ShowItem() {
                       <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.itemName}</td>
-                        <td>{item.categoryId}</td>
                         <td>{item.categoryName}</td>
-                        <td>{item.brandId}</td>
+                        <td>{item.brandName}</td>
                         <td>
                           <Link
                             to={`/item/edit/${item.id}`}

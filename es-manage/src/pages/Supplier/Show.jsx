@@ -22,7 +22,7 @@ function ShowSupplier() {
 
   return (
     <AppLayout>
-      <h2 className="page-title mt-3">Supplier</h2>
+      <h2 className="page-title">Supplier</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">

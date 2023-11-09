@@ -26,7 +26,7 @@ function ShowItemSupplierTransaction() {
 
   return (
     <AppLayout>
-      <h2 className="page-title mt-3">Item Supplier Transaction</h2>
+      <h2 className="page-title">Item Supplier Transaction</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">

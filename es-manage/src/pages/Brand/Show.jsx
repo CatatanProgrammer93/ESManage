@@ -21,7 +21,7 @@ function ShowBrand() {
 
   return (
     <AppLayout>
-      <h2 className="page-title mt-3">Brand</h2>
+      <h2 className="page-title">Brand</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
