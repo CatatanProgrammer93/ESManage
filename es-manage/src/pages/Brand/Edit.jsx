@@ -14,11 +14,21 @@ function EditBrand() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/brand/${id}`
+        `https://localhost:7240/api/brand/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
       );
       setBrand(response.data); // Update the state with the received data
     } catch (error) {
@@ -38,7 +48,12 @@ function EditBrand() {
     try {
       const response = await axios.put(
         `https://localhost:7240/api/brand/${id}`,
-        brand
+        brand,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
       );
       console.log(response.data);
 

@@ -5,9 +5,17 @@ import AppLayout from "../../layouts/AppLayout";
 function ShowSupplier() {
   const [suppliers, setSuppliers] = useState([]);
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const deleteSupplier = (id) => {
     fetch(`https://localhost:7240/api/supplier/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
     }).then(() => {
       setSuppliers(suppliers.filter((supplier) => supplier.id !== id));
     });
@@ -15,7 +23,11 @@ function ShowSupplier() {
 
   useEffect(() => {
     // Fetch Supplier
-    fetch("https://localhost:7240/api/supplier")
+    fetch("https://localhost:7240/api/supplier", {
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
+    })
       .then((res) => res.json())
       .then((data) => setSuppliers(data));
   }, []);

@@ -12,13 +12,22 @@ function EditItemDepartment() {
   const [isLoading, setIsLoading] = useState(false);
   const [parent, setParent] = useState(true);
 
-  const navigate = useNavigate(); // Create an instance of useNavigate
+  const navigate = useNavigate();
+
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
 
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/itemdepartment/${id}/${categoryName}`
+        `https://localhost:7240/api/itemdepartment/${id}/${categoryName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
       );
       setId(response.data.id);
       setCategoryName(response.data.categoryName);
@@ -40,6 +49,7 @@ function EditItemDepartment() {
     const effectiveItemDepartmentParentId = parent
       ? "0"
       : itemDepartmentParentId;
+
     try {
       const response = await axios.put(
         `https://localhost:7240/api/itemdepartment/${id}/${categoryName}`,
@@ -47,11 +57,14 @@ function EditItemDepartment() {
           id: id,
           categoryName: categoryName,
           itemDepartmentParentId: effectiveItemDepartmentParentId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
         }
       );
       console.log(response.data);
-
-      // Redirect to the Dashboard after successfully updating
       navigate("/item-department"); // Update this with the correct path to your Dashboard component
     } catch (error) {
       console.error(error);

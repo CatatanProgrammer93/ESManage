@@ -89,12 +89,7 @@ function Login() {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">
-                  Password
-                  <span className="form-label-description">
-                    <a href="#">I forgot password</a>
-                  </span>
-                </label>
+                <label className="form-label">Password</label>
                 <div className="input-group input-group-flat">
                   <input
                     type="password"
@@ -118,12 +113,6 @@ function Login() {
               Error: {error}
             </div>
           )}
-          <div className="text-center text-muted mt-3">
-            Don't have account yet?{" "}
-            <a href="#" tabIndex="-1">
-              Sign up
-            </a>
-          </div>
         </div>
       </div>
     </div>

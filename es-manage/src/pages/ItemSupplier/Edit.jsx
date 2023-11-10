@@ -10,21 +10,34 @@ function EditItemSupplier() {
   const [id, setId] = useState(urlId);
   const [itemId, setItemId] = useState("");
   const [supplierId, setSupplierId] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
+  const [createdBy, setCreatedBy] = useState(""); // Assuming createdBy is part of your data model
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+      const axiosConfig = {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      };
       try {
         const [itemSupplierResponse, itemsResponse, suppliersResponse] =
           await Promise.all([
-            axios.get(`https://localhost:7240/api/itemsupplier/${urlId}`),
-            axios.get("https://localhost:7240/api/item"),
-            axios.get("https://localhost:7240/api/supplier"),
+            axios.get(
+              `https://localhost:7240/api/itemsupplier/${urlId}`,
+              axiosConfig
+            ),
+            axios.get("https://localhost:7240/api/item", axiosConfig),
+            axios.get("https://localhost:7240/api/supplier", axiosConfig),
           ]);
 
         const itemSupplierData = itemSupplierResponse.data;
@@ -48,12 +61,15 @@ function EditItemSupplier() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.put(`https://localhost:7240/api/itemsupplier/${id}`, {
-        id,
-        itemId,
-        supplierId,
-        createdBy,
-      });
+      await axios.put(
+        `https://localhost:7240/api/itemsupplier/${id}`,
+        { id, itemId, supplierId, createdBy },
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
       navigate("/item-supplier");
     } catch (error) {
       console.error(error);

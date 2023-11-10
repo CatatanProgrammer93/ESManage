@@ -6,16 +6,28 @@ function ShowItem() {
   const [items, setItems] = useState([]);
   const [brands, setBrands] = useState({});
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const deleteItem = (id) => {
     fetch(`https://localhost:7240/api/item/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
     }).then(() => {
       setItems(items.filter((item) => item.id !== id));
     });
   };
 
   useEffect(() => {
-    fetch("https://localhost:7240/api/brand")
+    fetch("https://localhost:7240/api/brand", {
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
+    })
       .then((res) => res.json())
       .then((brandData) => {
         const brandDict = {};
@@ -26,21 +38,23 @@ function ShowItem() {
       });
   }, []); // This effect runs once on component mount
 
-  // Fetch Items
   useEffect(() => {
     if (Object.keys(brands).length > 0) {
-      // Ensure brands are loaded before fetching items
-      fetch("https://localhost:7240/api/item")
+      fetch("https://localhost:7240/api/item", {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      })
         .then((res) => res.json())
         .then((itemData) => {
           const itemsWithBrand = itemData.map((item) => ({
             ...item,
-            brandName: brands[item.brandId] || "Unknown", // Fallback in case the brand isn't found
+            brandName: brands[item.brandId] || "Unknown",
           }));
           setItems(itemsWithBrand);
         });
     }
-  }, [brands]); // This effect depends on the `brands` state
+  }, [brands]);
 
   return (
     <AppLayout>

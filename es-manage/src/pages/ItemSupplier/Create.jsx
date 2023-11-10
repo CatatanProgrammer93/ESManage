@@ -7,19 +7,29 @@ function CreateItemSupplier() {
   const [id, setId] = useState("");
   const [itemId, setItemId] = useState("");
   const [supplierId, setSupplierId] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
+  const [createdBy, setCreatedBy] = useState(""); // Assuming createdBy is needed
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   useEffect(() => {
     const fetchItemsAndSuppliers = async () => {
+      const axiosConfig = {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      };
       try {
         const [itemsResponse, suppliersResponse] = await Promise.all([
-          axios.get("https://localhost:7240/api/item"),
-          axios.get("https://localhost:7240/api/supplier"),
+          axios.get("https://localhost:7240/api/item", axiosConfig),
+          axios.get("https://localhost:7240/api/supplier", axiosConfig),
         ]);
         setItems(itemsResponse.data);
         setSuppliers(suppliersResponse.data);
@@ -37,14 +47,15 @@ function CreateItemSupplier() {
     try {
       const response = await axios.post(
         "https://localhost:7240/api/itemsupplier",
+        { id, itemId, supplierId, createdBy },
         {
-          id,
-          itemId,
-          supplierId,
-          createdBy,
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
         }
       );
       console.log(response.data);
+      setId("");
       setItemId("");
       setSupplierId("");
       navigate("/item-supplier");

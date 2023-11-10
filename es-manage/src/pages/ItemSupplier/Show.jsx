@@ -7,33 +7,45 @@ function ShowItemSupplier() {
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   function deleteItemSupplier(id) {
-    // Call to the backend API to delete the item supplier
     fetch(`https://localhost:7240/api/itemsupplier/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
     })
       .then((res) => res.json())
       .then(() => {
-        // If successful, filter out the deleted item supplier from the state
         const updatedItemSuppliers = itemsuppliers.filter((is) => is.id !== id);
         setItemSuppliers(updatedItemSuppliers);
       })
       .catch((error) => {
-        // Handle any errors here
         console.error("Error deleting item supplier:", error);
       });
   }
 
-  // Fetch items and suppliers separately
   useEffect(() => {
     const fetchItems = async () => {
-      const res = await fetch("https://localhost:7240/api/item");
+      const res = await fetch("https://localhost:7240/api/item", {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      });
       const data = await res.json();
       setItems(data);
     };
 
     const fetchSuppliers = async () => {
-      const res = await fetch("https://localhost:7240/api/supplier");
+      const res = await fetch("https://localhost:7240/api/supplier", {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      });
       const data = await res.json();
       setSuppliers(data);
     };
@@ -42,19 +54,21 @@ function ShowItemSupplier() {
     fetchSuppliers();
   }, []);
 
-  // Fetch Item Suppliers
   useEffect(() => {
-    fetch("https://localhost:7240/api/itemsupplier")
+    fetch("https://localhost:7240/api/itemsupplier", {
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
+    })
       .then((res) => res.json())
       .then((itemsupplierData) => {
-        // Enrich with item and supplier names
         const enrichedData = itemsupplierData.map((is) => {
           const item = items.find((item) => item.id === is.itemId);
           const supplier = suppliers.find((sup) => sup.id === is.supplierId);
           return {
             ...is,
-            itemName: item ? item.itemName : "Unknown Item", // Replace 'name' with the actual property for item name
-            supplierName: supplier ? supplier.supplierName : "Unknown Supplier", // Replace 'name' with the actual property for supplier name
+            itemName: item ? item.itemName : "Unknown Item",
+            supplierName: supplier ? supplier.supplierName : "Unknown Supplier",
           };
         });
         setItemSuppliers(enrichedData);

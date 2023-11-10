@@ -10,16 +10,25 @@ function CreateBrand() {
 
   const navigate = useNavigate();
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       let axiosConfig = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
         method: "POST",
+        url: "https://localhost:7240/api/brand",
         data: {
           name: name,
         },
-        url: "https://localhost:7240/api/brand",
       };
       let response = await axios(axiosConfig);
       console.log(response.data);
