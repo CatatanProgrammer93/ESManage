@@ -87,7 +87,7 @@ namespace es_manage.api.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult<ItemSupplier_TransactionModel>> Create(ItemSupplier_TransactionModel model)
+        public async Task<ActionResult<ItemSupplier_TransactionModel>> Create(ItemSupplier_TransactionPlusItemSupplier model)
         {
             try
             {

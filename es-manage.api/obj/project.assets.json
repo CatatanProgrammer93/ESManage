@@ -1946,45 +1946,26 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\jasir\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\fauqi\\.nuget\\packages\\": {}
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
+    "C:\\Users\\Fonda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "projectUniqueName": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
       "projectName": "es-manage.api",
-      "projectPath": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
-      "packagesPath": "C:\\Users\\jasir\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\obj\\",
+      "projectPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "packagesPath": "C:\\Users\\Fonda\\.nuget\\packages\\",
+      "outputPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jasir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fonda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-      "projectUniqueName": "C:\\Users\\fauqi\\Projects\\ESManage\\es-manage.api\\es-manage.api.csproj",
-      "projectName": "es-manage.api",
-      "projectPath": "C:\\Users\\fauqi\\Projects\\ESManage\\es-manage.api\\es-manage.api.csproj",
-      "packagesPath": "C:\\Users\\fauqi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fauqi\\Projects\\ESManage\\es-manage.api\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\fauqi\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-<<<<<<< HEAD
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
-=======
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2047,24 +2028,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.23, 6.0.23]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.23, 6.0.23]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.23, 6.0.23]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.23, 6.0.23]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -2073,12 +2036,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Mapel\\Magang\\ESManage\\es-manage.api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

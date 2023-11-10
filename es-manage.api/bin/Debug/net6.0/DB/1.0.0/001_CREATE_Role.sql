@@ -39,3 +39,7 @@ CREATE TRIGGER trigger_prevent_administrator_alteration
 BEFORE DELETE OR UPDATE OF "rolename" ON public."role"
 FOR EACH ROW WHEN (OLD."rolename" = 'Administrator')
 EXECUTE FUNCTION prevent_administrator_alteration();
+
+INSERT INTO public."role" ("id", "rolename", "createdby", "createdon", "deleted")
+VALUES (2, 'User', 'System', NOW(), FALSE)
+ON CONFLICT ("id") DO NOTHING;
