@@ -10,6 +10,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,8 @@ builder.Services.AddAuthentication(options => {
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
             ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value)),
+            RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
         };
     });
 builder.Services.AddAuthorization();
@@ -57,6 +59,8 @@ builder.Services.AddScoped<BrandRepository>();
 builder.Services.AddScoped<PasswordChangeRepository>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<HashingService>();
+
+builder.Services.AddTransient<IClaimsTransformation, RoleClaimService>();
 
 // Option untuk CORS (Cross-Origin Resource Sharing)
 var allOrigins = "allowOrigins";
