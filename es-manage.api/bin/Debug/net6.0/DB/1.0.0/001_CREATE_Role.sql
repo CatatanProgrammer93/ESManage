@@ -41,5 +41,9 @@ FOR EACH ROW WHEN (OLD."rolename" = 'Administrator')
 EXECUTE FUNCTION prevent_administrator_alteration();
 
 INSERT INTO public."role" ("id", "rolename", "createdby", "createdon", "deleted")
+<<<<<<< HEAD
 VALUES ('2', 'User', 'System', NOW(), FALSE)
+=======
+VALUES (2, 'User', 'System', NOW(), FALSE)
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
 ON CONFLICT ("id") DO NOTHING;

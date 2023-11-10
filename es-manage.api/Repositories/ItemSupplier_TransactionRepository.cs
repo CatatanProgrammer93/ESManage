@@ -113,7 +113,7 @@ namespace es_manage.api.Repositories {
         }
 
         // Method to create a new transaction
-        public async Task<ItemSupplier_TransactionModel> Create(ItemSupplier_TransactionModel transaction)
+        public async Task<ItemSupplier_TransactionModel> Create( ItemSupplier_TransactionPlusItemSupplier transaction)
         {
             try
             {
@@ -133,8 +133,24 @@ namespace es_manage.api.Repositories {
                         throw new Exception("TransactionType tidak valid");
                     }
 
-                    transaction.CreatedOn = DateTime.Now;
+                    // Mendapatkan ItemSupplier Id
+                    var sqlFindItemSupplier = @"SELECT id FROM itemsupplier WHERE (itemid = @ItemId AND supplierid = @SupplierId)";
+                    var supplierId = await _db.QuerySingleAsync<string>(sqlFindItemSupplier, transaction);
                     // Query SQL untuk mengupdate record yang sudah dihapus (soft-delete)
+                    ItemSupplier_TransactionModel newTransaction = new ItemSupplier_TransactionModel
+                    {
+                        ID = transaction.ID,
+                        ItemSupplierId = supplierId.ToString(),
+                        TransactionType = transaction.TransactionType,
+                        TransactionDate = transaction.TransactionDate,
+                        Quantity = transaction.Quantity,
+                        Notes = transaction.Notes,
+                        Deleted = transaction.Deleted,
+                        CreatedOn = DateTime.Now,
+                        CreatedBy = transaction.CreatedBy,
+                        ModifiedOn = transaction.ModifiedOn,
+                        ModifiedBy = transaction.ModifiedBy
+                    };
                     var sqlUpdate = @"UPDATE itemsupplier_transaction SET itemsupplierid = @ItemSupplierId, 
                     transactiontype = @TransactionType, 
                     transactiondate = @TransactionDate, 
@@ -146,8 +162,8 @@ namespace es_manage.api.Repositories {
                     modifiedon = null, 
                     modifiedby = null
                     WHERE id = @Id";
-                    await _db.ExecuteAsync(sqlUpdate, transaction);
-                    return transaction;
+                    await _db.ExecuteAsync(sqlUpdate, newTransaction);
+                    return newTransaction;
                 }
                 else {
                     // Validasi TransactionType
@@ -164,11 +180,26 @@ namespace es_manage.api.Repositories {
                     var maxID = await _db.QuerySingleAsync<int>(maxIDSql);
                     transaction.ID = (maxID + 1).ToString();
 
-                    transaction.CreatedOn = DateTime.Now;
+                    var sqlFindItemSupplier = @"SELECT id FROM itemsupplier WHERE (itemid = @ItemId AND supplierid = @SupplierId)";
+                    var supplierId = await _db.QuerySingleAsync<string>(sqlFindItemSupplier, transaction);
+                    ItemSupplier_TransactionModel newTransaction = new ItemSupplier_TransactionModel
+                    {
+                        ID = transaction.ID,
+                        ItemSupplierId = supplierId.ToString(),
+                        TransactionType = transaction.TransactionType,
+                        TransactionDate = transaction.TransactionDate,
+                        Quantity = transaction.Quantity,
+                        Notes = transaction.Notes,
+                        Deleted = transaction.Deleted,
+                        CreatedOn = DateTime.Now,
+                        CreatedBy = transaction.CreatedBy,
+                        ModifiedOn = transaction.ModifiedOn,
+                        ModifiedBy = transaction.ModifiedBy
+                    };
                     var insertSql = @"INSERT INTO itemsupplier_transaction (id, itemsupplierid, transactiontype, transactiondate, quantity, notes, deleted, createdon, createdby, modifiedon, modifiedby)
                     VALUES (@Id, @ItemSupplierId, @TransactionType, @TransactionDate, @Quantity, @Notes, false, @CreatedOn, @CreatedBy, null, null)";
 
-                    await _db.ExecuteAsync(insertSql, transaction);
+                    await _db.ExecuteAsync(insertSql, newTransaction);
                 }
 
                 // Return the latest state of the record from the database

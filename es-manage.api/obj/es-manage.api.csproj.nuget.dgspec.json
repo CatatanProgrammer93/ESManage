@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
+=======
+    "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
   },
   "projects": {
-    "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {
+    "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectUniqueName": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
         "projectName": "es-manage.api",
-        "projectPath": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
-        "packagesPath": "C:\\Users\\jasir\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\obj\\",
+        "projectPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "packagesPath": "C:\\Users\\Fonda\\.nuget\\packages\\",
+        "outputPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jasir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fonda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +26,10 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
           "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+=======
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -93,7 +100,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
         }
       }
     }
