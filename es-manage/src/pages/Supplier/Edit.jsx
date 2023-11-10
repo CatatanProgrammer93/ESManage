@@ -7,19 +7,30 @@ function EditSupplier() {
   const { id: urlId } = useParams();
   const [id, setId] = useState(urlId);
   const [supplierName, setSupplierName] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
+  const [createdBy, setCreatedBy] = useState(""); // Assuming you need this field
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
 
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/supplier/${id}`
+        `https://localhost:7240/api/supplier/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
       );
       setId(response.data.id);
       setSupplierName(response.data.supplierName);
+      setCreatedBy(response.data.createdBy); // Assuming you need this field
     } catch (error) {
       console.error(error);
     } finally {
@@ -35,11 +46,19 @@ function EditSupplier() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.put(`https://localhost:7240/api/supplier/${id}`, {
-        id: id,
-        supplierName: supplierName,
-        createdBy: createdBy,
-      });
+      await axios.put(
+        `https://localhost:7240/api/supplier/${id}`,
+        {
+          id: id,
+          supplierName: supplierName,
+          createdBy: createdBy,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
       navigate("/supplier");
     } catch (error) {
       console.error(error);

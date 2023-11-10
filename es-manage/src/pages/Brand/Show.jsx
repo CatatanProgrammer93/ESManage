@@ -5,16 +5,28 @@ import AppLayout from "../../layouts/AppLayout";
 function ShowBrand() {
   const [brands, setBrands] = useState([]);
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const deleteBrand = (id) => {
     fetch(`https://localhost:7240/api/brand/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Use the token from local storage
+      },
     }).then(() => {
       setBrands(brands.filter((brand) => brand.id !== id));
     });
   };
 
   useEffect(() => {
-    fetch("https://localhost:7240/api/brand")
+    fetch("https://localhost:7240/api/brand", {
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Use the token from local storage
+      },
+    })
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);

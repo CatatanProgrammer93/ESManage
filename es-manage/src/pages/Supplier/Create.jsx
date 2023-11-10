@@ -6,11 +6,16 @@ import AppLayout from "../../layouts/AppLayout";
 function CreateSupplier() {
   const [id, setId] = useState("");
   const [supplierName, setSupplierName] = useState("");
-  const [createdBy, setcreatedBy] = useState("");
+  const [createdBy, setCreatedBy] = useState(""); // Corrected the casing of setCreatedBy
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +24,10 @@ function CreateSupplier() {
       let response = await axios({
         method: "POST",
         url: "https://localhost:7240/api/supplier",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
         data: {
           id: id,
           supplierName: supplierName,
@@ -28,6 +37,7 @@ function CreateSupplier() {
       console.log(response.data);
       setId("");
       setSupplierName("");
+      setCreatedBy(""); // Reset createdBy
       navigate("/supplier");
     } catch (error) {
       console.error(error);

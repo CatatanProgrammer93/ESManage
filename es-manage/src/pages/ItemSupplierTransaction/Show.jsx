@@ -6,11 +6,19 @@ function ShowItemSupplierTransaction() {
   const [itemsuppliertransactions, setItemSupplierTransactions] = useState([]);
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const [itemsuppliers, setItemSuppliers] = useState([]); // Define the state for itemSuppliers
+  const [itemsuppliers, setItemSuppliers] = useState([]);
+
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
 
   const deleteItemSupplierTransaction = (id) => {
     fetch(`https://localhost:7240/api/itemsupplier_transaction/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+      },
     }).then(() => {
       setItemSupplierTransactions(
         itemsuppliertransactions.filter((tx) => tx.id !== id)
@@ -19,72 +27,75 @@ function ShowItemSupplierTransaction() {
   };
 
   useEffect(() => {
-    // Fetch items and suppliers separately
-    const fetchItems = async () => {
-      const response = await fetch("https://localhost:7240/api/item");
-      const data = await response.json();
-      setItems(data);
+    const fetchResource = async (url, setter) => {
+      try {
+        const response = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        });
+        const data = await response.json();
+        setter(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    const fetchSuppliers = async () => {
-      const response = await fetch("https://localhost:7240/api/supplier");
-      const data = await response.json();
-      setSuppliers(data);
-    };
-
-    const fetchItemSuppliers = async () => {
-      const response = await fetch("https://localhost:7240/api/itemsupplier");
-      const data = await response.json();
-      setItemSuppliers(data);
-    };
-
-    fetchItems();
-    fetchSuppliers();
-    fetchItemSuppliers();
+    fetchResource("https://localhost:7240/api/item", setItems);
+    fetchResource("https://localhost:7240/api/supplier", setSuppliers);
+    fetchResource("https://localhost:7240/api/itemsupplier", setItemSuppliers);
   }, []);
 
   useEffect(() => {
     const fetchTransactionsAndEnrich = async () => {
-      const transactionsResponse = await fetch(
-        "https://localhost:7240/api/itemsupplier_transaction"
-      );
-      const transactionsData = await transactionsResponse.json();
+      try {
+        const response = await fetch(
+          "https://localhost:7240/api/itemsupplier_transaction",
+          {
+            headers: {
+              Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+            },
+          }
+        );
+        const transactionsData = await response.json();
 
-      // Wait until items and suppliers data is fetched before enriching transactions
-      if (items.length && suppliers.length && itemsuppliers.length) {
-        const enrichedData = transactionsData.map((tx) => {
-          // Find the corresponding itemSupplier
-          const itemSupplier = itemsuppliers.find(
-            (is) => is.id.toString() === tx.itemSupplierId.toString()
-          );
-          if (!itemSupplier) {
+        if (items.length && suppliers.length && itemsuppliers.length) {
+          const enrichedData = transactionsData.map((tx) => {
+            const itemSupplier = itemsuppliers.find(
+              (is) => is.id.toString() === tx.itemSupplierId.toString()
+            );
+            if (!itemSupplier) {
+              return {
+                ...tx,
+                itemName: "Unknown Item",
+                supplierName: "Unknown Supplier",
+              };
+            }
+            const item = items.find(
+              (itm) => itm.id.toString() === itemSupplier.itemId.toString()
+            );
+            const supplier = suppliers.find(
+              (sup) => sup.id.toString() === itemSupplier.supplierId.toString()
+            );
+
             return {
               ...tx,
-              itemName: "Unknown Item",
-              supplierName: "Unknown Supplier",
+              itemName: item ? item.itemName : "Unknown Item",
+              supplierName: supplier
+                ? supplier.supplierName
+                : "Unknown Supplier",
             };
-          }
-          // Find the actual item and supplier using itemId and supplierId from itemSupplier
-          const item = items.find(
-            (itm) => itm.id.toString() === itemSupplier.itemId.toString()
-          );
-          const supplier = suppliers.find(
-            (sup) => sup.id.toString() === itemSupplier.supplierId.toString()
-          );
+          });
 
-          return {
-            ...tx,
-            itemName: item ? item.itemName : "Unknown Item", // Make sure 'name' is the correct property name for item name
-            supplierName: supplier ? supplier.supplierName : "Unknown Supplier", // Make sure 'name' is the correct property name for supplier name
-          };
-        });
-
-        setItemSupplierTransactions(enrichedData);
+          setItemSupplierTransactions(enrichedData);
+        }
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
       }
     };
 
     fetchTransactionsAndEnrich();
-  }, [items, suppliers, itemsuppliers]); // Dependency array ensures useEffect is re-run when these values change
+  }, [items, suppliers, itemsuppliers]);
 
   return (
     <AppLayout>

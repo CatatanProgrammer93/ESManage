@@ -22,29 +22,28 @@ function CreateItemSupplierTransaction() {
 
   const navigate = useNavigate();
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
+  const fetchResource = async (url, setter) => {
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      });
+      setter(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
-    // Fetch items and suppliers separately
-    const fetchItems = async () => {
-      const response = await fetch("https://localhost:7240/api/item");
-      const data = await response.json();
-      setItems(data);
-    };
-
-    const fetchSuppliers = async () => {
-      const response = await fetch("https://localhost:7240/api/supplier");
-      const data = await response.json();
-      setSuppliers(data);
-    };
-
-    const fetchItemSuppliers = async () => {
-      const response = await fetch("https://localhost:7240/api/itemsupplier");
-      const data = await response.json();
-      setItemSuppliers(data);
-    };
-
-    fetchItems();
-    fetchSuppliers();
-    fetchItemSuppliers();
+    fetchResource("https://localhost:7240/api/item", setItems);
+    fetchResource("https://localhost:7240/api/supplier", setSuppliers);
+    fetchResource("https://localhost:7240/api/itemsupplier", setItemSuppliers);
   }, []);
 
   useEffect(() => {
@@ -107,14 +106,20 @@ function CreateItemSupplierTransaction() {
       let response = await axios.post(
         "https://localhost:7240/api/itemsupplier_transaction",
         {
-          id: id,
-          itemId: itemId,
-          supplierId: supplierId,
-          transactionType: transactionType,
-          transactionDate: transactionDate,
-          quantity: quantity,
-          notes: notes,
-          createdBy: createdBy,
+          id, // Assuming 'id' is part of your data model; remove if not needed.
+          itemId,
+          supplierId,
+          transactionType,
+          transactionDate,
+          quantity,
+          notes,
+          createdBy, // Assuming 'createdBy' is part of your data model; remove if not needed.
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
         }
       );
       console.log(response.data);
@@ -126,6 +131,7 @@ function CreateItemSupplierTransaction() {
       setTransactionDate("");
       setQuantity(0);
       setNotes("");
+      setCreatedBy(""); // Reset this as well if 'createdBy' is part of your data model
       navigate("/item-supplier-transaction");
     } catch (error) {
       console.error(error);

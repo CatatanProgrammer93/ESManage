@@ -5,22 +5,7 @@ import AppLayout from "../../layouts/AppLayout";
 
 function EditItem() {
   const { id } = useParams();
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
-
   const navigate = useNavigate();
-
-  const handleCategoryChange = (e) => {
-    const selectedCategoryId = e.target.value;
-    const selectedCategory = categories.find(
-      (c) => c.id === selectedCategoryId
-    );
-    setItem((prevItem) => ({
-      ...prevItem,
-      categoryId: selectedCategoryId,
-      categoryName: selectedCategory ? selectedCategory.categoryName : "",
-    }));
-  };
 
   const [item, setItem] = useState({
     itemName: "",
@@ -36,17 +21,28 @@ function EditItem() {
     retailPrice: 0,
     costPrice: 0,
   });
+  const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
+        const axiosConfig = {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        };
         const [itemRes, categoriesRes, brandsRes] = await Promise.all([
-          axios.get(`https://localhost:7240/api/item/${id}`),
-          axios.get("https://localhost:7240/api/itemdepartment"),
-          axios.get("https://localhost:7240/api/brand"),
+          axios.get(`https://localhost:7240/api/item/${id}`, axiosConfig),
+          axios.get("https://localhost:7240/api/itemdepartment", axiosConfig),
+          axios.get("https://localhost:7240/api/brand", axiosConfig),
         ]);
         setItem(itemRes.data);
         setCategories(categoriesRes.data);
@@ -70,31 +66,32 @@ function EditItem() {
     }));
   };
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(`https://localhost:7240/api/item/${id}`);
-      setItem(response.data);
-    } catch (error) {
-      console.error(error);
-      setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
-    } finally {
-      setIsLoading(false);
-    }
+  const handleCategoryChange = (e) => {
+    const selectedCategoryId = e.target.value;
+    const selectedCategory = categories.find(
+      (c) => c.id === selectedCategoryId
+    );
+    setItem((prevItem) => ({
+      ...prevItem,
+      categoryId: selectedCategoryId,
+      categoryName: selectedCategory ? selectedCategory.categoryName : "",
+    }));
   };
-
-  useEffect(() => {
-    fetchData();
-  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.put(
-        `https://localhost:7240/api/item/${id}`,
-        item
-      );
+      const axiosConfig = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+        method: "PUT",
+        url: `https://localhost:7240/api/item/${id}`,
+        data: item,
+      };
+      const response = await axios(axiosConfig);
       console.log(response.data);
       navigate("/item");
     } catch (error) {

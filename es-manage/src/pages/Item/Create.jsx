@@ -25,6 +25,11 @@ function CreateItem() {
 
   const navigate = useNavigate();
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const handleCategoryChange = (e) => {
     const id = e.target.value;
     setCategoryId(id);
@@ -37,9 +42,14 @@ function CreateItem() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const axiosConfig = {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        };
         const [categoriesRes, brandsRes] = await Promise.all([
-          axios.get("https://localhost:7240/api/itemdepartment"),
-          axios.get("https://localhost:7240/api/brand"),
+          axios.get("https://localhost:7240/api/itemdepartment", axiosConfig),
+          axios.get("https://localhost:7240/api/brand", axiosConfig),
         ]);
         setCategories(categoriesRes.data);
         setBrands(brandsRes.data);
@@ -57,10 +67,14 @@ function CreateItem() {
     setIsLoading(true);
     try {
       let axiosConfig = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
         method: "POST",
         url: "https://localhost:7240/api/item",
         data: {
-          id,
+          id, // Assuming 'id' is part of your data model. Remove if not needed.
           itemName,
           categoryId,
           categoryName,
@@ -73,11 +87,14 @@ function CreateItem() {
           avgCostPrice,
           retailPrice,
           costPrice,
-          createdBy,
+          createdBy, // Assuming 'createdBy' is part of your data model. Remove if not needed.
         },
       };
       let response = await axios(axiosConfig);
-      // Resetting all the fields
+      console.log(response.data);
+
+      // Resetting all the fields to their initial states after successful submission
+      setId("");
       setItemName("");
       setCategoryId("");
       setCategoryName("");
@@ -90,7 +107,9 @@ function CreateItem() {
       setAvgCostPrice(0);
       setRetailPrice(0);
       setCostPrice(0);
-      navigate("/item");
+      setCreatedBy(""); // Reset this as well if 'createdBy' is part of your data model
+
+      navigate("/item"); // Redirect to the item list page (or any other appropriate page)
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));

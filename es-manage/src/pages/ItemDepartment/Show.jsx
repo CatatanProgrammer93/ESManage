@@ -5,9 +5,18 @@ import AppLayout from "../../layouts/AppLayout";
 function ShowItemDepartment() {
   const [departments, setDepartments] = useState([]);
 
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const deleteDepartment = (id, categoryName) => {
     fetch(`https://localhost:7240/api/itemdepartment/${id}/${categoryName}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`, // Use the token from local storage
+      },
     }).then(() => {
       setDepartments(departments.filter((department) => department.id !== id));
     });
@@ -15,7 +24,12 @@ function ShowItemDepartment() {
 
   useEffect(() => {
     // Fetch Item Departments
-    fetch("https://localhost:7240/api/itemdepartment")
+    fetch("https://localhost:7240/api/itemdepartment", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`, // Use the token from local storage
+      },
+    })
       .then((res) => res.json())
       .then((data) => setDepartments(data));
   }, []);

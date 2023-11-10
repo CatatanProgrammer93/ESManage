@@ -13,22 +13,32 @@ function CreateItemDepartment() {
 
   const navigate = useNavigate();
 
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const effectiveItemDepartmentParentId = parent
       ? "0"
       : itemDepartmentParentId;
+
     try {
       let axiosConfig = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
         method: "POST",
+        url: "https://localhost:7240/api/itemdepartment",
         data: {
           id: id,
           categoryName: categoryName,
           itemDepartmentParentId: effectiveItemDepartmentParentId,
         },
-        url: "https://localhost:7240/api/itemdepartment",
       };
+
       let response = await axios(axiosConfig);
       console.log(response.data);
       setId("");

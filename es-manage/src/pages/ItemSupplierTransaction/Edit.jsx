@@ -5,6 +5,8 @@ import AppLayout from "../../layouts/AppLayout";
 
 function EditItemSupplierTransaction() {
   const { id: urlId } = useParams();
+  const navigate = useNavigate();
+
   const [id, setId] = useState(urlId);
   const [itemSupplierId, setItemSupplierId] = useState("");
   const [transactionType, setTransactionType] = useState("");
@@ -15,27 +17,37 @@ function EditItemSupplierTransaction() {
   const [isLoading, setIsLoading] = useState(false);
   const [itemSuppliers, setItemSuppliers] = useState([]);
 
-  const navigate = useNavigate();
+  // Function to get the token from local storage
+  const getToken = () => {
+    return localStorage.getItem("token");
+  };
 
-  // Fetch item suppliers and transaction data
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
+        const headersConfig = {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        };
+
         const itemSupplierResponse = await axios.get(
-          "https://localhost:7240/api/itemsupplier"
+          "https://localhost:7240/api/itemsupplier",
+          headersConfig
         );
         const transactionResponse = await axios.get(
-          `https://localhost:7240/api/itemsupplier_transaction/${id}`
+          `https://localhost:7240/api/itemsupplier_transaction/${urlId}`,
+          headersConfig
         );
         setItemSuppliers(itemSupplierResponse.data);
-        // Set data for the transaction
-        setId(transactionResponse.data.id);
-        setItemSupplierId(transactionResponse.data.itemSupplierId);
-        setTransactionType(transactionResponse.data.transactionType);
-        setTransactionDate(transactionResponse.data.transactionDate);
-        setQuantity(transactionResponse.data.quantity);
-        setNotes(transactionResponse.data.notes);
+        const transactionData = transactionResponse.data;
+        setId(transactionData.id);
+        setItemSupplierId(transactionData.itemSupplierId);
+        setTransactionType(transactionData.transactionType);
+        setTransactionDate(transactionData.transactionDate);
+        setQuantity(transactionData.quantity);
+        setNotes(transactionData.notes);
       } catch (error) {
         console.error(error);
         setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -44,7 +56,7 @@ function EditItemSupplierTransaction() {
       }
     };
     fetchData();
-  }, [id]);
+  }, [urlId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,12 +65,17 @@ function EditItemSupplierTransaction() {
       await axios.put(
         `https://localhost:7240/api/itemsupplier_transaction/${id}`,
         {
-          id: id,
-          itemSupplierId: itemSupplierId,
-          transactionType: transactionType,
-          transactionDate: transactionDate,
-          quantity: quantity,
-          notes: notes,
+          id,
+          itemSupplierId,
+          transactionType,
+          transactionDate,
+          quantity,
+          notes,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
         }
       );
       navigate("/item-supplier-transaction");
