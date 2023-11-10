@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public."itemdepartment" (
     "id" character varying(100),
     "categoryname" character varying(100),
-    "itemdepartmentparentid" character varying(10),
+    "itemdepartmentparentid" character varying(10) DEFAULT '0',
     "deleted" boolean DEFAULT false,
     "createdon" timestamp,
     "createdby" character varying(25),

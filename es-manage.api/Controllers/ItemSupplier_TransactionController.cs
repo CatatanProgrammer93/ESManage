@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace es_manage.api.Controllers {
     [ApiController]
+    [Authorize]
     [Route("api/itemsupplier_transaction")]
     public class ItemSupplier_TransactionController : ControllerBase {
         private readonly ItemSupplier_TransactionRepository _repository;

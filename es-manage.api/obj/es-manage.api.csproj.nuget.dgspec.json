@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
   },
   "projects": {
@@ -17,32 +16,13 @@
         "configFilePaths": [
           "C:\\Users\\jasir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-    "C:\\Users\\fauqi\\Projects\\esmanage\\es-manage.api\\es-manage.api.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\fauqi\\Projects\\esmanage\\es-manage.api\\es-manage.api.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\fauqi\\Projects\\esmanage\\es-manage.api\\es-manage.api.csproj",
-        "projectName": "es-manage.api",
-        "projectPath": "C:\\Users\\fauqi\\Projects\\esmanage\\es-manage.api\\es-manage.api.csproj",
-        "packagesPath": "C:\\Users\\fauqi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fauqi\\Projects\\esmanage\\es-manage.api\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\fauqi\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-<<<<<<< HEAD
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
-=======
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -105,24 +85,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.23, 6.0.23]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -131,11 +93,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
->>>>>>> cb57065303c7e018b6142c5577543932f41ec8b2
         }
       }
     }

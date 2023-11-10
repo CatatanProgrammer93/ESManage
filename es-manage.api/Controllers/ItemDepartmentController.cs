@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace es_manage.api.Controllers {
     [ApiController]
+    [Authorize]
     [Route("api/itemdepartment")]
     public class ItemDepartmentController : ControllerBase {
         private readonly ItemDepartmentRepository _repository;

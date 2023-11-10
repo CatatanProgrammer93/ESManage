@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS public."item" (
-    "id" character varying(15),
+    "id" character varying(100),
     "itemname" character varying(200),
     "categoryid" character varying(100),
     "categoryname" character varying(100),

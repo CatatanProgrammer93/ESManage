@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS public."role" (
-    "id" SERIAL PRIMARY KEY,
+    "id" VARCHAR(100) PRIMARY KEY,
     "rolename" VARCHAR(50) NOT NULL,
     "createdon" TIMESTAMP,
     "createdby" VARCHAR(25),
@@ -15,11 +15,11 @@ ALTER TABLE public."role" OWNER TO es;
 -- Jika sudah ada baris dengan "id" = 1, kita akan mengabaikannya.
 -- Asumsi di sini adalah bahwa "id" = 1 selalu milik "Administrator".
 INSERT INTO public."role" ("id", "rolename", "createdby", "createdon", "deleted")
-VALUES (1, 'Administrator', 'System', NOW(), FALSE)
+VALUES ('1', 'Administrator', 'System', NOW(), FALSE)
 ON CONFLICT ("id") DO NOTHING;
 
 -- Jika sudah ada peran dengan nama "Administrator" namun id berbeda, ubah nama tersebut.
-UPDATE public."role" SET "rolename" = 'OldRole' WHERE "rolename" = 'Administrator' AND "id" <> 1;
+UPDATE public."role" SET "rolename" = 'OldRole' WHERE "rolename" = 'Administrator' AND "id" <> '1';
 
 -- Membuat fungsi trigger untuk mencegah penghapusan atau pengeditan baris dengan "rolename" 'Administrator'
 CREATE OR REPLACE FUNCTION prevent_administrator_alteration()
@@ -39,3 +39,7 @@ CREATE TRIGGER trigger_prevent_administrator_alteration
 BEFORE DELETE OR UPDATE OF "rolename" ON public."role"
 FOR EACH ROW WHEN (OLD."rolename" = 'Administrator')
 EXECUTE FUNCTION prevent_administrator_alteration();
+
+INSERT INTO public."role" ("id", "rolename", "createdby", "createdon", "deleted")
+VALUES ('2', 'User', 'System', NOW(), FALSE)
+ON CONFLICT ("id") DO NOTHING;
