@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace es_manage.api.Controllers {
     [Route("api/item")]
+    [Authorize]
     [ApiController]
     public class ItemController : ControllerBase
     {

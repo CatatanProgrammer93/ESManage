@@ -57,33 +57,6 @@ namespace es_manage.api.Repositories {
             }
         }
 
-        /*
-        // Membuat metode Create untuk menambahkan data user
-        public async Task<UserMst> Create(UserMst user)
-        {
-            try
-            {
-                // Cek apakah username sudah diambil
-                var existingUser = await _db.QueryFirstOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND DeletedAt IS NULL", new { user.UserName });
-                if (existingUser != null) {
-                    throw new InvalidOperationException("Username sudah diambil. Gunakan username lain.");
-                }
-
-                user.ID = Guid.NewGuid();
-                user.CreatedOn = DateTime.UtcNow;
-                var sql = @"INSERT INTO UserMst (ID, UserName, DisplayName, Password, RoleID, CreatedOn, CreatedBy)
-                            VALUES (@ID, @UserName, @DisplayName, @Password, @RoleID, @CreatedOn, @CreatedBy)
-                            RETURNING *";
-                return await _db.QuerySingleAsync<UserMst>(sql, user);
-            }
-            catch (Exception ex)
-            {
-                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
-                var pesanError = "Kesalahan saat menambahkan user, " + ex.Message;
-                throw new Exception(pesanError, ex);
-            }
-        }
-        */
         public async Task<UserMst> Create(UserMst user)
         {
             try

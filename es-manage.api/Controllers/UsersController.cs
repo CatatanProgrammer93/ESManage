@@ -12,6 +12,7 @@ using es_manage.api.Models;
 namespace es_manage.api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/users")]
 // Membuat class UsersController yang mewarisi ControllerBase
 public class UsersController : ControllerBase
@@ -27,7 +28,6 @@ public class UsersController : ControllerBase
 
     // Membuat metode GetAll untuk mengambil semua data user
     [HttpGet]
-    [Authorize]
     public async Task<IActionResult> GetAll() {
         try {
             var users = await _repository.GetAll();

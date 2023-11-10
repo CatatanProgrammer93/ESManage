@@ -42,7 +42,7 @@ namespace es_manage.api.Services {
 
             // Membuat token JWT
             // Menggunakan library Microsoft.IdentityModel.Tokens
-            // Menggunakan algoritma HmacSha256
+            // Menggunakan algoritma HmacSha512
             // Menggunakan private key JWT
             // Set waktu expired 1 hari
             // Menggunakan issuer dan audience dari appsettings.json

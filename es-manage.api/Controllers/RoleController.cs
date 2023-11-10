@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Threading.Tasks;
 using es_manage.api.Utilities;
@@ -8,6 +9,7 @@ using es_manage.api.Models;
 namespace es_manage.api.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/role")]
     public class RoleController : ControllerBase
     {

@@ -1946,12 +1946,20 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\jasir\\.nuget\\packages\\": {}
+=======
     "C:\\Users\\Fonda\\.nuget\\packages\\": {}
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\es-manage.api.csproj",
+=======
       "projectUniqueName": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
       "projectName": "es-manage.api",
       "projectPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
       "packagesPath": "C:\\Users\\Fonda\\.nuget\\packages\\",
@@ -1966,6 +1974,10 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+=======
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2036,7 +2048,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
       }
     }
   },
@@ -2045,7 +2061,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+      "message": "Problem reading the cache file D:\\Coding\\PKL Kano\\Tugas\\ESManage\\es-manage.api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
       "message": "Problem reading the cache file D:\\Mapel\\Magang\\ESManage\\es-manage.api\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 80cdacbfdc1348521e8546c3c96b4f24b0559bb8
     }
   ]
 }
