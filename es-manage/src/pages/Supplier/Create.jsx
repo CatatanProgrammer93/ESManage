@@ -64,10 +64,10 @@ function CreateSupplier() {
               />
             </div>
             <div className="mb-3">
-              <input type="submit" value="Save" className="btn btn-primary" />
+              <input type="submit" value="Save" className="btn btn-green" />
             </div>
             <div className="mb-3">
-              <Link to="/supplier" className="btn btn-primary">
+              <Link to="/supplier" className="btn btn-red">
                 Cancel
               </Link>
             </div>
