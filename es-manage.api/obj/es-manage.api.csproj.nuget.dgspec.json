@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
+    "D:\\ESManage\\es-manage.api\\es-manage.api.csproj": {}
   },
   "projects": {
-    "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj": {
+    "D:\\ESManage\\es-manage.api\\es-manage.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "projectUniqueName": "D:\\ESManage\\es-manage.api\\es-manage.api.csproj",
         "projectName": "es-manage.api",
-        "projectPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
-        "packagesPath": "C:\\Users\\Fonda\\.nuget\\packages\\",
-        "outputPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\obj\\",
+        "projectPath": "D:\\ESManage\\es-manage.api\\es-manage.api.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\ESManage\\es-manage.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fonda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
