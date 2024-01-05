@@ -95,13 +95,15 @@ function EditSupplier() {
                 onChange={(e) => setSupplierName(e.target.value)}
               />
             </div>
-            <div className="mb-3">
-              <input type="submit" value="Save" className="btn btn-green" />
-            </div>
-            <div className="mb-3">
-              <Link to="/supplier" className="btn btn-red">
-                Cancel
-              </Link>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <div className="mb-3">
+                <input type="submit" value="Save" className="btn btn-green" />
+              </div>
+              <div className="mb-3">
+                <Link to="/item" className="btn btn-red">
+                  Cancel
+                </Link>
+              </div>
             </div>
           </form>
           {error && (
