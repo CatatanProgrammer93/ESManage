@@ -40,7 +40,7 @@ function EditSupplier() {
 
   useEffect(() => {
     fetchData();
-  }, [id, supplierName]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
