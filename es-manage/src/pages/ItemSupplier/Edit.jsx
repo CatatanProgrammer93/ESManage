@@ -61,7 +61,7 @@ function EditItemSupplier() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.put(
+      const response = await axios.put(
         `https://localhost:7240/api/itemsupplier/${id}`,
         { id, itemId, supplierId, createdBy },
         {
@@ -69,7 +69,7 @@ function EditItemSupplier() {
             Authorization: `Bearer ${getToken()}`, // Include the token from local storage
           },
         }
-      );
+        );
       navigate("/item-supplier");
     } catch (error) {
       console.error(error);
@@ -103,7 +103,6 @@ function EditItemSupplier() {
                 className="form-select"
                 value={itemId}
                 onChange={(e) => setItemId(e.target.value)}
-                disabled
               >
                 <option value="">Select an item</option>
                 {items.map((item) => (
@@ -121,7 +120,6 @@ function EditItemSupplier() {
                 className="form-select"
                 value={supplierId}
                 onChange={(e) => setSupplierId(e.target.value)}
-                disabled
               >
                 <option value="">Select a supplier</option>
                 {suppliers.map((supplier) => (

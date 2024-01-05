@@ -44,8 +44,9 @@ function EditItemSupplierTransaction() {
         const transactionData = transactionResponse.data;
         setId(transactionData.id);
         setItemSupplierId(transactionData.itemSupplierId);
-        setTransactionType(transactionData.transactionType);
-        setTransactionDate(transactionData.transactionDate);
+          setTransactionType(transactionData.transactionType);
+          const formattedDate = new Date(transactionData.transactionDate).toISOString().split('T')[0];
+          setTransactionDate(formattedDate);
         setQuantity(transactionData.quantity);
         setNotes(transactionData.notes);
       } catch (error) {
