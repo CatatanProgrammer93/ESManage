@@ -40,7 +40,7 @@ namespace es_manage.api.Repositories {
         }
 
         // Metode GetById untuk mendapatkan data department berdasarkan ID
-        public async Task<IEnumerable<ItemDepartmentModel>> GetById(string id)
+        public async Task<ItemDepartmentModel> GetById(string id)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace es_manage.api.Repositories {
                 //  Entry yang dihapus (soft-delete) tetap diambil
                 var sql = @"SELECT * FROM ItemDepartment WHERE Id = @Id";
                 // var sql = @"SELECT * FROM ItemDepartment WHERE Id = @Id AND Deleted = false";
-                return await _db.QueryAsync<ItemDepartmentModel>(sql, new { Id = id });
+                return await _db.QuerySingleOrDefaultAsync<ItemDepartmentModel>(sql, new { Id = id });
             }
             catch (Exception ex)
             {

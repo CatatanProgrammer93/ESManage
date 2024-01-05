@@ -179,6 +179,8 @@ namespace es_manage.api.Repositories {
 
                     model.ModifiedOn = DateTime.UtcNow;
                     var updateSql = @"UPDATE ItemSupplier SET 
+                        ItemId = @ItemId,
+                        SupplierId = @SupplierId,
                         CreatedBy = @CreatedBy,
                         ModifiedOn = @ModifiedOn, 
                         ModifiedBy = @ModifiedBy, 
