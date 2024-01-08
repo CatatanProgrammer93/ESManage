@@ -36,7 +36,7 @@ function ShowItemDepartment() {
 
   return (
     <AppLayout>
-      <h2 className="page-title">Item Department</h2>
+        <h2 className="page-title">Category</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
@@ -52,7 +52,7 @@ function ShowItemDepartment() {
                     <tr>
                       <th>ID</th>
                       <th>Category Name</th>
-                      <th>Parent ID</th>
+                    <th>Item Department</th>
                       <th>Action</th>
                       <th className="w-1"></th>
                     </tr>
@@ -62,7 +62,7 @@ function ShowItemDepartment() {
                       <tr key={department.id}>
                         <td>{department.id}</td>
                         <td>{department.categoryName}</td>
-                        <td>{department.itemDepartmentParentId}</td>
+                        <td>{departments.find(dep => dep.id === department.itemDepartmentParentId)?.categoryName || 'N/A'}</td>
                         <td>
                           <Link
                             to={`/item-department/edit/${department.id}/${department.categoryName}`}
