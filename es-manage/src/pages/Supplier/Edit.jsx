@@ -100,7 +100,7 @@ function EditSupplier() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/item" className="btn btn-red">
+                    <Link to="/supplier" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>

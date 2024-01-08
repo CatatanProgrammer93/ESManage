@@ -33,7 +33,8 @@ function EditItemDepartment() {
       );
       setId(response.data.id);
       setCategoryName(response.data.categoryName);
-      setItemDepartmentParentId(response.data.itemDepartmentParentId);
+        setItemDepartmentParentId(response.data.itemDepartmentParentId);
+        setTempItemDepartmentParentId(response.data.itemDepartmentParentId);
     } catch (error) {
       console.error(error);
     } finally {
@@ -156,7 +157,7 @@ function EditItemDepartment() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/item" className="btn btn-red">
+                    <Link to="/item-department" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>

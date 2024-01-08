@@ -23,14 +23,15 @@ function EditBrand() {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/brand/${id}`,
+        `https://localhost:7240/api/brand/id/${id}`,
         {
           headers: {
             Authorization: `Bearer ${getToken()}`, // Include the token from local storage
           },
         }
       );
-      setBrand(response.data); // Update the state with the received data
+        setBrand(response.data); // Update the state with the received data
+        console.log(response.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -40,7 +41,7 @@ function EditBrand() {
 
   useEffect(() => {
     fetchData();
-  }, [id]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,7 +100,7 @@ function EditBrand() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/item" className="btn btn-red">
+                    <Link to="/brand" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>

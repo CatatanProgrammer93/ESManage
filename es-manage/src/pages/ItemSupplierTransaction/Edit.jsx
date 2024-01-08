@@ -47,7 +47,6 @@ function EditItemSupplierTransaction() {
         setTransactionType(transactionData.transactionType);
         const formattedDate = new Date(transactionData.transactionDate).toISOString().split('T')[0];
         setTransactionDate(formattedDate);
-        setTransactionDate(transactionData.transactionDate);
         setQuantity(transactionData.quantity);
         setNotes(transactionData.notes);
       } catch (error) {
@@ -172,7 +171,7 @@ function EditItemSupplierTransaction() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/item" className="btn btn-red">
+                    <Link to="/item-supplier-transaction" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>
