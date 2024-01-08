@@ -225,13 +225,15 @@ function CreateItemSupplierTransaction() {
                 ></textarea>
               </div>
             </div>
-            <div className="mb-3">
-              <input type="submit" value="Save" className="btn btn-primary" />
-            </div>
-            <div className="mb-3">
-              <Link to="/item-supplier-transaction" className="btn btn-primary">
-                Cancel
-              </Link>
+            <div style={{ display: 'flex', gap: '10px' }}>
+                <div className="mb-3">
+                    <input type="submit" value="Save" className="btn btn-green" />
+                </div>
+                <div className="mb-3">
+                    <Link to="/item" className="btn btn-red">
+                        Cancel
+                    </Link>
+                </div>
             </div>
           </form>
           {error && (
