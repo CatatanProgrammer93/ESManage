@@ -61,7 +61,7 @@ function EditItemSupplier() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.put(
+      await axios.put(
         `https://localhost:7240/api/itemsupplier/${id}`,
         { id, itemId, supplierId, createdBy },
         {
@@ -69,7 +69,7 @@ function EditItemSupplier() {
             Authorization: `Bearer ${getToken()}`, // Include the token from local storage
           },
         }
-        );
+      );
       navigate("/item-supplier");
     } catch (error) {
       console.error(error);
@@ -103,6 +103,7 @@ function EditItemSupplier() {
                 className="form-select"
                 value={itemId}
                 onChange={(e) => setItemId(e.target.value)}
+                disabled
               >
                 <option value="">Select an item</option>
                 {items.map((item) => (
@@ -120,6 +121,7 @@ function EditItemSupplier() {
                 className="form-select"
                 value={supplierId}
                 onChange={(e) => setSupplierId(e.target.value)}
+                disabled
               >
                 <option value="">Select a supplier</option>
                 {suppliers.map((supplier) => (
@@ -130,6 +132,7 @@ function EditItemSupplier() {
               </select>
             </div>
             <div style={{ display: 'flex', gap: '10px' }}>
+<<<<<<< HEAD
                 <div className="mb-3">
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
@@ -138,6 +141,16 @@ function EditItemSupplier() {
                         Cancel
                     </Link>
                 </div>
+=======
+              <div className="mb-3">
+                <input type="submit" value="Save" className="btn btn-green" />
+              </div>
+              <div className="mb-3">
+                <Link to="/item" className="btn btn-red">
+                  Cancel
+                </Link>
+              </div>
+>>>>>>> 0c2698a0060d08534054fa735be98e673df081d2
             </div>
           </form>
           {error && (

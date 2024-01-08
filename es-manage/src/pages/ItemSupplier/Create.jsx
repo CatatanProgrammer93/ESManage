@@ -107,6 +107,7 @@ function CreateItemSupplier() {
               </select>
             </div>
             <div style={{ display: 'flex', gap: '10px' }}>
+<<<<<<< HEAD
                 <div className="mb-3">
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
@@ -115,6 +116,17 @@ function CreateItemSupplier() {
                         Cancel
                     </Link>
                 </div>
+=======
+              <div className="mb-3">
+                <input type="submit" value="Save" className="btn btn-green" />
+              </div>
+              <div className="mb-3">
+                <Link to="/item" className="btn btn-red">
+                  Cancel
+                </Link>
+              </div>
+            </div>
+>>>>>>> 0c2698a0060d08534054fa735be98e673df081d2
           </form>
           {error && (
             <div className="alert alert-danger" role="alert">
