@@ -10,7 +10,9 @@ function EditItemDepartment() {
   const [itemDepartmentParentId, setItemDepartmentParentId] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [parent, setParent] = useState(true);
+    const [parent, setParent] = useState(true);
+    const [departments, setDepartments] = useState([]);
+    const [tempItemDepartmentParentId, setTempItemDepartmentParentId] = useState("");
 
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ function EditItemDepartment() {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/itemdepartment/${id}/${categoryName}`,
+          `https://localhost:7240/api/itemdepartment/id/${id}`,
         {
           headers: {
             Authorization: `Bearer ${getToken()}`, // Include the token from local storage
@@ -31,7 +33,8 @@ function EditItemDepartment() {
       );
       setId(response.data.id);
       setCategoryName(response.data.categoryName);
-      setItemDepartmentParentId(response.data.itemDepartmentParentId);
+        setItemDepartmentParentId(response.data.itemDepartmentParentId);
+        setTempItemDepartmentParentId(response.data.itemDepartmentParentId);
     } catch (error) {
       console.error(error);
     } finally {
@@ -41,14 +44,14 @@ function EditItemDepartment() {
 
   useEffect(() => {
     fetchData();
-  }, [id, categoryName]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const effectiveItemDepartmentParentId = parent
       ? "0"
-      : itemDepartmentParentId;
+      : tempItemDepartmentParentId;
 
     try {
       const response = await axios.put(
@@ -72,7 +75,25 @@ function EditItemDepartment() {
     } finally {
       setIsLoading(false);
     }
-  };
+    };
+
+    useEffect(() => {
+        if (itemDepartmentParentId !== "") {
+            setParent(itemDepartmentParentId === "0");
+        }
+    }, [itemDepartmentParentId]);
+
+    useEffect(() => {
+        // Fetch Item Departments
+        fetch("https://localhost:7240/api/itemdepartment", {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${getToken()}`, // Use the token from local storage
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => setDepartments(data));
+    }, []);
 
   return (
     <AppLayout>
@@ -114,25 +135,32 @@ function EditItemDepartment() {
               </label>
             </div>
             <div className="mb-3">
-              <label className="form-label">Item Department Parent ID</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter the item department parent ID"
-                value={itemDepartmentParentId}
-                onChange={(e) => setItemDepartmentParentId(e.target.value)}
-                disabled={parent}
-              />
+              <label className="form-label">Item Department</label>
+                <select
+                    className="form-select"
+                    value={tempItemDepartmentParentId}
+                    onChange={(e) => setTempItemDepartmentParentId(e.target.value)}
+                    disabled={parent}
+                >
+                    <option value="">Enter the item department</option>
+                    {departments
+                        .filter(item => item.itemDepartmentParentId == 0 && item.id !== id)
+                        .map(item => (
+                            <option key={item.id} value={item.id}>
+                                {item.categoryName}
+                            </option>
+                        ))}
+                </select>
             </div>
             <div style={{ display: 'flex', gap: '10px' }}>
-              <div className="mb-3">
-                <input type="submit" value="Save" className="btn btn-green" />
-              </div>
-              <div className="mb-3">
-                <Link to="/item" className="btn btn-red">
-                  Cancel
-                </Link>
-              </div>
+                <div className="mb-3">
+                    <input type="submit" value="Save" className="btn btn-green" />
+                </div>
+                <div className="mb-3">
+                    <Link to="/item-department" className="btn btn-red">
+                        Cancel
+                    </Link>
+                </div>
             </div>
           </form>
           {error && (

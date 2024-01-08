@@ -45,7 +45,8 @@ function EditItemSupplierTransaction() {
         setId(transactionData.id);
         setItemSupplierId(transactionData.itemSupplierId);
         setTransactionType(transactionData.transactionType);
-        setTransactionDate(transactionData.transactionDate);
+        const formattedDate = new Date(transactionData.transactionDate).toISOString().split('T')[0];
+        setTransactionDate(formattedDate);
         setQuantity(transactionData.quantity);
         setNotes(transactionData.notes);
       } catch (error) {
@@ -166,14 +167,14 @@ function EditItemSupplierTransaction() {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '10px' }}>
-              <div className="mb-3">
-                <input type="submit" value="Save" className="btn btn-green" />
-              </div>
-              <div className="mb-3">
-                <Link to="/item" className="btn btn-red">
-                  Cancel
-                </Link>
-              </div>
+                <div className="mb-3">
+                    <input type="submit" value="Save" className="btn btn-green" />
+                </div>
+                <div className="mb-3">
+                    <Link to="/item-supplier-transaction" className="btn btn-red">
+                        Cancel
+                    </Link>
+                </div>
             </div>
           </form>
           {error && (
