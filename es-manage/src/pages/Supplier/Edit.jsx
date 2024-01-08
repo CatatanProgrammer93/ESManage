@@ -4,9 +4,9 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
 
 function EditSupplier() {
-  const { id: urlId, supplierName : urlSupplierName} = useParams();
+  const { id: urlId } = useParams();
   const [id, setId] = useState(urlId);
-  const [supplierName, setSupplierName] = useState(urlSupplierName);
+  const [supplierName, setSupplierName] = useState("");
   const [createdBy, setCreatedBy] = useState(""); // Assuming you need this field
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ function EditSupplier() {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://localhost:7240/api/supplier/id/${id}`,
+        `https://localhost:7240/api/supplier/${id}`,
         {
           headers: {
             Authorization: `Bearer ${getToken()}`, // Include the token from local storage
@@ -40,7 +40,7 @@ function EditSupplier() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +59,6 @@ function EditSupplier() {
           },
         }
       );
-      
       navigate("/supplier");
     } catch (error) {
       console.error(error);
@@ -96,13 +95,15 @@ function EditSupplier() {
                 onChange={(e) => setSupplierName(e.target.value)}
               />
             </div>
-            <div className="mb-3">
-              <input type="submit" value="Save" className="btn btn-primary" />
-            </div>
-            <div className="mb-3">
-              <Link to="/supplier" className="btn btn-primary">
-                Cancel
-              </Link>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <div className="mb-3">
+                <input type="submit" value="Save" className="btn btn-green" />
+              </div>
+              <div className="mb-3">
+                <Link to="/item" className="btn btn-red">
+                  Cancel
+                </Link>
+              </div>
             </div>
           </form>
           {error && (
