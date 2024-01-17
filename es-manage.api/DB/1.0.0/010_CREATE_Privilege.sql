@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS public.privilege
         REFERENCES public.menu (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
-ALTER TABLE IF EXISTS public.privilege
+ALTER TABLE IF EXISTS public."privilege"
     OWNER to es;
 
 INSERT INTO public."privilege" ("id", "privilegename", "privilegetype", "createdon", "createdby", "deleted", "menuid")
