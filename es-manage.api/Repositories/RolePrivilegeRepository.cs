@@ -112,13 +112,7 @@ namespace es_manage.api.Repositories
                 else
                 {
                     // Cek apakah item dengan ID tersebut sudah dihapus (soft-delete)
-                    var deletedItem = await _db.QueryFirstOrDefaultAsync<RolePrivilegeModel>(
-                        "SELECT * FROM RolePrivilege WHERE Id = @Id AND Deleted != TRUE", roleprivilege);
-
-                    if (deletedItem == null)
-                    {
-                        throw new Exception("RolePrivilege tidak ditemukan.");
-                    }
+                    
 
                     // Syntax SQL untuk mengubah data privilege
                     var updateSql = @"UPDATE RolePrivilege 
