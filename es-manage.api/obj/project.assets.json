@@ -1946,11 +1946,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Fonda\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
+>>>>>>> 040ce9e17fa8f6936bd410d690f998f466493d76
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
       "projectName": "es-manage.api",
       "projectPath": "D:\\Mapel\\Magang\\ESManage\\es-manage.api\\es-manage.api.csproj",
@@ -1959,6 +1964,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fonda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\PC\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "projectName": "es-manage.api",
+      "projectPath": "C:\\Users\\PC\\OneDrive\\Documents\\ESManage\\es-manage.api\\es-manage.api.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC\\OneDrive\\Documents\\ESManage\\es-manage.api\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 040ce9e17fa8f6936bd410d690f998f466493d76
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
