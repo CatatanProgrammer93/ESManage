@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS public.menu
     createdby character varying(25) COLLATE pg_catalog."default",
     deleted boolean,
     CONSTRAINT menu_pkey PRIMARY KEY (id)
-)
+);
 
 ALTER TABLE IF EXISTS public.menu
     OWNER to es;
