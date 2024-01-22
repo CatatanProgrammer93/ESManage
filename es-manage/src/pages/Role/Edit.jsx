@@ -113,6 +113,7 @@ function EditRole() {
             createdBy: "",
             deleted: false
           };
+          console.log(checkedPrivilege);
         
           const existingRolePrivilege = rolePrivileges.find(
             (rp) =>
@@ -124,21 +125,32 @@ function EditRole() {
         
           if (checkedPrivilege.checked) {
             // If checked, create or update the role privilege
-            if (exists) {
-               
-            } else {
-              // If not exists, create a new role privilege
-              console.log(rolePrivilegeData);
-              await axios.post(
-                'https://localhost:7240/api/roleprivilege',
-                rolePrivilegeData,
-                {
-                  headers: {
-                    Authorization: `Bearer ${getToken()}`,
-                  },
-                }
-              );
-            }
+              if (!exists) {
+                  // If not exists, create a new role privilege
+                  console.log(rolePrivilegeData);
+                  await axios.post(
+                      'https://localhost:7240/api/roleprivilege',
+                      rolePrivilegeData,
+                      {
+                          headers: {
+                              Authorization: `Bearer ${getToken()}`,
+                          },
+                      }
+                  );
+              }
+              else {
+                  const roleIdToDelete = existingRolePrivilege.id;
+                  const updatedRolePrivilege = { ...existingRolePrivilege, deleted: false };
+                  await axios.put(
+                      `https://localhost:7240/api/roleprivilege/${roleIdToDelete}`,
+                      updatedRolePrivilege,
+                      {
+                          headers: {
+                              Authorization: `Bearer ${getToken()}`,
+                          },
+                      }
+                  );
+              }
           } else {
             // If unchecked, "soft delete" the role privilege by updating the 'deleted' field
             if (exists) {
@@ -161,7 +173,7 @@ function EditRole() {
   
 
       // Redirect to the desired page after successfully updating
-      navigate("/dashboard"); // Update this with the correct path
+        navigate("/dashboard"); // Update this with the correct path
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -175,11 +187,11 @@ function EditRole() {
     const initialCheckedPrivileges = privilege.map((item) => ({
       roleId: id,
       privilegeId: item.id,
-      checked: rolePrivileges.some((rp) => rp.privilegeId === item.id),
+      checked: rolePrivileges.some((rp) => rp.privilegeId === item.id && rp.deleted == false),
     }));
 
     setCheckedPrivileges(initialCheckedPrivileges);
-  }, [privilege, id]);
+  }, [privilege]);
 
 
   return (
@@ -217,7 +229,7 @@ function EditRole() {
             
             <div className="checkbox-container" style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
          {privilege.map((item) =>  (
-            <div className="mb-3" style={{ flexBasis: '50%', boxSizing: 'border-box' }}>
+             <div key={ item.id} className="mb-3" style={{ flexBasis: '50%', boxSizing: 'border-box' }}>
                 <input type = "checkbox" 
                   onChange={(e) => {
                     const isChecked = e.target.checked;

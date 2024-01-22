@@ -84,7 +84,7 @@ namespace es_manage.api.Repositories
                 // Jika tidak ada privilege dengan nama yang sama, maka buat privilege baru
                 roleprivilege.CreatedOn = DateTime.Now;
 
-                var maxIDSql = @"SELECT COALESCE(MAX(CAST(id AS INTEGER)), 0) FROM Privilege";
+                var maxIDSql = @"SELECT COALESCE(MAX(CAST(id AS INTEGER)), 0) FROM RolePrivilege";
                 var maxID = await _db.QuerySingleAsync<int>(maxIDSql);
                 roleprivilege.ID = (maxID + 1).ToString();
 

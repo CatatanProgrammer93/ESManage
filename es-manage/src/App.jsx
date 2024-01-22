@@ -26,6 +26,7 @@ import ShowItemSupplierTransaction from "./pages/ItemSupplierTransaction/Show";
 import CreateItemSupplierTransaction from "./pages/ItemSupplierTransaction/Create";
 import EditItemSupplierTransaction from "./pages/ItemSupplierTransaction/Edit";
 import EditRole from "./pages/Role/Edit";
+import CreateRole from "./pages/Role/Create";
 
 // The RedirectToLogin component
 function RedirectToLogin() {
@@ -86,6 +87,7 @@ function App() {
             element={<EditItemSupplierTransaction />}
           />
           <Route path="/role/edit/:id" element={<EditRole />} />
+          <Route path="/role/create/" element={ <CreateRole/>} />
           <Route path="*" element={<RedirectToLogin />} />
         </Routes>
       </div>
