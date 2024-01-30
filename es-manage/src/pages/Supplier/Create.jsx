@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateSupplier() {
   const [id, setId] = useState("");
@@ -16,6 +17,7 @@ function CreateSupplier() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +48,12 @@ function CreateSupplier() {
       setIsLoading(false);
     }
   };
+
+    useEffect(() => {
+        if (!decodedToken["Create Supplier"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>

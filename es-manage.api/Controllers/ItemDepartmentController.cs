@@ -24,6 +24,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode GET untuk mendapatkan semua data department
+        [Authorize(Policy = "Show Category")]
         [HttpGet]
         public async Task<IActionResult> GetAll() {
             try {
@@ -38,6 +39,7 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data department berdasarkan ID
         // Format pemanggilan: GET /api/itemdepartment/id/{id}
         // Contoh pemanggilan: GET /api/itemdepartment/id/1
+        [Authorize(Policy = "Show Category")]
         [HttpGet("id/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
@@ -59,6 +61,7 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data department berdasarkan CategoryName
         // Format pemanggilan: GET /api/itemdepartment/category/{categoryName}
         // Contoh pemanggilan: GET /api/itemdepartment/category/Komputer
+        [Authorize(Policy = "Show Category")]
         [HttpGet("category/{categoryName}")]
         public async Task<IActionResult> GetByCategoryName(string categoryName)
         {
@@ -79,6 +82,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode POST untuk menambahkan data department
+        [Authorize(Policy = "Create Category")]
         [HttpPost]
         public async Task<IActionResult> Create(ItemDepartmentModel department)
         {
@@ -118,7 +122,7 @@ namespace es_manage.api.Controllers {
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }*/
-
+        [Authorize(Policy = "Edit Category")]
         [HttpPut("{id}/{categoryName}")]
         public async Task<IActionResult> Update(string id, string categoryName, [FromBody] ItemDepartmentModel department)
         {
@@ -151,6 +155,7 @@ namespace es_manage.api.Controllers {
         // Metode DELETE untuk menghapus data department
         // Format pemanggilan: DELETE /api/itemdepartment/{id}/{categoryName}
         // Contoh pemanggilan: DELETE /api/itemdepartment/1/Department
+        [Authorize(Policy = "Delete Category")]
         [HttpDelete("{id}/{categoryName}")]
         public async Task<IActionResult> Delete(string id, string categoryName)
         {

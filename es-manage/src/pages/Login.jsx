@@ -32,18 +32,18 @@ function Login() {
 
       // Destructure the necessary data from the response
       const { accessToken } = response.data.token;
-      const { userName: responseUserName, displayName } = response.data.user;
+      const { userName: responseUserName, displayName, roleID } = response.data.user;
 
       // Store the retrieved information in localStorage
       localStorage.setItem("token", accessToken);
       localStorage.setItem(
         "user",
-        JSON.stringify({ userName: responseUserName, displayName })
+        JSON.stringify({ userName: responseUserName, displayName, roleID })
       );
 
       // Navigate to the dashboard with state
       navigate("/dashboard", {
-        state: { userName: responseUserName, displayName },
+        state: { userName: responseUserName, displayName, roleID },
       });
     } catch (error) {
       console.error(error);

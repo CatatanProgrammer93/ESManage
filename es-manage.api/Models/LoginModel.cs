@@ -21,6 +21,7 @@ namespace es_manage.api.Models {
     public class UserDetail {
         public string UserName { get; set; }
         public string DisplayName { get; set; }
+        public string RoleId { get; set; }
     }
 
     // Membuat class TokenInfo untuk menampung token

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateUser() {
   const [username, setUsername] = useState("");
@@ -19,6 +20,7 @@ function CreateUser() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +49,7 @@ function CreateUser() {
       };
       let response = await axios(axiosConfig);
       console.log(response.data);
-      navigate("/dashboard");
+      navigate("/user");
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -65,6 +67,12 @@ function CreateUser() {
       .then((res) => res.json())
       .then((data) => setRoles(data));
   }, []);
+
+    useEffect(() => {
+        if (!decodedToken["Create User"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function EditItemSupplier() {
   const { id: urlId } = useParams();
@@ -20,6 +21,7 @@ function EditItemSupplier() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,6 +80,12 @@ function EditItemSupplier() {
       setIsLoading(false);
     }
   };
+
+    useEffect(() => {
+        if (!decodedToken["Edit Item Supplier"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>

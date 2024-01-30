@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function EditUser() {
   const { id: urlId } = useParams();
@@ -20,6 +21,7 @@ function EditUser() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -93,7 +95,7 @@ function EditUser() {
         setIsLoading(false);
         return;
       }
-      navigate("/dashboard");
+      navigate("/user");
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -101,6 +103,12 @@ function EditUser() {
       setIsLoading(false);
     }
   };
+
+    useEffect(() => {
+        if (!decodedToken["Edit User"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>

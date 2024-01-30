@@ -24,6 +24,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode GET untuk mendapatkan semua data brand
+        [Authorize(Policy = "Show Brand")]
         [HttpGet]
         public async Task<IActionResult> GetAll() {
             try {
@@ -39,6 +40,7 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data brand berdasarkan ID
         // Format pemanggilan: GET /api/brand/id/{id}
         // Contoh pemanggilan: GET /api/brand/id/1
+        [Authorize(Policy = "Show Brand")]
         [HttpGet("id/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
@@ -61,6 +63,7 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data brand berdasarkan Name
         // Format pemanggilan: GET /api/brand/name/{name}
         // Contoh pemanggilan: GET /api/brand/name/Brand 1
+        [Authorize(Policy = "Show Brand")]
         [HttpGet("name/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
@@ -80,6 +83,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode POST untuk menambahkan data brand
+        [Authorize(Policy = "Create Brand")]
         [HttpPost]
         public async Task<IActionResult> Create(BrandModel brand)
         {
@@ -95,6 +99,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode PUT untuk mengubah data brand
+        [Authorize(Policy = "Edit Brand")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] BrandModel brand)
         {
@@ -110,6 +115,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode DELETE untuk menghapus data brand
+        [Authorize(Policy = "Delete Brand")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

@@ -603,7 +603,6 @@ D:\ESManage\es-manage.api\obj\Debug\net6.0\refint\es-manage.api.dll
 D:\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.pdb
 D:\ESManage\es-manage.api\obj\Debug\net6.0\es-manage.api.genruntimeconfig.cache
 D:\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-manage.api.dll
-<<<<<<< HEAD
 C:\Users\PC\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\PC\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\appsettings.json
 C:\Users\PC\OneDrive\Documents\ESManage\es-manage.api\bin\Debug\net6.0\es-manage.api.exe
@@ -671,5 +670,4 @@ C:\Users\PC\OneDrive\Documents\ESManage\es-manage.api\obj\Debug\net6.0\ref\es-ma
 D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\009_CREATE_Menu.sql
 D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\010_CREATE_Privilege.sql
 D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\011_CREATE_RolePrivilege.sql
-=======
 >>>>>>> origin/dev.yeyen

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateItemDepartment() {
   const [id, setId] = useState("");
@@ -17,6 +18,7 @@ function CreateItemDepartment() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,6 +68,11 @@ function CreateItemDepartment() {
             .then((data) => setDepartments(data));
     }, []);
 
+    useEffect(() => {
+        if (!decodedToken["Create Category"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateRole() { // Extracting the 'id' parameter
     const navigate = useNavigate(); // Create an instance of useNavigate
@@ -16,6 +17,7 @@ function CreateRole() { // Extracting the 'id' parameter
     const getToken = () => {
         return localStorage.getItem("token");
     };
+    const decodedToken = jwtDecode(getToken());
 
     const fetchPrivilege = async () => {
         setIsLoading(true);
@@ -83,7 +85,7 @@ function CreateRole() { // Extracting the 'id' parameter
             }
 
             // Redirect to the desired page after successfully updating
-            navigate("/dashboard"); // Update this with the correct path
+            navigate("/role"); // Update this with the correct path
         } catch (error) {
             console.error(error);
             setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -101,6 +103,12 @@ function CreateRole() { // Extracting the 'id' parameter
 
         setCheckedPrivileges(initialCheckedPrivileges);
     }, [privilege]);
+
+    useEffect(() => {
+        if (!decodedToken["Create Role"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
     return (
         <AppLayout>
@@ -150,7 +158,7 @@ function CreateRole() { // Extracting the 'id' parameter
                                 <input type="submit" value="Save" className="btn btn-green" />
                             </div>
                             <div className="mb-3">
-                                <Link to="/brand" className="btn btn-red">
+                                <Link to="/role" className="btn btn-red">
                                     Cancel
                                 </Link>
                             </div>

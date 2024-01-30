@@ -25,6 +25,7 @@ namespace es_manage.api.Controllers {
         }
 
         // GET: api/item
+        [Authorize(Policy = "Show Item")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ItemModel>>> GetItems()
         {
@@ -38,6 +39,7 @@ namespace es_manage.api.Controllers {
         }
 
         // GET: api/item/{id}
+        [Authorize(Policy = "Show Item")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemModel>> GetById(string id)
         {
@@ -53,6 +55,7 @@ namespace es_manage.api.Controllers {
         }
 
         // POST: api/item
+        [Authorize(Policy = "Create Item")]
         [HttpPost]
         public async Task<ActionResult<ItemModel>> CreateItem(ItemModel item)
         {
@@ -68,6 +71,7 @@ namespace es_manage.api.Controllers {
         }
 
         // PUT: api/item/{id}
+        [Authorize(Policy = "Edit Item")]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateItem(string id, ItemModel item)
         {
@@ -88,6 +92,7 @@ namespace es_manage.api.Controllers {
         }
 
         // DELETE: api/item/{id}
+        [Authorize(Policy = "Delete Item")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteItem(string id)
         {

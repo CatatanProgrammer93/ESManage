@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function EditRole() {
   const { id } = useParams(); // Extracting the 'id' parameter
@@ -18,6 +19,7 @@ function EditRole() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const fetchRolePrivilege = async () => {
     setIsLoading(true);
@@ -173,7 +175,7 @@ function EditRole() {
   
 
       // Redirect to the desired page after successfully updating
-        navigate("/dashboard"); // Update this with the correct path
+        navigate("/role"); // Update this with the correct path
     } catch (error) {
       console.error(error);
       setError(JSON.stringify(error, Object.getOwnPropertyNames(error)));
@@ -193,6 +195,11 @@ function EditRole() {
     setCheckedPrivileges(initialCheckedPrivileges);
   }, [privilege]);
 
+    useEffect(() => {
+        if (!decodedToken["Edit Role"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>
@@ -253,7 +260,7 @@ function EditRole() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/brand" className="btn btn-red">
+                    <Link to="/role" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>

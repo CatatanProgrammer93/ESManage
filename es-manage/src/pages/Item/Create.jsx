@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateItem() {
   const [id, setId] = useState("");
@@ -29,6 +30,7 @@ function CreateItem() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const handleCategoryChange = (e) => {
     const id = e.target.value;
@@ -117,6 +119,12 @@ function CreateItem() {
       setIsLoading(false);
     }
   };
+
+    useEffect(() => {
+        if (!decodedToken["Create Item"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>
