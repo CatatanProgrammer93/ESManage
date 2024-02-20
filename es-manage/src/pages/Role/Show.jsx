@@ -73,7 +73,7 @@ function ShowRole() {
           <div className="col-12">
             {decodedToken["Create Role"] && (
                 <div className="mb-3">
-                    <Link to="/user/create" className="btn btn-primary">
+                    <Link to="/role/create" className="btn btn-primary">
                         Create new
                     </Link>
                 </div>

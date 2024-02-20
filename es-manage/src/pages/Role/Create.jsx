@@ -112,7 +112,7 @@ function CreateRole() { // Extracting the 'id' parameter
 
     return (
         <AppLayout>
-            <h2 className="page-title">Edit Role</h2>
+            <h2 className="page-title">Create Role</h2>
             <div className="card mt-3">
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
@@ -158,7 +158,7 @@ function CreateRole() { // Extracting the 'id' parameter
                                 <input type="submit" value="Save" className="btn btn-green" />
                             </div>
                             <div className="mb-3">
-                                <Link to="/role" className="btn btn-red">
+                                <Link to="/item--supplier" className="btn btn-red">
                                     Cancel
                                 </Link>
                             </div>
