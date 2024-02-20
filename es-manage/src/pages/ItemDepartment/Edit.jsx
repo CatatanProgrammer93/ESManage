@@ -96,7 +96,7 @@ function EditItemDepartment() {
             .then((res) => res.json())
             .then((data) => setDepartments(data));
     }, []);
-
+  
     useEffect(() => {
         if (!decodedToken["Edit Category"]) {
             navigate("/dashboard");

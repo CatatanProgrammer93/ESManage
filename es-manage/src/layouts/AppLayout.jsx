@@ -121,7 +121,6 @@ function AppLayout({ children }) {
                         <span className="nav-link-title">Dashboard</span>
                       </Link>
                     </li>
-
                     {decodedToken["Show Category"] && (
                         <li className="nav-item">
                             <Link to="/item-department" className="nav-link">
@@ -240,7 +239,6 @@ function AppLayout({ children }) {
                             </Link>
                         </li>
                     )}
-                    
                   </ul>
                 </div>
               </div>
