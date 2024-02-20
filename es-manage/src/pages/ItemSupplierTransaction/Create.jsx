@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateItemSupplierTransaction() {
   const [id, setId] = useState("");
@@ -26,6 +27,7 @@ function CreateItemSupplierTransaction() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const fetchResource = async (url, setter) => {
     try {
@@ -141,6 +143,12 @@ function CreateItemSupplierTransaction() {
     }
   };
 
+    useEffect(() => {
+        if (!decodedToken["Create Item Supplier Transaction"]) {
+            navigate("/dashboard");
+        }
+    }, []);
+
   return (
     <AppLayout>
       <h2 className="page-title">Create a new Item Supplier Transaction</h2>
@@ -230,7 +238,7 @@ function CreateItemSupplierTransaction() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/item" className="btn btn-red">
+                    <Link to="/item-supplier-transaction" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>

@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using es_manage.api.Models;
+using es_manage.api.Repositories;
 //using System.Security.Cryptography;
 
 // Membuat namespace
@@ -13,24 +14,38 @@ namespace es_manage.api.Services {
     public class TokenService
     {
         private readonly IConfiguration _configuration;
+        private readonly RolePrivilegeRepository _rolePrivilegeRepository;
+        private readonly PrivilegeRepository _privilegeRepository;
 
-        public TokenService(IConfiguration configuration)
+        public TokenService(IConfiguration configuration, RolePrivilegeRepository rolePrivilegeRepository, PrivilegeRepository privilegeRepository)
         {
             _configuration = configuration;
+            _rolePrivilegeRepository = rolePrivilegeRepository;
+            _privilegeRepository = privilegeRepository; 
         }
 
         // Membuat metode GenerateToken untuk menghasilkan token JWT
-        public string GenerateToken(UserMst user)
+        public async Task<string> GenerateToken(UserMst user)
         {
             // Membuat claim
             // ClaimTypes.Name untuk nama user
             // ClaimTypes.NameIdentifier untuk ID user
+            var rolePrivileges = await _rolePrivilegeRepository.GetByRoleId(user.RoleID);
+
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
                 new Claim(ClaimTypes.Role, user.RoleID)
             };
+            foreach (var rolePrivilege in rolePrivileges)
+            {
+                if(rolePrivilege.Deleted == false)
+                {
+                    var privilege = await _privilegeRepository.GetById(rolePrivilege.PrivilegeId);
+                    claims.Add(new Claim(privilege.PrivilegeName, privilege.PrivilegeName));
+                }
+            }
 
             // Membuat private key JWT
             // Private key JWT diambil dari appsettings.json

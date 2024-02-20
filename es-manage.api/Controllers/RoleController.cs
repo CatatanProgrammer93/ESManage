@@ -20,6 +20,7 @@ namespace es_manage.api.Controllers
             _repository = repository;
         }
 
+        [Authorize(Policy = "Show Role")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -35,6 +36,7 @@ namespace es_manage.api.Controllers
             }
         }
 
+        [Authorize(Policy = "Show Role")]
         [HttpGet("id/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
@@ -55,6 +57,7 @@ namespace es_manage.api.Controllers
             }
         }
 
+        [Authorize(Policy = "Create Role")]
         [HttpPost]
         public async Task<IActionResult> Create(RoleModel role)
         {
@@ -69,6 +72,7 @@ namespace es_manage.api.Controllers
             }
         }
 
+        [Authorize(Policy = "Edit Role")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] RoleModel role)
         {
@@ -83,6 +87,7 @@ namespace es_manage.api.Controllers
             }
         }
 
+        [Authorize(Policy = "Delete Role")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

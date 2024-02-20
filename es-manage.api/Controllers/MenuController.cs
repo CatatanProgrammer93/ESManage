@@ -14,22 +14,21 @@ using System.Threading.Tasks;
 namespace es_manage.api.Controllers {
     [ApiController]
     [Authorize]
-    [Route("api/brand")]
-    public class BrandController : ControllerBase {
-        private readonly BrandRepository _repository;
+    [Route("api/menu")]
+    public class MenuController : ControllerBase {
+        private readonly MenuRepository _repository;
 
-        public BrandController(BrandRepository repository)
+        public MenuController(MenuRepository repository)
         {
             _repository = repository;
         }
 
         // Metode GET untuk mendapatkan semua data brand
-        [Authorize(Policy = "Show Brand")]
         [HttpGet]
         public async Task<IActionResult> GetAll() {
             try {
-                var brands = await _repository.GetAll();
-                return Ok(brands);
+                var menus = await _repository.GetAll();
+                return Ok(menus);
             }
             catch (Exception ex) {
                 Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
@@ -40,18 +39,17 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data brand berdasarkan ID
         // Format pemanggilan: GET /api/brand/id/{id}
         // Contoh pemanggilan: GET /api/brand/id/1
-        [Authorize(Policy = "Show Brand")]
         [HttpGet("id/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
             try
             {
-                var brand = await _repository.GetById(id);
-                if (brand == null) {
-                    return NotFound($"Tidak ada Brand dengan id: {id}");
+                var menu = await _repository.GetById(id);
+                if (menu == null) {
+                    return NotFound($"Tidak ada Menu dengan id: {id}");
                 }
 
-                return Ok(brand);
+                return Ok(menu);
             }
             catch (Exception ex)
             {
@@ -63,18 +61,17 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data brand berdasarkan Name
         // Format pemanggilan: GET /api/brand/name/{name}
         // Contoh pemanggilan: GET /api/brand/name/Brand 1
-        [Authorize(Policy = "Show Brand")]
-        [HttpGet("name/{name}")]
-        public async Task<IActionResult> GetByName(string name)
+        [HttpGet("menuname/{menuname}")]
+        public async Task<IActionResult> GetByMenuName(string menuname)
         {
             try
             {
-                var brand = await _repository.GetByName(name);
-                if (brand == null) {
-                    return NotFound($"Tidak ada Brand dengan name: {name}");
+                var menu = await _repository.GetByMenuName(menuname);
+                if (menu == null) {
+                    return NotFound($"Tidak ada Menu dengan name: {menuname}");
                 }
 
-                return Ok(brand);
+                return Ok(menu);
             }
             catch (Exception ex)
             {
@@ -83,14 +80,13 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode POST untuk menambahkan data brand
-        [Authorize(Policy = "Create Brand")]
         [HttpPost]
-        public async Task<IActionResult> Create(BrandModel brand)
+        public async Task<IActionResult> Create(MenuModel menu)
         {
             try
             {
-                var newBrand = await _repository.Create(brand);
-                return Ok(newBrand);
+                var newMenu = await _repository.Create(menu);
+                return Ok(newMenu);
             }
             catch (Exception ex)
             {
@@ -98,36 +94,20 @@ namespace es_manage.api.Controllers {
             }
         }
 
-        // Metode PUT untuk mengubah data brand
-        [Authorize(Policy = "Edit Brand")]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, [FromBody] BrandModel brand)
-        {
-            try
-            {
-                var updatedBrand = await _repository.Update(id, brand);
-                return Ok(updatedBrand);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { success = false, message = ex.Message });
-            }
-        }
 
         // Metode DELETE untuk menghapus data brand
-        [Authorize(Policy = "Delete Brand")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             try
             {
-                var brand = await _repository.GetById(id);
-                if (brand == null) {
-                    return NotFound($"Tidak ada brand ditemukan dengan id: {id}");
+                var menu = await _repository.GetById(id);
+                if (menu == null) {
+                    return NotFound($"Tidak ada Menu ditemukan dengan id: {id}");
                 }
 
-                var deletedBrand = await _repository.Delete(id);
-                return Ok(new { success = true, message = $"Brand: {brand.Name} dengan id: {id} berhasil dihapus"});
+                var deletedMenu = await _repository.Delete(id);
+                return Ok(new { success = true, message = $"Menu: {menu.MenuName} dengan id: {id} berhasil dihapus"});
             }
             catch (Exception ex)
             {

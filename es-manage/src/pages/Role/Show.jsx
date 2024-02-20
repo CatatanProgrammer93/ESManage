@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
 import { jwtDecode } from "jwt-decode";
 
-function ShowSupplier() {
-  const [suppliers, setSuppliers] = useState([]);
+function ShowRole() {
+  const [roles, setRoles] = useState([]);
   const navigate = useNavigate();
 
   // Function to get the token from local storage
@@ -13,43 +13,67 @@ function ShowSupplier() {
   };
   const decodedToken = jwtDecode(getToken());
 
-  const deleteSupplier = (id) => {
-    fetch(`https://localhost:7240/api/supplier/${id}`, {
-      method: "DELETE",
+   const deleteRole = async(id) => {
+    const rolePrivilegesResponse = await fetch(`https://localhost:7240/api/roleprivilege/roleid/${id}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${getToken()}`,
+        },
+    });
+
+    if (!rolePrivilegesResponse.ok) {
+        // Handle error, maybe log or throw an exception
+        console.error("Failed to fetch RolePrivileges");
+        return;
+    }
+
+     const rolePrivileges = await rolePrivilegesResponse.json();
+
+    await Promise.all(rolePrivileges.map(async (rolePrivilege) => {
+        await fetch(`https://localhost:7240/api/roleprivilege/${rolePrivilege.id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${getToken()}`,
+            },
+        });
+    }));
+
+    fetch(`https://localhost:7240/api/role/${id}`, {
+      method: "DELETE", 
       headers: {
-        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        Authorization: `Bearer ${getToken()}`, // Use the token from local storage
       },
     }).then(() => {
-      setSuppliers(suppliers.filter((supplier) => supplier.id !== id));
+      setRoles(roles.filter((role) => role.id !== id));
     });
   };
 
+  
   useEffect(() => {
-    // Fetch Supplier
-    fetch("https://localhost:7240/api/supplier", {
+    fetch("https://localhost:7240/api/role", {
       headers: {
-        Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        Authorization: `Bearer ${getToken()}`, // Use the token from local storage
       },
     })
       .then((res) => res.json())
-      .then((data) => setSuppliers(data));
+      .then((data) => setRoles(data));
   }, []);
-
+  
     useEffect(() => {
-        if (!decodedToken["Show Supplier"]) {
+        if (!decodedToken["Show Role"]) {
             navigate("/dashboard");
         }
     }, []);
 
   return (
     <AppLayout>
-      <h2 className="page-title">Supplier</h2>
+      <h2 className="page-title">Role</h2>
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
-            {decodedToken["Create Supplier"] && (
+            {decodedToken["Create Role"] && (
                 <div className="mb-3">
-                    <Link to="/supplier/create" className="btn btn-primary">
+                    <Link to="/role/create" className="btn btn-primary">
                         Create new
                     </Link>
                 </div>
@@ -61,30 +85,30 @@ function ShowSupplier() {
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Supplier Name</th>
+                      <th>RoleName</th>
                       <th>Action</th>
                       <th className="w-1"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {suppliers.map((supplier) => (
-                      <tr key={supplier.id}>
-                        <td>{supplier.id}</td>
-                        <td>{supplier.supplierName}</td>
+                    {roles.map((role) => (
+                      <tr key={role.id}>
+                        <td>{role.id}</td>
+                        <td>{role.roleName}</td>
                         <td>
-                          {decodedToken["Edit Supplier"] && (
+                          {decodedToken["Edit Role"] && (
                             <Link
-                                to={`/supplier/edit/${supplier.id}`}
+                                to={`/role/edit/${role.id}`}
                                 className="btn btn-primary"
                             >
                                 Edit
                             </Link>
                           )}
 
-                          {decodedToken["Delete Supplier"] && (
+                          {decodedToken["Delete Role"] && (
                             <button
                                 className="btn btn-danger mx-2"
-                                onClick={() => deleteSupplier(supplier.id)}
+                                onClick={() => deleteRole(role.id)}
                             >
                                 Delete
                             </button>
@@ -104,4 +128,4 @@ function ShowSupplier() {
   );
 }
 
-export default ShowSupplier;
+export default ShowRole;

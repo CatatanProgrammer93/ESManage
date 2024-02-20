@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function EditItemDepartment() {
   const { id: urlId, categoryName: urlCategoryName } = useParams();
@@ -19,6 +20,7 @@ function EditItemDepartment() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -93,6 +95,12 @@ function EditItemDepartment() {
         })
             .then((res) => res.json())
             .then((data) => setDepartments(data));
+    }, []);
+  
+    useEffect(() => {
+        if (!decodedToken["Edit Category"]) {
+            navigate("/dashboard");
+        }
     }, []);
 
   return (

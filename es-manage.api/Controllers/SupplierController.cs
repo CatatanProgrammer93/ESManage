@@ -24,6 +24,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode GET untuk mendapatkan semua data supplier
+        [Authorize(Policy = "Show Supplier")]
         [HttpGet]
         public async Task<IActionResult> GetAll() {
             try {
@@ -39,6 +40,7 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data supplier berdasarkan ID
         // Format pemanggilan: GET /api/supplier/id/{id}
         // Contoh pemanggilan: GET /api/supplier/id/1
+        [Authorize(Policy = "Show Supplier")]
         [HttpGet("id/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
@@ -61,6 +63,7 @@ namespace es_manage.api.Controllers {
         // Metode GET untuk mendapatkan data supplier berdasarkan Name
         // Format pemanggilan: GET /api/supplier/name/{name}
         // Contoh pemanggilan: GET /api/supplier/name/Supplier 1
+        [Authorize(Policy = "Show Supplier")]
         [HttpGet("name/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
@@ -80,6 +83,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode POST untuk menambahkan data supplier
+        [Authorize(Policy = "Create Supplier")]
         [HttpPost]
         public async Task<IActionResult> Create(SupplierModel supplier)
         {
@@ -95,6 +99,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode PUT untuk mengubah data supplier
+        [Authorize(Policy = "Edit Supplier")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(string id, [FromBody] SupplierModel supplier)
         {
@@ -110,6 +115,7 @@ namespace es_manage.api.Controllers {
         }
 
         // Metode DELETE untuk menghapus data supplier
+        [Authorize(Policy = "Delete Supplier")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

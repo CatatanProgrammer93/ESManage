@@ -21,6 +21,7 @@ namespace es_manage.api.Controllers {
             _repository = repository;
         }
 
+        [Authorize(Policy = "Show Item Supplier")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ItemSupplierModel>>> GetAll()
         {
@@ -35,6 +36,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Show Item Supplier")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemSupplierModel>> GetById(string id)
         {
@@ -51,6 +53,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Show Item Supplier")]
         [HttpGet("itemid/{itemId}")]
         public async Task<ActionResult<IEnumerable<ItemSupplierModel>>> GetByItemId(string itemId)
         {
@@ -65,6 +68,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Show Item Supplier")]
         [HttpGet("supplierid/{supplierId}")]
         public async Task<ActionResult<IEnumerable<ItemSupplierModel>>> GetBySupplierId(string supplierId)
         {
@@ -79,6 +83,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Create Item Supplier")]
         [HttpPost]
         public async Task<ActionResult<ItemSupplierModel>> Create(ItemSupplierModel model)
         {
@@ -93,6 +98,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Edit Item Supplier")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(string id, ItemSupplierModel model)
         {
@@ -112,6 +118,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Delete Item Supplier")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

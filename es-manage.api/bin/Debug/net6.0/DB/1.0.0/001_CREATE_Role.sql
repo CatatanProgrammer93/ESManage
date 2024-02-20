@@ -20,7 +20,7 @@ ON CONFLICT ("id") DO NOTHING;
 
 -- Jika sudah ada peran dengan nama "Administrator" namun id berbeda, ubah nama tersebut.
 UPDATE public."role" SET "rolename" = 'OldRole' WHERE "rolename" = 'Administrator' AND "id" <> '1';
-
+DROP TRIGGER IF EXISTS trigger_prevent_administrator_alteration ON public."role";
 -- Membuat fungsi trigger untuk mencegah penghapusan atau pengeditan baris dengan "rolename" 'Administrator'
 CREATE OR REPLACE FUNCTION prevent_administrator_alteration()
 RETURNS TRIGGER AS $$

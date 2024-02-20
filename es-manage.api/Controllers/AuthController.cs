@@ -36,16 +36,17 @@ namespace es_manage.api.Controllers {
                 }
 
                 // Jika user ditemukan, maka buat token
-                var token = _tokenService.GenerateToken(user);
+                var token = await _tokenService.GenerateToken(user);
                 // Buat response
                 var response = new LoginResponseModel {
                     User = new UserDetail {
                         UserName = user.UserName,
-                        DisplayName = user.DisplayName
+                        DisplayName = user.DisplayName,
+                        RoleId = user.RoleID,
                     },
                     Token = new TokenInfo {
                         AccessToken = token
-                    }
+                    },
                 };
 
                 // Kembalikan response

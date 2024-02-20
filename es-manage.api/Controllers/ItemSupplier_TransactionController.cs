@@ -29,6 +29,7 @@ namespace es_manage.api.Controllers {
             pengiriman
         }
 
+        [Authorize(Policy = "Show Item Supplier Transaction")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ItemSupplier_TransactionModel>>> GetAll()
         {
@@ -43,6 +44,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Show Item Supplier Transaction")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemSupplier_TransactionModel>> GetById(string id)
         {
@@ -59,6 +61,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Show Item Supplier Transaction")]
         [HttpGet("itemsupplierid/{itemSupplierId}")]
         public async Task<ActionResult<IEnumerable<ItemSupplier_TransactionModel>>> GetByItemSupplierId(string itemSupplierId)
         {
@@ -73,6 +76,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Show Item Supplier Transaction")]
         [HttpGet("transactiontype/{transactionType}")]
         public async Task<ActionResult<IEnumerable<ItemSupplier_TransactionModel>>> GetByTransactionType(string transactionType)
         {
@@ -87,6 +91,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Create Item Supplier Transaction")]
         [HttpPost]
         public async Task<ActionResult<ItemSupplier_TransactionModel>> Create(ItemSupplier_TransactionPlusItemSupplier model)
         {
@@ -101,6 +106,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Edit Item Supplier Transaction")]
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(string id, ItemSupplier_TransactionModel model)
         {
@@ -120,6 +126,7 @@ namespace es_manage.api.Controllers {
             }
         }
 
+        [Authorize(Policy = "Delete Item Supplier Transaction")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

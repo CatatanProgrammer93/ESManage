@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function EditBrand() {
   const { id } = useParams(); // Extracting the 'id' parameter
@@ -18,6 +19,7 @@ function EditBrand() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -67,6 +69,12 @@ function EditBrand() {
       setIsLoading(false);
     }
   };
+
+    useEffect(() => {
+        if (!decodedToken["Edit Brand"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>

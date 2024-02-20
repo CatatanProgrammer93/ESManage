@@ -27,6 +27,7 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode GetAll untuk mengambil semua data user
+    [Authorize(Policy = "Show User")]
     [HttpGet]
     public async Task<IActionResult> GetAll() {
         try {
@@ -40,6 +41,7 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode Get untuk mengambil data user berdasarkan ID berupa UUID
+    [Authorize(Policy = "Show User")]
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(Guid id)
     {
@@ -58,6 +60,7 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode Create untuk menambahkan data user
+    [Authorize(Policy = "Create User")]
     [HttpPost]
     public async Task<IActionResult> Create(Models.UserMst user)
     {
@@ -74,6 +77,7 @@ public class UsersController : ControllerBase
     }
 
     // Membuat metode Update untuk mengubah data user berdasarkan ID berupa UUID
+    [Authorize(Policy = "Edit User")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(Guid id, Models.UserMst user)
     {
@@ -94,6 +98,7 @@ public class UsersController : ControllerBase
 
     // Membuat metode Delete (soft-delete) untuk menghapus data user berdasarkan ID berupa UUID
     //[Authorize]
+    [Authorize(Policy = "Delete User")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {

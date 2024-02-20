@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
+import { jwtDecode } from "jwt-decode";
 
 function CreateItemSupplier() {
   const [id, setId] = useState("");
@@ -18,6 +19,7 @@ function CreateItemSupplier() {
   const getToken = () => {
     return localStorage.getItem("token");
   };
+  const decodedToken = jwtDecode(getToken());
 
   useEffect(() => {
     const fetchItemsAndSuppliers = async () => {
@@ -66,6 +68,12 @@ function CreateItemSupplier() {
       setIsLoading(false);
     }
   };
+
+    useEffect(() => {
+        if (!decodedToken["Create Item Supplier"]) {
+            navigate("/dashboard");
+        }
+    }, []);
 
   return (
     <AppLayout>
