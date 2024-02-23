@@ -671,3 +671,4 @@ D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\009_CREATE_Menu
 D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\010_CREATE_Privilege.sql
 D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\011_CREATE_RolePrivilege.sql
 >>>>>>> origin/dev.yeyen
+D:\Mapel\Magang\ESManage\es-manage.api\bin\Debug\net6.0\DB\1.0.0\012_CREATE_Stok.sql

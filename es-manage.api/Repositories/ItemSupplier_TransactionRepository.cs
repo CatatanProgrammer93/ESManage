@@ -26,7 +26,7 @@ namespace es_manage.api.Repositories {
             pembelian,
             penerimaan,
             pengembalian,
-            pengiriman
+            peminjaman
         }
 
         // Metode GetAll untuk mendapatkan semua data ItemSupplier_Transaction
@@ -94,7 +94,7 @@ namespace es_manage.api.Repositories {
                 if (type != TransactionType.pembelian &&
                     type != TransactionType.penerimaan &&
                     type != TransactionType.pengembalian &&
-                    type != TransactionType.pengiriman)
+                    type != TransactionType.peminjaman)
                 {
                     throw new Exception("TransactionType tidak valid");
                 }
@@ -128,7 +128,7 @@ namespace es_manage.api.Repositories {
                     if (transaction.TransactionType != TransactionType.pembelian.ToString() &&
                         transaction.TransactionType != TransactionType.penerimaan.ToString() &&
                         transaction.TransactionType != TransactionType.pengembalian.ToString() &&
-                        transaction.TransactionType != TransactionType.pengiriman.ToString())
+                        transaction.TransactionType != TransactionType.peminjaman.ToString())
                     {
                         throw new Exception("TransactionType tidak valid");
                     }
@@ -149,7 +149,8 @@ namespace es_manage.api.Repositories {
                         CreatedOn = DateTime.Now,
                         CreatedBy = transaction.CreatedBy,
                         ModifiedOn = transaction.ModifiedOn,
-                        ModifiedBy = transaction.ModifiedBy
+                        ModifiedBy = transaction.ModifiedBy,
+                        UserId = transaction.UserId
                     };
                     var sqlUpdate = @"UPDATE itemsupplier_transaction SET itemsupplierid = @ItemSupplierId, 
                     transactiontype = @TransactionType, 
@@ -160,7 +161,8 @@ namespace es_manage.api.Repositories {
                     createdon = @CreatedOn, 
                     createdby = @CreatedBy, 
                     modifiedon = null, 
-                    modifiedby = null
+                    modifiedby = null,
+                    userid = @UserId
                     WHERE id = @Id";
                     await _db.ExecuteAsync(sqlUpdate, newTransaction);
                     return newTransaction;
@@ -170,7 +172,7 @@ namespace es_manage.api.Repositories {
                     if (transaction.TransactionType != TransactionType.pembelian.ToString() &&
                         transaction.TransactionType != TransactionType.penerimaan.ToString() &&
                         transaction.TransactionType != TransactionType.pengembalian.ToString() &&
-                        transaction.TransactionType != TransactionType.pengiriman.ToString())
+                        transaction.TransactionType != TransactionType.peminjaman.ToString())
                     {
                         throw new Exception("TransactionType tidak valid");
                     }
@@ -194,10 +196,11 @@ namespace es_manage.api.Repositories {
                         CreatedOn = DateTime.Now,
                         CreatedBy = transaction.CreatedBy,
                         ModifiedOn = transaction.ModifiedOn,
-                        ModifiedBy = transaction.ModifiedBy
+                        ModifiedBy = transaction.ModifiedBy,
+                        UserId = transaction.UserId
                     };
-                    var insertSql = @"INSERT INTO itemsupplier_transaction (id, itemsupplierid, transactiontype, transactiondate, quantity, notes, deleted, createdon, createdby, modifiedon, modifiedby)
-                    VALUES (@Id, @ItemSupplierId, @TransactionType, @TransactionDate, @Quantity, @Notes, false, @CreatedOn, @CreatedBy, null, null)";
+                    var insertSql = @"INSERT INTO itemsupplier_transaction (id, itemsupplierid, transactiontype, transactiondate, quantity, notes, deleted, createdon, createdby, modifiedon, modifiedby, userid)
+                    VALUES (@Id, @ItemSupplierId, @TransactionType, @TransactionDate, @Quantity, @Notes, false, @CreatedOn, @CreatedBy, null, null, @UserId)";
 
                     await _db.ExecuteAsync(insertSql, newTransaction);
                 }
@@ -226,7 +229,7 @@ namespace es_manage.api.Repositories {
                     if (transaction.TransactionType != TransactionType.pembelian.ToString() &&
                         transaction.TransactionType != TransactionType.penerimaan.ToString() &&
                         transaction.TransactionType != TransactionType.pengembalian.ToString() &&
-                        transaction.TransactionType != TransactionType.pengiriman.ToString())
+                        transaction.TransactionType != TransactionType.peminjaman.ToString())
                     {
                         throw new Exception("TransactionType tidak valid");
                     }
@@ -249,7 +252,8 @@ namespace es_manage.api.Repositories {
                     deleted = @Deleted, 
                     createdby = @CreatedBy, 
                     modifiedon = @ModifiedOn, 
-                    modifiedby = @ModifiedBy
+                    modifiedby = @ModifiedBy,
+                    userid = @UserId
                     WHERE id = @Id";
 
                     int updatedRows = await _db.ExecuteAsync(updateSql, transaction);

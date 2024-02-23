@@ -26,7 +26,7 @@ namespace es_manage.api.Controllers {
             pembelian,
             penerimaan,
             pengembalian,
-            pengiriman
+            peminjaman
         }
 
         [Authorize(Policy = "Show Item Supplier Transaction")]

@@ -23,6 +23,8 @@ function CreateItem() {
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [stok, setStok] = useState("0");
+  const [deleted, setDeleted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -94,6 +96,27 @@ function CreateItem() {
       };
       let response = await axios(axiosConfig);
       console.log(response.data);
+      try{
+        let axiosConfig = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+          method: "POST",
+          url: "https://localhost:7240/api/stok",
+          data: {
+            id, 
+            itemid: response.data.id,
+            stok,
+            deleted,
+          },
+        };
+        let response2 = await axios(axiosConfig);
+        console.log(response2.data);
+      }
+      catch (error){
+        console.error(error);
+      }
 
       // Resetting all the fields to their initial states after successful submission
       setId("");

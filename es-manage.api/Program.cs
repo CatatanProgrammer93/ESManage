@@ -100,6 +100,7 @@ builder.Services.AddScoped<BrandRepository>();
 builder.Services.AddScoped<PasswordChangeRepository>();
 builder.Services.AddScoped<PrivilegeRepository>();
 builder.Services.AddScoped<RolePrivilegeRepository>();
+builder.Services.AddScoped<StokRepository>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<HashingService>();
 
