@@ -6,6 +6,7 @@ import { jwtDecode } from "jwt-decode";
 function ShowItem() {
   const [items, setItems] = useState([]);
   const [brands, setBrands] = useState({});
+  const [stoks, setStoks] = useState([]);
   const navigate = useNavigate();
 
   // Function to get the token from local storage
@@ -42,6 +43,20 @@ function ShowItem() {
   }, []); // This effect runs once on component mount
 
   useEffect(() => {
+    const fetchStoks = async () => {
+      const res = await fetch("https://localhost:7240/api/stok", {
+        headers: {
+          Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+        },
+      });
+      const data = await res.json();
+      setStoks(data);
+    };
+
+    fetchStoks();
+}, []);
+
+  useEffect(() => {
     if (Object.keys(brands).length > 0) {
       fetch("https://localhost:7240/api/item", {
         headers: {
@@ -50,10 +65,14 @@ function ShowItem() {
       })
         .then((res) => res.json())
         .then((itemData) => {
-          const itemsWithBrand = itemData.map((item) => ({
-            ...item,
-            brandName: brands[item.brandId] || "Unknown",
-          }));
+          const itemsWithBrand = itemData.map((item) => {
+            const stok = stoks.find((stk) => stk.itemId === item.id);
+            return{
+              ...item,
+              brandName: brands[item.brandId] || "Unknown",
+              stok: stok ? stok.stok: "-",
+            }
+          });
           setItems(itemsWithBrand);
         });
     }
@@ -88,6 +107,7 @@ function ShowItem() {
                       <th>Item Name</th>
                       <th>Category Name</th>
                       <th>Brand Name</th>
+                      <th>Stok</th>
                       <th>Action</th>
                       <th className="w-1"></th>
                     </tr>
@@ -99,6 +119,7 @@ function ShowItem() {
                         <td>{item.itemName}</td>
                         <td>{item.categoryName}</td>
                         <td>{item.brandName}</td>
+                        <td>{item.stok}</td>
                         <td>
                           {decodedToken["Edit Item"] && (
                             <Link
