@@ -11,7 +11,7 @@ namespace es_manage.api.Models {
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime? ModifiedOn { get; set; }
         public string ModifiedBy { get; set; } = string.Empty;
-        public string UserId = string.Empty;
+        public Guid UserId { get; set; }
     }
 
     public class ItemSupplier_TransactionPlusItemSupplier
@@ -28,6 +28,6 @@ namespace es_manage.api.Models {
         public string CreatedBy { get; set; } = string.Empty;
         public DateTime? ModifiedOn { get; set; }
         public string ModifiedBy { get; set; } = string.Empty;
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

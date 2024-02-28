@@ -67,7 +67,7 @@ namespace es_manage.api.Controllers
                     return NotFound($"Tidak ada Stok dengan itemid: {itemid}");
                 }
 
-                return Ok(itemid);
+                return Ok(stok);
             }
             catch (Exception ex)
             {

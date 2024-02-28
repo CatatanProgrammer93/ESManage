@@ -28,6 +28,7 @@ function CreateItemSupplierTransaction() {
     return localStorage.getItem("token");
   };
   const decodedToken = jwtDecode(getToken());
+  console.log(decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]]);
 
   const fetchResource = async (url, setter) => {
     try {
@@ -48,49 +49,7 @@ function CreateItemSupplierTransaction() {
     fetchResource("https://localhost:7240/api/itemsupplier", setItemSuppliers);
   }, []);
 
-  useEffect(() => {
-    const fetchTransactionsAndEnrich = async () => {
-      const transactionsResponse = await fetch(
-        "https://localhost:7240/api/itemsupplier_transaction"
-      );
-      const transactionsData = await transactionsResponse.json();
-
-      // Wait until items and suppliers data is fetched before enriching transactions
-      if (items.length && suppliers.length && itemSuppliers.length) {
-        const enrichedData = transactionsData.map((tx) => {
-          // Find the corresponding itemSupplier
-          const itemSupplier = itemSuppliers.find(
-            (is) => is.id.toString() === tx.itemSupplierId.toString()
-          );
-          if (!itemSupplier) {
-            return {
-              ...tx,
-              itemName: "Unknown Item",
-              supplierName: "Unknown Supplier",
-            };
-          }
-          // Find the actual item and supplier using itemId and supplierId from itemSupplier
-          const item = items.find(
-            (itm) => itm.id.toString() === itemSupplier.itemId.toString()
-          );
-          const supplier = suppliers.find(
-            (sup) => sup.id.toString() === itemSupplier.supplierId.toString()
-          );
-
-          return {
-            ...tx,
-            itemName: item ? item.itemName : "Unknown Item", // Make sure 'name' is the correct property name for item name
-            supplierName: supplier ? supplier.supplierName : "Unknown Supplier", // Make sure 'name' is the correct property name for supplier name
-          };
-        });
-
-        setItemSupplierTransactions(enrichedData);
-      }
-    };
-
-    fetchTransactionsAndEnrich();
-  }, [items, suppliers, itemSuppliers]);
-
+  
   const updateSuggestedSuppliers = (selectedItemId) => {
     // Filter the itemSuppliers to get suppliers for the selected item
     const associatedSuppliers = itemSuppliers
@@ -115,7 +74,8 @@ function CreateItemSupplierTransaction() {
           transactionDate,
           quantity,
           notes,
-          createdBy, // Assuming 'createdBy' is part of your data model; remove if not needed.
+          createdBy,
+          userId : decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]],// Assuming 'createdBy' is part of your data model; remove if not needed.
         },
         {
           headers: {
@@ -124,6 +84,52 @@ function CreateItemSupplierTransaction() {
           },
         }
       );
+      let response2 = await axios.get(
+        "https://localhost:7240/api/stok/itemid/" + itemId,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          }
+        }
+      );
+      if (response2 && response2.data && response2.data.id) {
+        const stokid = response2.data.id;
+    
+        let updatedQuantity = "";
+        // Cek jenis transaksi untuk menentukan perubahan jumlah stok
+        if (transactionType === "pembelian" || transactionType === "penerimaan") {
+          // Jika pembelian atau penerimaan, stok bertambah
+          updatedQuantity = parseInt(response2.data.stok) + parseInt(quantity);
+        } else if (transactionType === "peminjaman") {
+          // Jika peminjaman, stok berkurang
+          updatedQuantity = parseInt(response2.data.stok) - parseInt(quantity);
+        } else {
+          // Jenis transaksi tidak valid
+          console.error("Invalid transaction type.");
+          return; // Hentikan eksekusi lebih lanjut jika jenis transaksi tidak valid
+        }
+    
+        // Lakukan permintaan PUT untuk memperbarui stok dengan jumlah yang telah diperbarui
+        let response3 = await axios.put(
+          `https://localhost:7240/api/stok/${stokid}`,
+          { id: stokid,
+            itemId,
+            stok: updatedQuantity.toString(),
+            deleted: false},
+          {
+            headers: {
+              Authorization: `Bearer ${getToken()}`,
+            },
+          }
+        );
+    
+        console.log(response3.data);
+      } else {
+        console.error("Error: Stock data not found.");
+      }
+      
+      
       console.log(response.data);
       // Reset states after successful submission
       setId("");
@@ -141,6 +147,7 @@ function CreateItemSupplierTransaction() {
     } finally {
       setIsLoading(false);
     }
+    
   };
 
     useEffect(() => {
@@ -200,8 +207,7 @@ function CreateItemSupplierTransaction() {
                   <option value="">Select a transaction type</option>
                   <option value="pembelian">Pembelian</option>
                   <option value="penerimaan">Penerimaan</option>
-                  <option value="pengembalian">Pengembalian</option>
-                  <option value="pengiriman">Pengiriman</option>
+                  <option value="peminjaman">Peminjaman</option>
                 </select>
               </div>
               <div className="mb-3 col-6">

@@ -23,6 +23,7 @@ function AppLayout({ children }) {
   const accessToken = user ? localStorage.getItem("token") : null;
 
   const decodedToken = jwtDecode(accessToken);
+  console.log(decodedToken);
 
   const navigate = useNavigate(); // Obtain navigate function
 
