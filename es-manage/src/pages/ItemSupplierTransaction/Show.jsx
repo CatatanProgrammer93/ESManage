@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AppLayout from "../../layouts/AppLayout";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 function ShowItemSupplierTransaction() {
   const [itemsuppliertransactions, setItemSupplierTransactions] = useState([]);
@@ -32,64 +33,67 @@ function ShowItemSupplierTransaction() {
     });
   };
 
-  const handleReturn = async (transactionId) => {
+  const handleReturn = async (e) => {
     try {
-      // Mendapatkan data transaksi berdasarkan ID atau menggunakan state jika sudah disimpan
-      const returnedTransaction = itemsuppliertransactions.find(
-        (t) => t.id === transactionId
-      );
-
-      // Memastikan transaksi ditemukan
-      if (returnedTransaction) {
-        // Memeriksa apakah tipe transaksi adalah "peminjaman" dan nama di token cocok
-        if (
-          returnedTransaction.transactionType === "peminjaman" &&
-          decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] ===
-          returnedTransaction.checkName
-        ) {
-          // Mengubah status transaksi menjadi "pengembalian"
-          returnedTransaction.transactionType = "pengembalian";
-
-          // Menambahkan jumlah barang yang dikembalikan ke stok
-          const returnedItems = returnedTransaction.items;
-          for (const returnedItem of returnedItems) {
-            const itemToUpdate = items.find((item) => item.id === returnedItem.id);
-
-            // Memastikan item ditemukan
-            if (itemToUpdate) {
-              // Lakukan pembaruan stok melalui API atau fungsi lainnya
-              const updatedStock = itemToUpdate.stock + returnedItem.quantity;
-
-              // Simulasikan pembaruan stok pada item melalui API
-              await fetch(`https://localhost:7240/api/item/${itemToUpdate.id}`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${getToken()}`,
-                },
-                body: JSON.stringify({
-                  stock: updatedStock,
-                }),
-              });
-
-              // Mengupdate state items jika menggunakan state
-              setItems((prevItems) =>
-                prevItems.map((item) =>
-                  item.id === itemToUpdate.id ? { ...item, stock: updatedStock } : item
-                )
-              );
-            }
-          }
-
-          // Memperbarui state transaksi jika menggunakan state
-          setItemSupplierTransactions([...itemsuppliertransactions]);
-        } else {
-          // Tampilkan pesan atau ambil tindakan lain jika kondisi tidak memenuhi
-          console.warn("Transaction cannot be returned. Invalid conditions.");
+      let response = await axios.post(
+        "https://localhost:7240/api/itemsupplier_transaction",
+        {
+          id: e.id,
+          itemId: e.itemId,
+          supplierId: e.supplierId,
+          transactionType: "pengembalian",
+          transactionDate: e.transactionDate,
+          quantity: e.quantity,
+          notes: "Pengembalian dari id transaksi: " + e.id,
+          createdBy: e.createdBy,
+          userId : decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]],// Assuming 'createdBy' is part of your data model; remove if not needed.
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
         }
+      );
+      let response2 = await axios.get(
+        "https://localhost:7240/api/stok/itemid/" + e.itemId,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`,
+          }
+        }
+      );
+      if (response2 && response2.data && response2.data.id) {
+        const stokid = response2.data.id;
+    
+        let updatedQuantity = "";
+        updatedQuantity = parseInt(response2.data.stok) + parseInt(e.quantity);
+    
+        // Lakukan permintaan PUT untuk memperbarui stok dengan jumlah yang telah diperbarui
+        let response3 = await axios.put(
+          `https://localhost:7240/api/stok/${stokid}`,
+          { id: stokid,
+            itemId: e.itemId,
+            stok: updatedQuantity.toString(),
+            deleted: false},
+          {
+            headers: {
+              Authorization: `Bearer ${getToken()}`,
+            },
+          }
+        );
+    
+        console.log(response3.data);
+      } else {
+        console.error("Error: Stock data not found.");
       }
+      
+      
+      console.log(response.data);
+      location.reload();
     } catch (error) {
-      console.error("Error handling return:", error);
+      console.error(error);
     }
   };
 
@@ -153,9 +157,11 @@ function ShowItemSupplierTransaction() {
             return {
               ...tx,
               itemName: item ? item.itemName : "Unknown Item",
+              itemId: item ? item.id: "",
               supplierName: supplier
                 ? supplier.supplierName
                 : "Unknown Supplier",
+              supplierId: supplier ? supplier.id : "",
               userName: user ? user.displayName : "-",
               checkName: user ? user.userName : "-",
             };
@@ -247,10 +253,11 @@ function ShowItemSupplierTransaction() {
                             </button>
                           )}
 
-                          {itemsuppliertransaction.transactionType === "peminjaman" && decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]] === itemsuppliertransaction.checkName && (
+                          {itemsuppliertransaction.transactionType === "peminjaman" && decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]] === itemsuppliertransaction.checkName &&
+                          !itemsuppliertransactions.some(tx => tx.transactionType === "pengembalian" && tx.notes.split(":")[1].trim() === itemsuppliertransaction.id)  && (
                             <button
                               className="btn btn-success mx-2"
-                              onClick={ () => handleReturn(itemsuppliertransacction.id)}
+                              onClick={ () => handleReturn(itemsuppliertransaction)}
                             >
                               Return
                             </button>
