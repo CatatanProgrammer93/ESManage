@@ -69,6 +69,30 @@ function EditItemDepartment() {
           },
         }
       );
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Update",
+          tableName: "Category",
+          details: "ID: " + response.data.id + 
+          "\n\Category Name: " + response.data.categoryName +
+          "\n\Parent Id: " + response.data.itemDepartmentParentId +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       console.log(response.data);
       navigate("/item-department"); // Update this with the correct path to your Dashboard component
     } catch (error) {

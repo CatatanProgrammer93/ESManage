@@ -80,6 +80,8 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Create Role", policy => policy.RequireClaim("Create Role", "Create Role"));
     options.AddPolicy("Edit Role", policy => policy.RequireClaim("Edit Role", "Edit Role"));
     options.AddPolicy("Delete Role", policy => policy.RequireClaim("Delete Role", "Delete Role"));
+
+    options.AddPolicy("Show Report", policy => policy.RequireClaim("Show Report", "Show Report"));
 });
 
 // Add services to the container.
@@ -100,7 +102,9 @@ builder.Services.AddScoped<BrandRepository>();
 builder.Services.AddScoped<PasswordChangeRepository>();
 builder.Services.AddScoped<PrivilegeRepository>();
 builder.Services.AddScoped<RolePrivilegeRepository>();
+builder.Services.AddScoped<MenuRepository>();
 builder.Services.AddScoped<StokRepository>();
+builder.Services.AddScoped<ReportRepository>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<HashingService>();
 

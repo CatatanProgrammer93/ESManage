@@ -35,6 +35,7 @@ namespace es_manage.api.Services {
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
+                new Claim("DisplayName", user.DisplayName),
                 new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
                 new Claim(ClaimTypes.Role, user.RoleID)
             };

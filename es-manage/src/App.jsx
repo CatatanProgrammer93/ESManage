@@ -31,6 +31,7 @@ import ShowRole from "./pages/Role/Show";
 import EditUser from "./pages/User/Edit";
 import CreateUser from "./pages/User/Create";
 import ShowUser from "./pages/User/Show";
+import ShowReport from "./pages/Report/Show";
 
 // The RedirectToLogin component
 function RedirectToLogin() {
@@ -96,6 +97,7 @@ function App() {
           <Route path="/user/edit/:id" element={<EditUser />} />
           <Route path="/user/create/" element={<CreateUser />} />
           <Route path="/user/" element={<ShowUser />} />
+          <Route path="/report/" element={<ShowReport/>}/>
           <Route path="*" element={<RedirectToLogin />} />
         </Routes>
       </div>

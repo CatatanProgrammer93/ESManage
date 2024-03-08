@@ -134,5 +134,21 @@ namespace es_manage.api.Controllers {
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }
+
+        [Authorize(Policy = "Show Supplier")]
+        [HttpGet("search/{s}/{limit}/{page}")]
+        public async Task<IActionResult> Search(string s, int limit, int page)
+        {
+            try
+            {
+                var suppliers = await _repository.SupplierSearch(s, limit, page);
+                return Ok(suppliers);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
     }
 }

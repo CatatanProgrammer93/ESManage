@@ -19,10 +19,12 @@ function CreateItemDepartment() {
     return localStorage.getItem("token");
   };
   const decodedToken = jwtDecode(getToken());
+  const createdBy = decodedToken[["DisplayName"]];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    
     const effectiveItemDepartmentParentId = parent
       ? "0"
       : itemDepartmentParentId;
@@ -39,11 +41,37 @@ function CreateItemDepartment() {
           id: id,
           categoryName: categoryName,
           itemDepartmentParentId: effectiveItemDepartmentParentId,
+          createdBy
         },
       };
 
       let response = await axios(axiosConfig);
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Category",
+          details: "ID: " + response.data.id + 
+          "\n\Category Name: " + response.data.categoryName +
+          "\n\Parent Id: " + response.data.itemDepartmentParentId +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       console.log(response.data);
+      console.log(responseReport.data);
       setId("");
       setCategoryName("");
       setItemDepartmentParentId("");

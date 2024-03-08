@@ -58,6 +58,30 @@ function EditBrand() {
           },
         }
       );
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let response2 = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Update",
+          tableName: "Brand",
+          details: "ID: " + response.data.id + 
+          "\n\Name: " + response.data.name +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
+
       console.log(response.data);
 
       // Redirect to the desired page after successfully updating

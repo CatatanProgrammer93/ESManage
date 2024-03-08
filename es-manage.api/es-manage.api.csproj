@@ -20,4 +20,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="DB\1.0.0\013_CREATE_Report.sql" />
+  </ItemGroup>
 </Project>

@@ -94,6 +94,32 @@ function EditItem() {
         data: item,
       };
       const response = await axios(axiosConfig);
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Update",
+          tableName: "Item",
+          details: "ID: " + response.data.id + 
+          "\n\Item Name: " + response.data.itemName +
+          "\n\Category Id: " + response.data.categoryId +
+          "\n\Category Name: " + response.data.categoryName +
+          "\n\Brand Id: " + response.data.brandId +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       console.log(response.data);
       navigate("/item");
     } catch (error) {

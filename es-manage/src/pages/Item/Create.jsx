@@ -18,7 +18,6 @@ function CreateItem() {
   const [avgCostPrice, setAvgCostPrice] = useState(0);
   const [retailPrice, setRetailPrice] = useState(0);
   const [costPrice, setCostPrice] = useState(0);
-  const [createdBy, setCreatedBy] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -33,6 +32,7 @@ function CreateItem() {
     return localStorage.getItem("token");
   };
   const decodedToken = jwtDecode(getToken());
+  const createdBy = decodedToken[["DisplayName"]];
 
   const handleCategoryChange = (e) => {
     const id = e.target.value;
@@ -69,6 +69,7 @@ function CreateItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    
     try {
       let axiosConfig = {
         headers: {
@@ -95,7 +96,34 @@ function CreateItem() {
         },
       };
       let response = await axios(axiosConfig);
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Item",
+          details: "ID: " + response.data.id + 
+          "\n\Item Name: " + response.data.itemName +
+          "\n\Category Id: " + response.data.categoryId +
+          "\n\Category Name: " + response.data.categoryName +
+          "\n\Brand Id: " + response.data.brandId +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       console.log(response.data);
+      console.log(responseReport.data);
       try{
         let axiosConfig = {
           headers: {
@@ -112,7 +140,27 @@ function CreateItem() {
           },
         };
         let response2 = await axios(axiosConfig);
+        
+        let responseReport2 = await axios.post(
+          "https://localhost:7240/api/report",
+          {
+            id: "",
+            type: "Create",
+            tableName: "Stok",
+            details: "ID: " + response2.data.id + 
+            "\n\Item Id: " + response2.data.itemId +
+            "\n\Stok: " + response2.data.stok,
+            date
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+            },
+          }
+        );
         console.log(response2.data);
+        console.log(responseReport2.data)
       }
       catch (error){
         console.error(error);
@@ -131,8 +179,7 @@ function CreateItem() {
       setBalanceQty(0);
       setAvgCostPrice(0);
       setRetailPrice(0);
-      setCostPrice(0);
-      setCreatedBy(""); // Reset this as well if 'createdBy' is part of your data model
+      setCostPrice(0); // Reset this as well if 'createdBy' is part of your data model
 
       navigate("/item"); // Redirect to the item list page (or any other appropriate page)
     } catch (error) {

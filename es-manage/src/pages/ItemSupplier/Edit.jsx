@@ -72,6 +72,30 @@ function EditItemSupplier() {
           },
         }
       );
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Update",
+          tableName: "Item Supplier",
+          details: "ID: " + response.data.id + 
+          "\n\Item Id: " + response.data.itemId +
+          "\n\Supplier Id: " + response.data.supplierId +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       navigate("/item-supplier");
     } catch (error) {
       console.error(error);

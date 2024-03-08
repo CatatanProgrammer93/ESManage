@@ -16,6 +16,7 @@ function CreateBrand() {
     return localStorage.getItem("token");
   };
   const decodedToken = jwtDecode(getToken());
+  const createdBy = decodedToken[["DisplayName"]];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +31,35 @@ function CreateBrand() {
         url: "https://localhost:7240/api/brand",
         data: {
           name: name,
+          createdBy: createdBy,
         },
       };
       let response = await axios(axiosConfig);
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let response2 = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Brand",
+          details: "ID: " + response.data.id + 
+          "\n\Name: " + response.data.name +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       console.log(response.data);
+      console.log(response2.data);
       setName("");
       navigate("/brand");
     } catch (error) {
@@ -71,7 +97,7 @@ function CreateBrand() {
                     <input type="submit" value="Save" className="btn btn-green" />
                 </div>
                 <div className="mb-3">
-                    <Link to="/item" className="btn btn-red">
+                    <Link to="/brand" className="btn btn-red">
                         Cancel
                     </Link>
                 </div>

@@ -13,7 +13,6 @@ function CreateItemSupplierTransaction() {
   const [quantity, setQuantity] = useState(0);
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
@@ -28,7 +27,7 @@ function CreateItemSupplierTransaction() {
     return localStorage.getItem("token");
   };
   const decodedToken = jwtDecode(getToken());
-  console.log(decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]]);
+  const createdBy = decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]];
 
   const fetchResource = async (url, setter) => {
     try {
@@ -75,7 +74,7 @@ function CreateItemSupplierTransaction() {
           quantity,
           notes,
           createdBy,
-          userId : decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]],// Assuming 'createdBy' is part of your data model; remove if not needed.
+          userId : decodedToken[["DisplayName"]],// Assuming 'createdBy' is part of your data model; remove if not needed.
         },
         {
           headers: {
@@ -84,6 +83,34 @@ function CreateItemSupplierTransaction() {
           },
         }
       );
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Item Supplier Transaction",
+          details: "ID: " + response.data.id + 
+          "\n\ItemSupplier Id: " + response.data.itemSupplierId +
+          "\n\Transaction Type: " + response.data.transactionType +
+          "\n\Transaction Date: " + response.data.transactionDate +
+          "\n\Quantity: " + response.data.quantity +
+          "\n\Notes: " + response.data.notes +
+          "\n\Created By: " + response.data.createdBy +
+          "\n\User Id: " + response.data.userId,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       let response2 = await axios.get(
         "https://localhost:7240/api/stok/itemid/" + itemId,
         {
@@ -139,7 +166,6 @@ function CreateItemSupplierTransaction() {
       setTransactionDate("");
       setQuantity(0);
       setNotes("");
-      setCreatedBy(""); // Reset this as well if 'createdBy' is part of your data model
       navigate("/item-supplier-transaction");
     } catch (error) {
       console.error(error);

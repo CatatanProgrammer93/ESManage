@@ -118,4 +118,20 @@ public class UsersController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
+
+    [Authorize(Policy = "Show User")]
+    [HttpGet("search/{s}/{limit}/{page}")]
+    public async Task<IActionResult> Search(string s, int limit, int page)
+    {
+        try
+        {
+            var users = await _repository.UserSearch(s, limit, page);
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+            return StatusCode(500, new { success = false, message = ex.Message });
+        }
+    }
 }

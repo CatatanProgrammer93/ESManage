@@ -8,7 +8,6 @@ function CreateItemSupplier() {
   const [id, setId] = useState("");
   const [itemId, setItemId] = useState("");
   const [supplierId, setSupplierId] = useState("");
-  const [createdBy, setCreatedBy] = useState(""); // Assuming createdBy is needed
   const [items, setItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [error, setError] = useState("");
@@ -20,6 +19,7 @@ function CreateItemSupplier() {
     return localStorage.getItem("token");
   };
   const decodedToken = jwtDecode(getToken());
+  const createdBy = decodedToken[["DisplayName"]];
 
   useEffect(() => {
     const fetchItemsAndSuppliers = async () => {
@@ -46,6 +46,7 @@ function CreateItemSupplier() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    
     try {
       const response = await axios.post(
         "https://localhost:7240/api/itemsupplier",
@@ -56,6 +57,30 @@ function CreateItemSupplier() {
           },
         }
       );
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Item Supplier",
+          details: "ID: " + response.data.id + 
+          "\n\Item Id: " + response.data.itemId +
+          "\n\Supplier Id: " + response.data.supplierId +
+          "\n\Created By: " + response.data.createdBy,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       console.log(response.data);
       setId("");
       setItemId("");

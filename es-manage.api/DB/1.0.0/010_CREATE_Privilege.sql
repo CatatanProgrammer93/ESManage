@@ -146,3 +146,7 @@ ON CONFLICT ("id") DO NOTHING;
 INSERT INTO public."privilege" ("id", "privilegename", "privilegetype", "createdon", "createdby", "deleted", "menuid")
 VALUES ('32', 'Delete Role', 'Delete', NOW(), 'System', FALSE, '8')
 ON CONFLICT ("id") DO NOTHING;
+
+INSERT INTO public."privilege" ("id", "privilegename", "privilegetype", "createdon", "createdby", "deleted", "menuid")
+VALUES ('33', 'Show Report', 'Show', NOW(), 'System', FALSE, '9')
+ON CONFLICT ("id") DO NOTHING;

@@ -81,29 +81,7 @@ namespace es_manage.api.Repositories {
             {
                 // Cek apakah brand dengan nama yang sama sudah ada
                 var sql = @"SELECT * FROM Menu WHERE MenuName = @MenuName";
-                var existingMenu = await _db.QuerySingleOrDefaultAsync<MenuModel>(sql, new { MenuName = menu.MenuName });
-
-                if (existingMenu != null)
-                {
-                    // Kalau brand dengan nama yang sama sudah ada, cek apakah brand tersebut soft-delete. Jika tidak, maka throw exception
-                    if (!existingMenu.Deleted)
-                    {
-                        throw new Exception("Sudah ada Menu dengan nama yang sama.");
-                    }
-
-                    // Kalau brand dengan nama yang sama sudah ada dan soft-delete, maka update data yang sudah ada
-                    existingMenu.MenuName = menu.MenuName;
-                    existingMenu.Deleted = false;
-                    existingMenu.CreatedBy = menu.CreatedBy;
-                    existingMenu.CreatedOn = DateTime.Now;
-
-                    sql = @"UPDATE Menu 
-                        SET MenuName = @MenuName, Deleted = @Deleted, CreatedBy = @CreatedBy, CreatedOn = @CreatedOn
-                        WHERE Id = @Id";
-
-                    await _db.ExecuteAsync(sql, existingMenu);
-                    return existingMenu;
-                }
+                
 
                 // Jika tidak ada brand dengan nama yang sama, maka buat brand baru
                 menu.CreatedOn = DateTime.Now;
@@ -112,8 +90,8 @@ namespace es_manage.api.Repositories {
                 var maxID = await _db.QuerySingleAsync<int>(maxIDSql);
                 menu.ID = (maxID + 1).ToString();
 
-                sql = @"INSERT INTO Menu (Id, MenuName, Deleted, CreatedOn, CreatedBy)
-                    VALUES (@Id, @MenuName, @Deleted, @CreatedOn, @CreatedBy)";
+                sql = @"INSERT INTO Menu (Id, MenuName, CreatedOn, CreatedBy, Deleted)
+                    VALUES (@Id, @MenuName, @CreatedOn, @CreatedBy, @Deleted)";
 
                 await _db.ExecuteAsync(sql, menu);
                 return menu;

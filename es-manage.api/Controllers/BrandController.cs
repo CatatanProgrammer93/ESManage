@@ -10,6 +10,7 @@ using es_manage.api.Services;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using es_manage.api.Context;
 
 namespace es_manage.api.Controllers {
     [ApiController]
@@ -131,6 +132,22 @@ namespace es_manage.api.Controllers {
             }
             catch (Exception ex)
             {
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
+
+        [Authorize(Policy = "Show Brand")]
+        [HttpGet("search/{s}/{limit}/{page}")]
+        public async Task<IActionResult> Search(string s, int limit, int page)
+        {
+            try
+            {
+                var brands = await _repository.BrandSearch(s, limit, page);
+                return Ok(brands);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }

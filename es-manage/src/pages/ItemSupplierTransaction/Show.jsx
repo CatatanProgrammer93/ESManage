@@ -35,6 +35,9 @@ function ShowItemSupplierTransaction() {
 
   const handleReturn = async (e) => {
     try {
+      const timeelapsed = Date.now();
+      const today = new Date(timeelapsed);
+      e.transactionDate = today.toISOString();
       let response = await axios.post(
         "https://localhost:7240/api/itemsupplier_transaction",
         {
@@ -46,7 +49,7 @@ function ShowItemSupplierTransaction() {
           quantity: e.quantity,
           notes: "Pengembalian dari id transaksi: " + e.id,
           createdBy: e.createdBy,
-          userId : decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]],// Assuming 'createdBy' is part of your data model; remove if not needed.
+          userId : decodedToken[["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]],
         },
         {
           headers: {
@@ -55,6 +58,33 @@ function ShowItemSupplierTransaction() {
           },
         }
       );
+
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Item Supplier Transaction",
+          details: "ID: " + response.data.id + 
+          "\n\ItemSupplier Id: " + response.data.itemSupplierId +
+          "\n\Transaction Type: " + response.data.transactionType +
+          "\n\Transaction Date: " + response.data.transactionDate +
+          "\n\Quantity: " + response.data.quantity +
+          "\n\Notes: " + response.data.notes +
+          "\n\Created By: " + response.data.createdBy +
+          "\n\User Id: " + response.data.userId,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
       let response2 = await axios.get(
         "https://localhost:7240/api/stok/itemid/" + e.itemId,
         {
@@ -62,6 +92,24 @@ function ShowItemSupplierTransaction() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${getToken()}`,
           }
+        }
+      );
+      let responseReport2 = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Stok",
+          details: "ID: " + response2.data.id + 
+          "\n\Item Id: " + response2.data.itemId +
+          "\n\Stok: " + response2.data.stok,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
         }
       );
       if (response2 && response2.data && response2.data.id) {
@@ -228,7 +276,7 @@ function ShowItemSupplierTransaction() {
                         <td>{itemsuppliertransaction.transactionType}</td>
                         <td>{itemsuppliertransaction.transactionDate}</td>
                         <td>{itemsuppliertransaction.quantity}</td>
-                        <td>{itemsuppliertransaction.notes}</td>
+                        <td style={{whiteSpace: 'pre'}}>{itemsuppliertransaction.notes}</td>
                         <td>{itemsuppliertransaction.userName}</td>
                         <td style={{ display: 'flex' }}>
                           {decodedToken["Edit Item Supplier Transaction"] && (

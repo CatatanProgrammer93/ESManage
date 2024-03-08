@@ -44,3 +44,7 @@ ON CONFLICT ("id") DO NOTHING;
 INSERT INTO public."menu" ("id", "menuname", "createdon", "createdby", "deleted")
 VALUES ('8', 'Role', NOW(), 'System', FALSE)
 ON CONFLICT ("id") DO NOTHING;
+
+INSERT INTO public."menu" ("id", "menuname", "createdon", "createdby", "deleted")
+VALUES ('9', 'Report', NOW(), 'System', FALSE)
+ON CONFLICT ("id") DO NOTHING;

@@ -138,5 +138,26 @@ namespace es_manage.api.Repositories {
             var user = await _db.QuerySingleOrDefaultAsync<UserMst>("SELECT * FROM UserMst WHERE UserName = @UserName AND Password = @Password AND DeletedAt IS NULL", new { UserName = username, Password = password });
             return user;
         }*/
+
+        public async Task<IEnumerable<UserMst>> UserSearch(string search, int limit, int page)
+        {
+            try
+            {
+                int offset = 0;
+                var sql = $"SELECT * FROM UserMst WHERE (Id::varchar iLIKE @Search OR UserName iLIKE @Search OR DisplayName iLIKE @Search OR RoleId iLIKE @Search OR CreatedBy iLIKE @Search) AND DeletedAt IS NULL LIMIT @Limit";
+                search = '%' + search + '%';
+                if(page > 1){
+                    offset = (page - 1) * limit;
+                    sql = sql + " OFFSET @Offset";
+                    return await _db.QueryAsync<UserMst>(sql, new { Search = search, Limit = limit, Offset = offset});
+                }
+                return await _db.QueryAsync<UserMst>(sql, new { Search = search, Limit = limit});
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

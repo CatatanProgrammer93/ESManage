@@ -149,3 +149,7 @@ ON CONFLICT ("id") DO NOTHING;
 INSERT INTO public."roleprivilege" ("id", "roleid", "privilegeid", "createdon", "createdby", "deleted")
 VALUES ('32', '1', '32', NOW(), 'System', FALSE)
 ON CONFLICT ("id") DO NOTHING;
+
+INSERT INTO public."roleprivilege" ("id", "roleid", "privilegeid", "createdon", "createdby", "deleted")
+VALUES ('33', '1', '33', NOW(), 'System', FALSE)
+ON CONFLICT ("id") DO NOTHING;

@@ -178,5 +178,21 @@ namespace es_manage.api.Controllers {
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }
+
+        [Authorize(Policy = "Show Category")]
+        [HttpGet("search/{s}/{limit}/{page}")]
+        public async Task<IActionResult> Search(string s, int limit, int page)
+        {
+            try
+            {
+                var departments = await _repository.ItemDepartmentSearch(s, limit, page);
+                return Ok(departments);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
+                return StatusCode(500, new { success = false, message = ex.Message });
+            }
+        }
     }
 }

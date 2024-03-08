@@ -65,7 +65,7 @@ function EditItemSupplierTransaction() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.put(
+      const response = await axios.put(
         `https://localhost:7240/api/itemsupplier_transaction/${id}`,
         {
           id,
@@ -77,6 +77,33 @@ function EditItemSupplierTransaction() {
         },
         {
           headers: {
+            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+          },
+        }
+      );
+
+      const timeelapsed = Date.now();
+      const date = new Date(timeelapsed).toISOString();
+
+      let responseReport = await axios.post(
+        "https://localhost:7240/api/report",
+        {
+          id: "",
+          type: "Create",
+          tableName: "Item Supplier Transaction",
+          details: "ID: " + response.data.id + 
+          "\n\ItemSupplier Id: " + response.data.itemSupplierId +
+          "\n\Transaction Type: " + response.data.transactionType +
+          "\n\Transaction Date: " + response.data.transactionDate +
+          "\n\Quantity: " + response.data.quantity +
+          "\n\Notes: " + response.data.notes +
+          "\n\Created By: " + response.data.createdBy +
+          "\n\User Id: " + response.data.userId,
+          date
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${getToken()}`, // Include the token from local storage
           },
         }
