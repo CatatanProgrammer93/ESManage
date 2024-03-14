@@ -4,6 +4,11 @@ import AppLayout from "../../layouts/AppLayout";
 import { jwtDecode } from "jwt-decode";
 
 function ShowBrand() {
+  var queryParams = new URLSearchParams(window.location.search);
+  queryParams.set("page", "1");
+  const [search, setSearch] = useState(queryParams.get("search"));
+  queryParams.set("search", search);
+  history.replaceState(null, null, "?" + queryParams.toString());
   const [brands, setBrands] = useState([]);
   const navigate = useNavigate();
 
@@ -25,14 +30,18 @@ function ShowBrand() {
   };
 
   useEffect(() => {
-      fetch("https://localhost:7240/api/brand", {
+      let newSearch = "";
+      if(search != ""){
+        newSearch = search.replace(" ", "%");
+      }
+      fetch("https://localhost:7240/api/brand/search/%" + newSearch + "%/15/1", {
           headers: {
               Authorization: `Bearer ${getToken()}`, // Use the token from local storage
           },
       })
           .then((res) => res.json())
           .then((data) => setBrands(data));
-  }, []);
+  }, [search]);
 
     useEffect(() => {
         if (!decodedToken["Show Brand"]) {
@@ -43,17 +52,30 @@ function ShowBrand() {
   return (
     <AppLayout>
       <h2 className="page-title">Brand</h2>
+      
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
             
-            {decodedToken["Create Brand"] && (
-                <div className="mb-3">
-                    <Link to="/brand/create" className="btn btn-primary">
-                        Create new
-                    </Link>
-                </div>
-            )}
+            <div className="row">
+              <div className="col">
+                {decodedToken["Create Brand"] && (
+                  <div className="mb-3">
+                      <Link to="/brand/create" className="btn btn-primary">
+                          Create new
+                      </Link>
+                  </div>
+                )}
+              </div>
+              <div className="col">
+                <form className="d-flex" role="search">
+                  <input className="form-control me-2" value={search} type="search" placeholder="Search" aria-label="Search" onChange={(e) => {setSearch(e.target.value); 
+                    queryParams.set("search", e.target.value);
+                    history.replaceState(null, null, "?" + queryParams.toString());}}/>
+                </form>
+              </div>
+            </div>
+            
             
             <div className="card">
               <div className="table-responsive">
