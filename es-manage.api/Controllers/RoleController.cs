@@ -107,21 +107,5 @@ namespace es_manage.api.Controllers
                 return StatusCode(500, new { success = false, message = ex.Message });
             }
         }
-
-        [Authorize(Policy = "Show Role")]
-        [HttpGet("search/{s}/{limit}/{page}")]
-        public async Task<IActionResult> Search(string s, int limit, int page)
-        {
-            try
-            {
-                var roles = await _repository.RoleSearch(s, limit, page);
-                return Ok(roles);
-            }
-            catch (Exception ex)
-            {
-                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
-                return StatusCode(500, new { success = false, message = ex.Message });
-            }
-        }
     }
 }

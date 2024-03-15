@@ -203,25 +203,5 @@ namespace es_manage.api.Repositories {
                 throw new Exception(ex.Message);
             }
         }
-
-        public async Task<IEnumerable<SupplierModel>> SupplierSearch(string search, int limit, int page)
-        {
-            try
-            {
-                int offset = 0;
-                var sql = $"SELECT * FROM Supplier WHERE (Id iLIKE @Search OR SupplierName iLIKE @Search OR CreatedBy iLIKE @Search) AND Deleted = FALSE LIMIT @Limit";
-                search = '%' + search + '%';
-                if(page > 1){
-                    offset = (page - 1) * limit;
-                    sql = sql + " OFFSET @Offset";
-                }
-                return await _db.QueryAsync<SupplierModel>(sql, new { Search = search, Limit = limit, Offset = offset});
-            }
-            catch (Exception ex)
-            {
-                Logger.WriteToConsole(Logger.LogType.Error, ex.Message);
-                throw new Exception(ex.Message);
-            }
-        }
     }
 }

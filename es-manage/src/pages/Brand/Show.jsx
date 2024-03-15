@@ -5,11 +5,16 @@ import { jwtDecode } from "jwt-decode";
 
 function ShowBrand() {
   var queryParams = new URLSearchParams(window.location.search);
-  queryParams.set("page", "1");
-  const [search, setSearch] = useState(queryParams.get("search"));
+  const [search, setSearch] = useState(queryParams.get("search") || "");
+  const [page, setPage] = useState(queryParams.get("page") || "1");
   queryParams.set("search", search);
+  queryParams.set("page", page);
   history.replaceState(null, null, "?" + queryParams.toString());
   const [brands, setBrands] = useState([]);
+  const [limitedBrands, setLimitedBrands] = useState([]);
+  const [searchBrands, setSearchBrands] = useState([]);
+  const [limit, setLimit] = useState("10");
+  const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
 
   // Function to get the token from local storage
@@ -29,19 +34,42 @@ function ShowBrand() {
     });
   };
 
+  const handleRadioChange = () => {
+    if(document.getElementById('btnradio1').checked) {
+      setLimit(document.getElementById('btnradio1').value);
+    }
+    if(document.getElementById('btnradio2').checked) {
+      setLimit(document.getElementById('btnradio2').value);
+    }
+    if(document.getElementById('btnradio3').checked) {
+      setLimit(document.getElementById('btnradio3').value);
+    }
+
+    setTotalPages(Math.ceil(brands.length/parseInt(limit)));
+  };
+
   useEffect(() => {
-      let newSearch = "";
-      if(search != ""){
-        newSearch = search.replace(" ", "%");
-      }
-      fetch("https://localhost:7240/api/brand/search/%" + newSearch + "%/15/1", {
+      fetch("https://localhost:7240/api/brand/", {
           headers: {
               Authorization: `Bearer ${getToken()}`, // Use the token from local storage
           },
       })
           .then((res) => res.json())
           .then((data) => setBrands(data));
-  }, [search]);
+  }, []);
+
+  useEffect(() => {
+    let query = search.toLowerCase();
+    setSearchBrands(brands.filter(brand => brand.id.indexOf(query) >= 0 || 
+    brand.name.toLowerCase().indexOf(query) >= 0));
+  }, [brands, search]);
+
+  useEffect(() => {
+    const startIndex = (parseInt(page) - 1) * parseInt(limit);
+    const endIndex = Math.min(startIndex + parseInt(limit), searchBrands.length);
+    setLimitedBrands(searchBrands.slice(startIndex, endIndex));
+    setTotalPages(Math.ceil(searchBrands.length/parseInt(limit)));
+  }, [searchBrands, limit, page]);
 
     useEffect(() => {
         if (!decodedToken["Show Brand"]) {
@@ -89,7 +117,7 @@ function ShowBrand() {
                     </tr>
                   </thead>
                   <tbody>
-                    {brands.map((brand) => (
+                    {limitedBrands.map((brand) => (
                       <tr key={brand.id}>
                         <td>{brand.id}</td>
                         <td>{brand.name}</td>
@@ -118,6 +146,39 @@ function ShowBrand() {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            <div className="btn-group" role="group" aria-label="Basic radio toggle button group" style={{float:"right", marginTop:"20px"}}>
+              <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" value={"10"} defaultChecked onChange={handleRadioChange}/>
+              <label className="btn btn-outline-secondary" htmlFor="btnradio1">10</label>
+
+              <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" value={"30"} onChange={handleRadioChange}/>
+              <label className="btn btn-outline-secondary" htmlFor="btnradio2">30</label>
+
+              <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" value={"50"} onChange={handleRadioChange}/>
+              <label className="btn btn-outline-secondary" htmlFor="btnradio3">50</label>
+            </div>
+
+            <div className="btn-group" role="group" aria-label="Basic outlined example" style={{marginLeft:"auto", marginRight:"auto", left:"50%", marginTop:"20px"}}>
+              <button type="button" className="btn btn-outline-primary" disabled={page === "1"} onClick={() => {
+                setPage((parseInt(page) - 1).toString());
+                queryParams.set("page", (parseInt(page) + 1).toString());
+                history.replaceState(null, null, "?" + queryParams.toString());
+              }}>Previous</button>
+
+              {Array.from({length: totalPages}, (_, i) => (
+                <button key={i} type="button" className={'btn btn-outline-primary ' + (page === (i + 1).toString() ? 'active' : '')} onClick={() => {
+                  setPage((i + 1).toString());
+                  queryParams.set("page", (i + 1).toString());
+                  history.replaceState(null, null, "?" + queryParams.toString());
+                }}>{i + 1}</button>
+              ))}
+
+              <button type="button" disabled={page === totalPages.toString()} className="btn btn-outline-primary" onClick={() => {
+                setPage((parseInt(page) + 1).toString());
+                queryParams.set("page", (parseInt(page) + 1).toString());
+                history.replaceState(null, null, "?" + queryParams.toString());
+              }}>Next</button>
             </div>
           </div>
         </div>

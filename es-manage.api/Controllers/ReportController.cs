@@ -18,7 +18,7 @@ namespace es_manage.api.Controllers
             _repository = repository;
         }
 
-        [Authorize]
+        [Authorize(Policy = "Show Report")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
