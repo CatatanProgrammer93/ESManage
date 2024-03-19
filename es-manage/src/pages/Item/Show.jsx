@@ -36,7 +36,7 @@ function ShowItem() {
       setLimit(document.getElementById('btnradio3').value);
     }
 
-    setTotalPages(Math.ceil(brands.length/parseInt(limit)));
+    setTotalPages(Math.ceil(items.length/parseInt(limit)));
   };
 
   const deleteItem = (id) => {
