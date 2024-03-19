@@ -20,7 +20,7 @@ function ShowReport() {
       try {
         const response = await fetch(url, {
           headers: {
-            Authorization: `Bearer ${getToken()}`, // Include the token from local storage
+            Authorization: `Bearer ${getToken()}`,
           },
         });
         const data = await response.json();
