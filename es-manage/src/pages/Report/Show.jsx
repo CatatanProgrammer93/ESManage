@@ -61,7 +61,9 @@ function ShowReport() {
     let query = search.toLowerCase();
     setSearchReports(reports.filter(report => report.id.indexOf(query) >= 0 || 
     report.type.toLowerCase().indexOf(query) >= 0 ||
-    report.tableName.toLowerCase().indexOf(query) >= 0));
+    report.tableName.toLowerCase().indexOf(query) >= 0 ||
+    report.details.toLowerCase().indexOf(query) >= 0 ||
+    report.date.toString().toLowerCase().indexOf(query) >= 0));
   }, [reports, search]);
 
   useEffect(() => {
@@ -83,6 +85,12 @@ function ShowReport() {
       <div className="card mt-3">
         <div className="card-body">
           <div className="col-12">
+            
+              <form className="d-flex mb-3" role="search">
+                <input className="form-control me-2" value={search} type="search" placeholder="Search" aria-label="Search" onChange={(e) => {setSearch(e.target.value); 
+                  queryParams.set("search", e.target.value);
+                  history.replaceState(null, null, "?" + queryParams.toString());}}/>
+              </form>
             
             <div className="card">
               <div className="table-responsive">
